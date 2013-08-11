@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>css3 animations</title>
+        <style>
+            @-webkit-keyframes resizer {
+                0% {
+                    padding: 0;
+                }
+                50% {
+                    padding: 0 20px;
+                    background-color:rgba(255,0,0,0);		
+                }
+                100% {
+                    padding: 0 100px;
+                    background-color:rgba(0,255,0,1);
+                }
+            }
+
+            #resize {
+                background-color:rgba(0,0,255,1);
+                height: 200px;
+                width: 200px;
+            }
+            
+            #resize:hover {
+                -webkit-animation-name: resizer;
+                -webkit-animation-duration: 1s;
+                -webkit-animation-iteration-count: 4;
+                -webkit-animation-direction: alternate;
+                -webkit-animation-timing-function: ease-in-out;
+            }
+            
+            
+            #behind {
+                z-index: -10;
+                background-color: yellow;
+                position: absolute;
+                top: 100px;
+                left: 50px;
+                height: 50px;
+                width: 100px;
+            }
+            
+            @-webkit-keyframes borderchanger {
+                from {
+                    border-radius: 100px;
+                }
+                to {
+                    border-radius: 0px;
+                }
+            }
+            
+            #borderChange {
+                margin-top: 50px;
+                border-radius: 100px;
+                background-color: red;
+                height: 200px;
+                width: 200px;
+            }
+            
+            #borderChange:hover {
+                -webkit-animation-name: borderchanger;
+                -webkit-animation-duration: 2s;
+                -webkit-animation-iteration-count: 10;
+                -webkit-animation-direction: alternate;
+                -webkit-animation-timing-function: ease-in-out;
+            }
+            
+        </style>
+    </head>
+    <body>
+        <div id="resize">Hello World</div>
+        <div id="behind"></div>
+        <div id="borderChange"></div>
+    </body>
+</html>

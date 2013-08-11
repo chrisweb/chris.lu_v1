@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<routes>
+
+	<useradminindex type="Zend_Controller_Router_Route_Static">
+		<route>user/admin</route>
+		<defaults module="user" controller="admin" action="index" />
+	</useradminindex>
+
+	<useradminmanage type="Zend_Controller_Router_Route">
+		<route>user/admin/manage/:id</route>
+		<defaults module="user" controller="admin" action="manage" id="" />
+	</useradminmanage>
+	
+	<useradmindelete type="Zend_Controller_Router_Route">
+		<route>user/admin/delete/:id</route>
+		<defaults module="user" controller="admin" action="delete" id="" />
+	</useradmindelete>
+	
+	<userindexlogin type="Zend_Controller_Router_Route">
+		<route>user/login</route>
+		<defaults module="user" controller="index" action="login" id="" />
+	</userindexlogin>
+	
+	<userindexmissingrights type="Zend_Controller_Router_Route_Static">
+		<route>user/missingrights</route>
+		<defaults module="user" controller="index" action="missingrights" />
+	</userindexmissingrights>
+
+</routes>

@@ -1,0 +1,15 @@
+nbproject
+
+application/caches/
+application/searchindexes/
+application/logs/
+
+library/Zend/
+public/dev/vendor/jQuery_mobile/demos/
+public/upload/
+
+public/_production-build/vendor/
+
+application.ini
+application.log
+config.xml

@@ -1,0 +1,141 @@
+<?php echo $this->doctype() ?>
+
+<?php echo $this->htmlTag(); ?>
+
+<head>
+    <meta charset="utf-8">
+    <?php echo $this->headTitle(); ?>
+    <meta name="description" content="chrisweb's development blog">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="alternate" type="application/rss+xml" title="Chris.lu RSS Feed" href="https://chris.lu/article/rss" />
+    <link rel="author" href="https://plus.google.com/115936397667079055215/posts"/>
+    <link rel="Shortcut Icon" href="/favicon.ico" type="image/x-icon" />
+
+    <?php echo $this->canonicalTag(); ?>
+
+    <?php
+    $staticSource = '';
+
+    if (APPLICATION_ENV != 'production') {
+
+        $staticSource = '/dev';
+    } else {
+
+        $staticSource = '//d2yubvdcj72pgv.cloudfront.net';
+    }
+    ?>
+
+    <?php echo $this->css($staticSource); ?>
+
+    <?php $this->googleWebFontsScript(); ?>
+
+    <?php echo $this->facebookMetaTags(); ?>
+
+    <?php echo $this->javascript($staticSource); ?>
+
+    <?php echo $this->headLink(); ?>
+    <?php echo $this->headStyle(); ?>
+    <?php echo $this->headScript(); ?>
+
+</head>
+
+<body>
+
+    <?php
+    $routename = '';
+
+    //Zend_Debug::dump(Zend_Controller_Front::getInstance()->getRequest()->getParams(), 'params');
+
+    $routename .= Zend_Controller_Front::getInstance()->getRouter()->getCurrentRouteName();
+
+    $parameters = Zend_Controller_Front::getInstance()->getRequest()->getParams();
+
+    unset($parameters['module']);
+    unset($parameters['controller']);
+    unset($parameters['action']);
+
+    foreach ($parameters as $key => $value) {
+
+        //Zend_Debug::dump($key, '$key');
+        //Zend_Debug::dump($value, '$value');
+        // check for object because if there is an error
+        // key will be error_handler and value an exception object
+        if (!is_object($value))
+            $routename .= '_' . $key . '_' . $value;
+    }
+    ?>
+
+    <!-- <?php echo $routename; ?> -->
+    <div data-role="page" id="<?php echo $routename; ?>">
+        <header data-role="header" role="banner" data-position="fixed" id="websiteheader">
+            <div id="white_bar"></div>
+            <hgroup>
+                <h1 id="websitetitle"><a href="<?php echo $this->domain() . '/'; ?>"><?php echo $this->websiteTitle(); ?></a></h1>
+                <h2 id="websitesubtitle">chrisweb's developement blog</h2>
+            </hgroup>
+
+            <nav role="navigation">
+
+                <div class="navbar">
+                    <div class="container">
+
+                        <!-- .navbar-toggle is used as the toggle for collapsed navbar content -->
+                        <!-- button has data-role="none" to exclude it from jquery mobile parsing -->
+                        <button type="button" class="navbar-toggle" data-role="none" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+
+                        <?php /*
+                        <!-- Be sure to leave the brand out there if you want it shown -->
+                        <a class="navbar-brand" href="#">Title</a>
+                        */ ?>
+
+                        <!-- Place everything within .navbar-collapse to hide it until above 768px -->
+                        <div class="nav-collapse collapse navbar-responsive-collapse">
+                            
+                            <?php echo $this->navigation(); ?>
+
+                            <div id="rss_button">
+                                <a href="<?php echo $this->domain(); ?>/article/rss" data-ajax="false">
+                                    <img src="<?php echo $staticSource; ?>/img/rss.png" alt="rss feed button" />
+                                </a>
+                            </div>
+                            
+                        </div><!-- /.nav-collapse -->
+                    </div><!-- /.container -->
+                </div><!-- /.navbar -->
+
+            </nav>
+
+            <nav class="main">
+
+            </nav>
+
+        </header>
+        <div data-role="content">
+
+            <div class="row">
+                <div id="main" class="col-12 col-sm-8 col-lg-8">
+                    <!--Body content-->
+                    <!--[if lt IE 10]>
+                        <div class="alert alert-error">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today!</a> to better experience this site and avoid having a browser full of security vulnerabilities.</div>
+                    <![endif]-->
+                    <?php echo $this->viewContent(); ?>
+                    <div class="clearfix"></div>
+                    <div id="debuggerOutput"></div>
+                </div>
+                <aside id="right-side" class="col-6 col-sm-4 col-lg-4" role="complementary">
+                    <!--Sidebar content-->
+                    <?php $this->rightSidebar(); ?>
+                </aside>
+            </div>
+
+        </div>
+    </div>
+    <!-- /<?php echo $routename; ?> -->
+
+<?php echo $this->googleAnalytics(); ?>
+</body>
+</html>

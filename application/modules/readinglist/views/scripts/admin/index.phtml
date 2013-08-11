@@ -1,0 +1,23 @@
+<?php $this->headTitle($this->translate('READINGLIST_ADMIN_INDEX')); ?>
+
+<a href="<?php echo $this->url(array(), 'readinglistadminmanage'); ?>" class="btn btn-mini btn-primary"><?php echo $this->translate('ADD'); ?></a>
+<br /><br />
+
+<table class="table table-striped">
+
+	<?php foreach ($this->paginator as $readinglist) { ?>
+	
+		<?php //Zend_Debug::dump($readinglist); ?>
+
+		<tr>
+			<td><?php echo $this->escape($readinglist['title']); ?></td>
+			<td><a href="<?php echo $this->url(array('id' => $readinglist['_id']), 'readinglistadminmanage'); ?>" class="btn btn-mini btn-primary"><?php echo $this->translate('EDIT'); ?></a></td>
+			<td><a href="<?php echo $this->url(array('id' => $readinglist['_id']), 'readinglistadmindelete'); ?>" class="btn btn-mini btn-primary"><?php echo $this->translate('DELETE'); ?></a></td>
+		</tr>
+
+	<?php } ?>
+
+</table>
+<br /><br />
+
+<div class="paginator"><?php echo $this->paginationControl($this->paginator, null, null, array('routeName' => $this->routeName)); ?></div>

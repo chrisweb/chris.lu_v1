@@ -1,0 +1,15 @@
+CACHE MANIFEST
+# 2012-0-22:v3.1
+
+CACHE:
+/favicon.ico
+index.html
+stylesheet.css
+images/logo.png
+
+NETWORK:
+chat.js
+http://google-analytics.com/ga.js
+
+FALLBACK:
+/login login.html

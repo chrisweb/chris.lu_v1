@@ -1,0 +1,821 @@
+HTML5 / CSS3
+************
+
+What's new
+**********
+
+So what's the difference between html5 an previous versions of html.
+
+A basic html5 document compared to a version build with html4.01 / xhtml1.1:
+
+!html4_html5.jpg
+
+* new and shorter doctype
+* the html root tag does not need to contain a namespace specification anymore
+* this is not something new but be aware that inside the head document you must have a title tag or the document won't pass validation
+
+!basic_document (put the file "html5_minimal.html" in the w3c validator to see the result: http://validator.w3.org/check, then open it in your browser and inspect the source, you will see that the browser automatically added the missing tags (html, head and body))
+
+Introduction
+************
+
+In my opinion one big plus of html5 because of SEO performance, is the semantic plus html5 adds to your website, combined with microdata your website could increase it's ranking and visibility in search engines because of rich snippets.
+
+HTML5 will offer you lots of new functionality but also lots of replacements for stuff you already use, but for which until now you had to use a special javascript library to achieve. Browser that support will offer these functionalities natively in the browser, so your user won't have to download a javascript file each tag the page or another gets loaded.
+
+The best example are forms. Client side validation of data is useful because it enhances usability, the user will get feedback about the data he entered in real-time without the need to submit the form.
+
+While walking through the html5 world you will notice lots of stuff is not so new, like form validation that you did using a javascript library before, as well as drag n drop and other APIs. Or visual effects you saw before made out of images like shadows, rounded corners or gradients that are now supported by CSS3. OK that stuff already existed before, but the big advantage is that now all this is a standard and browser will implement these features all the same way. Right node if you want to use html5 you will need lots of quirks and hacks especially if you want that same functionality across browsers (especially IE) but in 2022 html5 will be finished and all browsers will be html5 ready so you will be able to use all these features without hacks and extra libraries.
+
+Another advantage of HTML5 is, it now supports IRI's if your document uses UTF-8 / UTF-16 encoding. IRI's (Internationalized Resource Identifier) are like URI's, but while URI's may accept all ASCII characters, IRI's accept unicode characters depending of which encoding you use (UTF-8 / UTF-16).
+
+attributes quotes
+*****************
+
+Quotes are optional in html5.
+
+attribute=value is valid as well as attribute="value"
+
+self-closing tags
+****************
+
+Before i start explaining the different new tags you should notice that void elements don't need a closing tag (area, base, br, col, command, embed, hr, img, input, keygen, link, meta, param, source, track, wbr). Adding a space and a slash at the end is valid too: http://validator.w3.org/check.
+
+More about the html5 syntax: http://www.w3.org/TR/html5/syntax.html.
+
+!self_closing (put this file in the validator to see the result: http://validator.w3.org/check)
+
+type attribute
+**************
+
+Another note before we start, the type attribute for style and javascript tags is optional in html5.
+
+!type_attribute
+
+outlining
+*********
+
+OK, OK, we will start soon but here another note before we start, about the html5 outlining algorithm.
+
+Every document has an outline, the outline summary describes the structure (and therefore semantic value) of parts of your document.
+
+Tags that influence the outline of a document are h1-h6, hgroup, section, article, aside, nav (but not header and footer).
+
+The outliner algorithm is defined by html5 so every browser should use the same algorithm.
+
+To see how the outlining of your document changes when using sections, test your code with the online outliner: http://hoyois.github.com/html5outliner/ or http://gsnedders.html5.org/outliner/process.py.
+
+Use the example code and paste it into the outliner textarea and look at the result. Then remove the hgroup or other section tags and see what has changed.
+
+Read this very good article for more informations about outlining: http://coding.smashingmagazine.com/2011/08/16/html5-and-the-document-outlining-algorithm/.
+
+More about outlines: http://html5doctor.com/outlines/ or https://developer.mozilla.org/en/Sections_and_Outlines_of_an_HTML5_document.
+
+!outlining
+
+new tags
+********
+
+Here is a list of new html5 tags that were not present in previous versions of html like xhtml 1.1 or html4.
+
+?caniusethemnow yes, but you will need to use the html5shiv javascript for IE lower then version 9. The advantage of using them now is the semantic plus they will give you, it's always good to add semantic value to content because it can enhance your SEO quality. An exception are the video, audio and canvas tag, see below for more.
+
+http://dev.w3.org/html5/html4-differences/#new-elements
+
+<section>
+*********
+
+The section tag is a grouping tag like hgroup. You could use it to group chapters of a book or groups of content where each group has a different thematic.
+
+To not just regroup content with section but also enhance the semantic value of that group you could use microdata.
+
+Use section instead of hgroup, article, nav, aside, footer and header of those don't apply. 
+
+If you only intend to use section to apply styles to a part of your document, then instead use a div.
+
+<article>
+*********
+
+Put this one around any post you have on your website. Even if it's just preview of an article you can still use this tag, for example in a list of news articles, each item can be surrounded by an article tag.
+
+If under an article you have comments, you can use an article tag for the main post and have inside of it an article tag for each comment.
+
+<aside>
+*******
+
+The aside section tag is used to delimiter content that is somehow related to the main content part of the document, for example a tag-cloud widget or a blog-roll widget, but it can also be used in articles to show content related to that article but not part of the main flow.
+
+<hgroup>
+********
+
+The hgroup section tag is used to regroup multiple h1 - h6 tags. 
+
+The outliner will disregard all headings, except the one with the highest ranking. Unfortunately until today, there is no support for the new outlining algorithms in search engines, browser or screen readers.
+
+<header>
+********
+
+The header section tag can be used to group header informations of a whole document or an article inside a document.
+
+You can have multiple header tags in one page, one might be the header of the page, another one the header of the first article another one the header of the second article and so on.
+
+<footer>
+********
+
+Same as header but for footer stuff ;).
+
+One exception is that footer tags can be for example on top of a page if the content is a back button, or inside an article if content is informations like the author data or amount of comments.
+
+<nav>
+*****
+
+The nav section tag is used to delimiter a navigation area of your document.
+
+<figure> / <figcaption>
+***********************
+
+Is used to annotate a single or images, photos, a video or even a code block. The figcaption tag holds the legend of the figure.
+
+!figure_figcaption
+
+<video>
+*******
+
+Embed a video into your document without requiring the user to have a plugin installed.
+
+Even if the video and also audio tag are a nice addition, i think that right now it's better to use a javascript library to ensure backwards compatibility for older browsers. Those libraries will also make if easier to use the controls an have a controls layout that is the same across all types of browser.
+
+As you can see by this comparison: http://html5video.org/wiki/HTML5_Player_Comparison, video.js seems to be a good standalone html5 video player: http://videojs.com/.
+
+Html5 Video today, take a look at youtube's test page http://www.youtube.com/html5 or dailymotion's html5 stream: http://www.dailymotion.com/stream/fr/hd+internal+featured/1 
+
+codecs (source: http://caniuse.com/#search=video):
+safari, chrome and IE support h.264
+chrome, opera and firefox support webm and ogv (Ogg Theora)
+
+You want to have some fun with the video tag, checkout popcorn.js that can be found here: http://popcornjs.org/demos.
+
+For browser that don't support the video tag you could fallback to a flash player and use the h.264 videos as source http://www.adobe.com/devnet/flashplayer/articles/hd_video_flash_player.html.
+
+?caniusethemnow yes, but you will need to use a polyfill javascript library for older browsers or you do a mix of video tag, with inside of the video tag the object tag to load a flash video player for older IEs and inside of the object the embed tag to load the flash video player for older firefoxes. On mobile smartphones this tag can be very useful because most browser support the new tags but don't support flash which could be used for desktop PC browsers as fallback.
+
+For more informations about when to use the video tag or not, there is a very good report from the makers of the jwplayer, that can be found here: http://www.longtailvideo.com/html5/.
+
+!video
+
+<audio>
+*******
+
+Same as video but for audio.
+
+Interesting article from the creators of cuttherope.IE about html5 audio: http://nerdplusart.com/why-is-there-flash-in-the-html5-version-of-cut-the-rope, the library they did use is soundmanager2 that can be found here: http://www.schillmania.com/projects/soundmanager2/
+
+Real audio steaming is not possible using the audio tag, but there is a proposal from adobe that can be found here: https://dvcs.w3.org/hg/audio/raw-file/tip/streams/StreamProcessing.html
+
+codecs
+safari, chrome and IE support mp3
+chrome, opera and firefox support ogg (Ogg Vorbis) audio files
+
+?caniusethemnow similar to what i said for video. If you want to play a track use it today. If you want to add sounds to a game and play multiple sounds at the same time it's probably not what you want to use and streaming is also something the tag won't be able to handle today.
+
+!audio
+
+<track>
+*******
+
+Tracks (subtitles) support for the video element. You can add this types of tracks (captions) to videos: . You may have heard that tracks support WebSRT, but this is not true anymore, WebSRT is webVTT's predecessor and doesn't exist anymore.
+
+The is the website of the w3c webVTT working group: http://dev.w3.org/html5/webvtt/.
+
+More about the track element: http://html5doctor.com/video-subtitling-and-webvtt/.
+
+A demo can be found here: http://html5doctor.com/demos/webvtt/.
+
+Good javascript polyfill libraries for webRTT are playr.js, playr.js code can be found on github: https://github.com/delphiki/Playr.
+
+Here is a good video explaining what webVTT is: http://www.youtube.com/watch?v=RoYvr-KXvLs.
+
+?caniusethemnow right now id say no, webVTT is under heavy development, unlike his predecessor webSRT no browser implements webVTT natively and the javascript polyfills like playr.js don't support it completely yet
+
+!video_track
+(XMLHttpRequest on local files are not allowed, to enable them add those parameters behind your chrome.exe --allow-file-access-from-files and restart chrome)
+
+<embed> / (<object>)
+********************
+
+You already have used embed in your applications before, but what's new is that now it's a standard (it got deprecated in html4 / xhtml, but still every browser continued to support it). In html4 the correct tag was object but it wasn't supported in early version of firefox. Embed got introduced by Netscape, and was supported in firefox. To ensure that their resource would get loaded by the plugin, developers used a code snippet where you had an embed inside of an object, browser that don't know the object tag would fallback to the embed tag. A lot of developers also used javascript code like http://code.google.com/p/swfobject/ to ensure their resource that should be used by the plugin got embedded correctly.
+
+Now in html5 you also don't need to mix the object and embed tag in documents to include for example flash in a page anymore.
+
+Embed and object are very similar, but not the same. Embed will embed a resource for a plugin into a web-page, object can do this too, in that case it's equivalent to embed, but it can do even more, for example include an image an be equivalent to img, use it as a nested browsing context, for example to include a html file and it will be equivalent to iframe.
+
+If you want to use the object tag, be aware, Firefox 9 / IE 9 won't accept flash files as plugin resource, but  but Opera 11 and Chrome 18 will. All Browser will load html files and images. If you want to use embed to embed a flash resource all modern browsers support it (Chrome 18 / Firefox 9 / IE 9 / Opera 11).
+
+To see all the differences between the two look at their w3c documents: <embed> http://www.w3.org/TR/html5/the-iframe-element.html#the-embed-element <object> http://www.w3.org/TR/html5/the-iframe-element.html#the-object-element
+
+?caniusethemnow To sum it up, at the beginning there was object, supported by IE, then Netscape introduced embed and you had to mix both to play flash everywhere, but the drawback was that your code was not valid html4 / xhtml 1 because of the embed tag. Then Netscape disappeared and firefox started to grow it's use base, but firefox did not support the same object tag as IE, so the best practice became a mix of two object tags and the use of IE conditional tags, but no embed tag anymore which made the code html4 / xhtml1 valid. Now with html5 embed is back, so were are back at the first best practice where a mix of object and embed would be the best practice, object for older IE's, embed for older firefoxes and embed for modern browsers. Eventually you may still use the swfobject javascript for flash to ensure your files can pass the w3c validation, but you then have the problem that flash won't play if the user has deactivated javascript. As said before object can be used to embed not only plugin resources, but i see no advantage in using object compared to more semantic tags like for example the image tag.
+
+!object_embed
+
+<mark>
+******
+
+This tag is intended to be used if you want to indicate that the marked part of the document that has been highlighted may be relevant to the user's current activity, but may not be part of the original document. For example a user visits your site through clicking on a google search result, then mark tag could be used to highlight the words that the used used in the google query.
+
+<progress>
+**********
+
+html5 progress bar to display the progress of something.
+
+<meter>
+*******
+
+html5 meter that represents a measurement of something. Similar to progress but has more attributes.
+
+<time>
+******
+
+Display of a time, the datetime attribute is machine readable.
+
+There is an attribute pubdate for the time tag, used for example to differentiate a publication time of an event article and the time of the event itself described in that article.
+
+<ruby> / <rt> / <rp>
+********************
+
+Ruby annotations are short runs of text presented alongside base text, primarily used in East Asian typography as a guide for pronunciation or to include other annotations.
+
+<bdi>
+*****
+
+The bdi element represents a span of text that is to be isolated from its surroundings for the purposes of bidirectional text formatting. For example to display an Arabic word in an English document.
+
+<wbr>
+*****
+
+This tags indicates that if useful the browser may add a line break if it doesn't fit into the surrounding space. So if there is not enough space, the browser will add a br tag at the location of the wbr tag.
+
+<canvas>
+********
+
+Canvas is lots more then just a tag for rendering of bitmap images using a native browser API. The canvas area allows you to paint an image using coordinates, to animate that image using javascript and even let the user control the rendered image to create a game like interaction.
+
+When setting the size of a canvas area use the canvas tag width and height attributes, if you change the size of the canvas area using CSS, it will act like an image of smaller (or bigger) size that got scaled up to fit the dimensions defined by the css / down to fill the size you have defined in your CSS.
+
+3D (canvas) javascript library: https://github.com/mrdoob/three.js/ examples are here: http://mrdoob.github.com/three.js/
+
+Some canvas tutorials can be found here: http://www.html5canvastutorials.com/.
+
+For IE there is a javascript polyfill library that emulates canvas in older IE version by using SVG graphics instead of canvas, that library is called excanvas: http://excanvas.sourceforge.net/.
+
+Examples of a games done with canvas are angry birds html5: http://chrome.angrybirds.com/ and cut the rope html5: http://www.cuttherope.ie/.
+
+?caniusethemnow yes and no. Unfortunately a lot of older browser especially IE don't support it. If you make a web app mobile game, you should consider using canvas. For IE you have the possibility to use excanvas but apparently it is slow and does not work in every situation. Will canvas replace flash animations in the future, probably yes, can i use them now, that depends of your audience.
+
+!canvas
+
+<command> / <menu>
+******************
+
+A menu of commands for keyboard shortcuts or other javascript functions by using attributes like the onclick attribute.
+
+!command_menu
+
+<details> / <summary>
+*********************
+
+A widget to show / hide additional informations.
+
+!details (chrome 18)
+
+<datalist>
+**********
+
+A list of options to add suggestions to an input field.
+
+!datalist (firefox 8)
+
+<keygen>
+********
+
+Public / server key pair generator.
+
+<output>
+********
+
+Form field for output.
+
+<address>
+*********
+
+Was already available in html4.01 but there the address always referred to the document owner, in html5 address can be placed in an article and then represents the address of the article author.
+
+<div>
+*****
+
+I know this one is not new, but with all the new semantic tags, you could wonder if there is still use for div and / or span. Yes there is, use divs every time there is no tag with a semantic value that could replace it, or for content where you don' want to add semantic value because you just wont to be able to style it's content using CSS.
+ 
+html5shiv / shim
+****************
+
+javascript polyfill for IE < 9 html5 tags support
+
+http://code.google.com/p/html5shiv/
+
+new tag attributes
+******************
+
+You will find lots of informations about new and also deprecated tag attributes here: http://dev.w3.org/html5/html4-differences/#new-attributes
+
+data attribute
+**************
+
+In html5 users can create custom attributes that will be valid, the only rule is that the attribute must be prefixed with data-, for example data-foo="bar". 
+
+?caniusethemnow yes but it's recommended that you use a specific prefix after the data prefix for your app to avoid conflicts with other libraries you use that also use the data attribute but may not have an own prefix.
+
+var theDiv = document.getElementById('myDiv');  
+var attr = theDiv.getAttribute('data-custom-attr'); 
+
+!data_attribute
+
+async attribute
+***************
+
+A useful new attribute for script tags is the async attribute. It ensures you scripts get loaded asynchronously and don't block you page rendering. Async is useful for all javascript files that have code that you page needs at rendering time, but only later to progressively enhance your page. 
+
+<script src="example.js" async></script>
+
+new input field types
+*********************
+
+tel
+search
+url
+email
+datetime
+date
+month
+week
+time
+datetime-local
+number
+range
+color
+
+An howto for using yepnope and modernizr to detect the new native form input types or use a fallback can be found here: http://css-tricks.com/progressively-enhancing-html5-forms/.
+
+?caniusethemnow i don't think those new input field types should be used today, at least you should check for their support using a library like modernizr and if your browser doesn't support them you should use a javascript library like jQuery UI or DojoToolkit form widgets.
+
+!input_types
+
+html speech input field type
+****************************
+
+Side note not related to html5: Since google chrome 11, there is also a new input field attribute x-webkit-speech (not a standard from w3c and therefore not part of html5 / for chrome only) 
+
+more informations can be found here: http://lists.w3.org/Archives/Public/public-xg-htmlspeech/2011Feb/att-0020/api-draft.html
+
+<input type="text" x-webkit-speech>
+
+placeholder attribute
+*********************
+
+There is a new attribute called the placeholder attribute for forms input fields. It will create a semi transparent text inside input fields indented to eventually replace the label.
+
+autofocus attribute
+*******************
+
+Use the autofocus attribute as attribute of the input field of your form if you want that field to be selected open opening the page.
+
+required attribute
+******************
+
+Form fields can now have the attribute required, browsers like chrome will show a tooltip message near the field if the user tries to submit the form but the field is still empty and will prevent the submit event until the required field is not empty anymore.
+
+You can use it like this <input required /> or <input required="required" /> both are OK, depends what you prefer.
+
+pattern attribute
+*****************
+
+Using the pattern attribute you can define a regular expression that your field content is validated against. You should also use the title attribute and explain what you expect from the user.
+
+<input type="text" placeholder="pattern attribute" id="part" name="part" required pattern="[A-Z]{3}[0-9]{4}" title="Part numbers consist of 3 uppercase letters followed by 4 digits." />
+
+If the input does not match the pattern, the CSS selector "invalid" will be added to the field and you can use it to style the field differently:
+
+:invalid {
+  border: 1px solid red;
+}
+
+<form action="" method="post">  
+    <label for="username">Create a Username: </label>  
+    <input type="text"  
+       name="username"  
+       id="username"  
+       placeholder="4 <> 10"  
+       pattern="[A-Za-z]{4,10}"  
+       autofocus  
+       required>  
+    <button type="submit">Go </button>  
+</form>  
+
+link types
+**********
+
+HTML5 defines some types of links using the rel attribute. One of the new values is prefetch with tells the browser that it can prefetch that link because it is likely this resource next. Or the values prev and next which are useful for pagination. Nofollow tells search engines that the link should not influence link targets rating (its useful to avoid hackers to spam your comments sections with posts full of links if you apply automatically nofollow to all links that are in comments).
+
+Here is a list and description of all rel values available in html5: http://www.w3.org/TR/html5/links.html.
+
+Microdata
+*********
+
+Microdata are machine-readable labels that can enhance the semantic value of your documents for crawlers like google bot. 
+
+Look at the microdata example file, to see an example of a document containing a blog post and comments (source: w3c HTML5 specification).
+
+w3c microdata specification: http://dev.w3.org/html5/md/.
+
+A definition of structures for microdata can be found here: http://schema.org/docs/gs.html
+
+Google has a very useful page about microdata, at the end of the page are examples of microdata that google recognizes like people or reviews: http://support.google.com/webmasters/bin/answer.py?hl=en&answer=99170. Go for example to the page reviews and there you will find examples howto use microdata to ensure google uses your data to create rich snippets that will enhance the search results of your site in google results pages.
+
+You can test your page to check if google recognizes your microdata: http://www.google.com/webmasters/tools/richsnippets.
+
+!microdata
+
+absent tags and attributes
+**************************
+
+http://dev.w3.org/html5/html4-differences/#absent-elements
+
+API's
+*****
+
+audio API
+*****************
+
+An API for playing audio which can be used with the new audio tag.
+
+!audio
+
+video API
+*********
+
+We have already seen the video tag, the track tag and the webVTT format for subtitles but there is even more. With the native browser API, you can choose not to use the native controls but build your own. Or make your script interact with the videos.
+
+!video_api
+
+drag and drop API
+*****************
+
+The html5 drag and drop API will allow you to make items on your website draggable. Combined with the new file API you can even do drag and drop file uploads.
+
+Two good articles that will help you get started with the drag and drop API:
+http://html5doctor.com/native-drag-and-drop/
+https://developer.mozilla.org/en/DragDrop/Drag_and_Drop
+
+!drag_and_drop
+
+history API
+***********
+
+API that exposes the history and allows pages to add to it to prevent breaking the back button. 
+
+This new API is especially useful, if for example you use Ajax to retrieve a list of news and the user changes the filters and then he bookmarks the page. When he comes back, everything is reset and he sees the default news list again. But if you change the URI using the history API while he changes the filter options to save their state in the url and he then bookmarks the page, every time he comes back the filters will be set to the values he had selected when making the bookmark.
+
+An impressive example of the history API, is github, check out how github only reloads the content area of the page and changes the url without reloading the whole page. jQuery Mobile also uses the history API, jQuery Mobile loads new pages using Ajax, adds those pages to the DOM and then changes the url.
+
+As like other html5 APIs there is a javascript library polyfill for history, named history.js, it also supports older browser's by using the hash as fallback method: https://github.com/balupton/History.js
+
+!history
+
+page visibility API
+*******************
+
+This API sends out notifications if the current browser tab changes it's visibility, you can catch events like prerendering, visible or hidden status of your page.
+
+Page visibility is still work in progress and it looks like it got implemented slightly differently by the browsers that support it (chrome, safari, opera and firefox, IE 10 will support it too). Therefore it might be a good idea to use a wrapper library like visibility.js that can be found on github: https://github.com/evilmartians/visibility.js#readme.
+
+The whole working draft about page visibility at w3.org: http://www.w3.org/TR/2011/WD-page-visibility-20110602/
+
+A nice page visibility can be found here: http://www.samdutton.com/pageVisibility/
+
+!page_visibility
+
+geolocation API
+***************
+
+The geolocation API allow you to locate users. The techniques for geolocation vary depending on which technique is available, GSM triangulation, GPS localization, WiFi triangulation or IP geolocation via a database.
+
+With the watchPosition function you can track users, if the position changes the callback will be executed. To stop watching geolocation changes you call clearWatch.
+
+Geolocation API w3c page: http://dev.w3.org/geo/api/spec-source.html.
+
+!geolocation
+
+web workers
+***********
+
+Web workers allow you to put heavy calculations in threads that run in the background and therefore don't make the user wait for them to finish. You can listen to web workers and get a notice when their work is done.
+
+More informations about web workers can be found here: https://developer.mozilla.org/En/Using_web_workers.
+
+offline mode
+************
+
+Another html5 feature is the offline ode which allows you to make your website available offline. This can be useful for mobile users.
+
+To use the offline mode you need create a manifest file and add a the manifest attribute to the html tag of your page, the manifest attribute value is the path to your manifest file.
+
+<html lang="en" manifest="my.manifest">
+
+The manifest file has three sections.
+
+NETWORK is for resources that you don't want to make available offline like a javascript file used to do track user statistics.
+CACHE is a list of all the files you want to make available offline.
+FALLBACK a list of files that were available online like a login page which you want to replace by a special offline version of that page.
+
+While downloading the files listed in your manifest your browser will fire out progress events you can listen to and which tell you how much files have already been downloaded. It will fire even more events when download starts, finishes or noupdate if nothing new got downloaded because all files are already in your browser cache. 
+
+More informations about the manifest can be found here:
+https://developer.mozilla.org/en/Offline_resources_in_Firefox
+http://www.html5rocks.com/en/tutorials/appcache/beginner/
+
+!manifest
+
+local storage API
+*****************
+
+The local storage allow you to save key / value pairs locally in your browser. Those informations persist even if the user closes his browser. Those informations can not be read by another website that is hosted on another domain because of the same origin policy. Unlike cookies the information in the storage never gets transmitted to the server.
+
+localStorage.length;
+localStorage.key(n);
+localStorage.getItem(key);
+localStorage.setItem(key,data);
+localStorage.removeItem(key);
+localStorage.clear();
+
+session storage
+***************
+
+The session storage is like the local storage but the data doesn't persist if the user closes his browser.
+
+var cnt = sessionStorage.length;
+sessionStorage.key(n);
+sessionStorage.getItem(key);
+sessionStorage.setItem(key,data);
+sessionStorage.removeItem(key);
+sessionStorage.clear();
+
+file API
+********
+
+Using the fileapi you can now upload multiple files by using the multiple attribute for the file input tag. You can listen to the progress events and display the progress to users using a progress bar. You can preview images before they get uploaded.
+
+<input type="file" id="input" multiple onchange="handleFiles(this.files)">
+
+The file API draft: http://dev.w3.org/2006/webapi/FileAPI/
+
+Lots of informations and code examples can be found here: https://developer.mozilla.org/en/Using_files_from_web_applications.
+
+fullscreen API
+**************
+
+The fullscreen API allows you to put an html element in fullscreen mode.
+
+A good article about the fullscreen API can be found here: http://updates.html5rocks.com/2011/10/Let-Your-Content-Do-the-Talking-Fullscreen-API
+
+querySelectors
+**************
+
+With html4 you could use getElementById , now with html5 you can the two newcomers queryselector
+
+
+
+web sockets
+***********
+
+
+
+cross-window messaging
+**********************
+
+
+
+hashchange
+**********
+
+
+XMLHttpRequest
+**************
+
+contenteditable
+***************
+
+contenteditable=true
+
+
+
+what is not html5:
+SVG
+CSS3
+Geolocation
+Client Storage
+Web Sockets
+
+
+
+
+http://www.w3.org/TR/2012/WD-XMLHttpRequest-20120117/
+
+
+
+webSQL
+******
+
+This API is not active anymore, if you want more details take a look at this page: http://www.w3.org/TR/webdatabase/.
+
+frame iframe
+************
+
+Just to clarify this, iframe's are still part of html5 but frames are not.
+
+CSS3
+****
+
+There are a lot of new and exciting things going on in the CSS3 world, i won't present you all, but here are some i like a lot.
+
+RGBA
+****
+
+RGB colors were already part of previous CSS versions, but what's new in CSS3 is that you can now also specify the alpha value. This value controls the opacity of a color, where 1 is fully opaque (visible) and 0 totally invisible (transparent).
+
+!RGBA
+
+text-shadow
+***********
+
+This is a nice addition to the growing list of CSS features, it adds a nice background effect to your text.
+
+!text_shadow
+
+box-shadow
+**********
+
+Same as text-shadow but for boxes ;)
+
+!box_shadow
+
+gradients
+*********
+
+gradients made with CSS, no need to create an image in gimp anymore. 
+
+For linear gradients you define a direction or angle, the start color and an unlimited number of stop colors. Optionally you can also define a length per color (with the length you can change the natural position where a color would start by a value you think is better, in percent).
+
+For radial gradients the syntax is similar but slightly more complex, first you define a position where the gradient should start, second parameter is the type of shape (circle or ellipse) and optionally it's size (closest-side, farthest-side, closest-corner, farthest-corner), then like for linear gradients an unlimited number of color stops.
+
+Radial and linear gradients can also repeat their colors indefinitely, by using the repeating gradients functions for either repeating linear or radial gradients.
+
+Nice write-ups for gradients can be found here: http://www.impressivewebs.com/css3-radial-gradient-syntax/ and here: http://www.css3files.com/gradient/.
+
+Here is a nice tool that let's you play with gradients to help you quickly find the gradient you want to use: http://gradients.glrzad.com/ or http://www.colorzilla.com/gradient-editor/.
+
+The w3c draft for gradients can be found here: http://dev.w3.org/csswg/css3-images/#linear-gradients
+
+Using the radial gradient for the body background was tricky, a good solution can be found here: http://stackoverflow.com/questions/2869212/css3-gradient-background-set-on-body-doesnt-stretch-but-instead-repeats.
+
+!gradients
+
+font-face
+*********
+
+Font face allows you to embed fonts that are not yet on the users computer. Finally you can use whatever font you want in your web-pages, define an source for the font, if the user doesn't have that font the browser will download it from your server.
+
+Google made a portal with lots of free web fonts: http://www.google.com/webfonts.
+
+Together with typekit google developed the font loader, which makes embedding fonts really easy and allow you to download the fonts asynchronously: https://developers.google.com/webfonts/docs/webfont_loader.
+
+!font_face
+
+media queries
+*************
+
+The media queries are not new but have been enhanced. They are very helpful when it comes to creating a responsive web-app, where you want to build pages that adapt themself depending of mainly screen size. But not exclusively, you can also check for orientation (landscape / portrait), aspect-ratio and some more. For a complete list check the w3c page: http://www.w3.org/TR/css3-mediaqueries/.
+
+two good guides can be found here:
+http://net.tutsplus.com/tutorials/html-css-techniques/responsive-web-design-a-visual-guide/ (video tutorial)
+http://webdesign.about.com/od/css3/a/css3-media-queries.htm
+
+Again IE does not support media queries, to enable this feature in IE you could use the following javascript: http://code.google.com/p/css3-mediaqueries-js/.
+
+examples of websites that use media queries can be found here: http://mediaqueri.es/.
+
+!media_queries
+
+transitions
+***********
+
+Transitions are easy to use but what you get can be pretty nice. The main advantage is that transitions let you transition from one state to another. All you have to do is set the CSS property you want to transition from its initial state to another state i will have let's say on hover. Another property is the duration of the transition. You can also use a function to calculate intermediate values and finally you can define a delay that the transition should wait before starting.
+
+A good guide about transitions can be found here: http://css3.bradshawenterprises.com/support/
+
+!CSS_transition
+
+animations
+**********
+
+The new CSS3 animations are very powerful, but also complex to learn. They are to do animations, that can be as complex as flash. The CSS3 @keyframes rules let you gradually change the properties of a DOM node. The animation properties let you define default values to describe the animation.
+
+Coding everything by hand can be heavily time consuming, but firms like Adobe will or already started creating animation tools that will make animating a lot easier. Take a look at their edge preview: http://labs.adobe.com/technologies/edge/.
+
+To find some cool CSS3 animation examples, just google for them, there is already a decent number of them out there http://www.google.lu/search?q=css3+animation+demo.
+
+transformations
+***************
+
+Transformations do exactly what the name supposes. They allow you to transform a DOM node. 
+
+A nice example of transformations used to create a rotating (3d like) cube, made of different images transformed to make a cube http://desandro.github.com/3dtransforms/examples/cube-02-show-sides.html. All of desandro's examples can be found here: http://desandro.github.com/3dtransforms/.
+
+IE 6/7/8 polyfill
+*****************
+
+http://css3pie.com/
+
+vendor prefixes
+***************
+
+Not every browser supports the same CSS properties. That's why every browser has it's own vendor prefix. A browser uses a prefix for CSS properties that are not a standard yet, but have the draft status. This allows developers to use those properties and test them. Then maybe in the future if all browser is willing the implement the property it will become a w3c standard.
+
+I hate vendor prefixes, they increase the size of your CSS files by a lot if you use them, which is bad because you have to type more code and afterwards your users have to download bigger files which results in slower page loading times.
+
+-o (Opera)
+-ms (IE)
+-moz (Firefox)
+-webkit (Safari / Chrome)
+
+A list of vendor prefixed properties can be found here: http://peter.sh/experiments/vendor-prefixed-css-property-overview/
+
+Tools
+*****
+
+Github social codings has lots of interesting projects to enhance your html5 / CSS3 website.
+https://github.com/
+
+You have a question about a web technology, ask stackoverflow users or find the answer by searching for someone asking a similar question:
+http://stackoverflow.com/
+
+CSS3 examples with browser compatibility informations:
+http://css3clickchart.com
+
+Wonder when you will be able to use a certain feature, then ask caniuse:
+http://caniuse.com/
+
+Also very useful to check whatever feature is safe to use is:
+http://html5please.us/
+
+Check if your browser can handle a feature:
+http://platform.html5.org/
+
+An html5 mobile comparison chart:
+http://mobilehtml5.org/
+
+Check if your browser has a feature or use a fallback method instead with modernizr(2):
+http://www.modernizr.com/
+
+Need a template to start with html5, check out html5 boilerplate:
+http://html5boilerplate.com/
+
+w3c validator:
+http://validator.w3.org/
+
+twitter bootstrap:
+http://twitter.github.com/bootstrap/
+
+html5rocks slides:
+http://slides.html5rocks.com/#landing-slide
+
+html5 doctor:
+http://html5doctor.com/
+
+dive into html5:
+http://diveintohtml5.info/
+
+CSS3:
+http://www.css3.info/
+
+html5 demos:
+http://html5demos.com/
+
+convert flash to html5:
+http://www.google.com/doubleclick/studio/swiffy/
+http://labs.adobe.com/technologies/wallaby/
+
+adobe edge:
+http://labs.adobe.com/technologies/edge/
+
+
+
+
+

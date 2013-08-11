@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>html5 data attribute</title>
+		<script>
+			function initialize() {
+			
+				var example = document.querySelector('#example');
+
+				// Add new data attributes via JS.
+				example.dataset.myprefixFoo = 'bar';
+				//example.setAttribute('data-myprefix-foo', 'bar');
+				
+				for (var key in example.dataset) {
+					console.log(key, ': ', example.dataset[key]);
+				}
+			
+			}
+		</script>
+	</head>
+	<body onload="initialize();">
+		<p id="example" data-myprefix-hello="world">Example</p>
+	</body>
+</html>

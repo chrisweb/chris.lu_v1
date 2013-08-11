@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>html5 fullscreen canvas</title>
+		<script>
+		
+			function initialize() {
+			
+				var canvas = document.getElementById('example');
+				
+				if (canvas.getContext) {
+				
+					var ctx = canvas.getContext('2d');
+					
+					fullscreen(ctx);
+					
+					fillBackground(ctx);
+					
+				}
+				
+			}
+			
+			function fullscreen(ctx) {
+			
+				ctx.canvas.width  = window.innerWidth;
+				ctx.canvas.height = window.innerHeight;
+			
+			}
+			
+			function fillBackground(ctx) {
+			
+				ctx.fillStyle = "rgb(200,0,0)";  
+				ctx.fillRect (0, 0, window.innerWidth, window.innerHeight);
+			
+			}
+			
+		</script>
+		<style>
+			body, html {
+				margin: 0;
+				width: 100%;
+				height: 100%;
+			}
+		
+			canvas { 
+				border: 1px solid blue;
+			}
+		</style>
+	</head>
+	<body onLoad="initialize();">
+		<canvas id="example" width="500" height="300">Your browser does not support canvas ... go away!</canvas>
+	</body>
+</html>

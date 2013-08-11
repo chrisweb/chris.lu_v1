@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>progress tag</title>
+    </head>
+    <body onload="updateProgress();">
+        <p>Progress: <progress id="p" max=100><span>0</span>%</progress></p>
+        <script>
+            
+            var progressBar = document.getElementById('p');
+            
+            function updateProgress() {
+                
+                var newValue = Math.random();
+                newValue = newValue * 100;
+                
+                progressBar.value = newValue;
+                progressBar.getElementsByTagName('span')[0].textContent = newValue;
+                
+                window.setTimeout('updateProgress();', 1000);
+                
+            }
+            
+        </script>
+    </body>
+</html>

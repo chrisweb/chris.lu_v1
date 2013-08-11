@@ -1,0 +1,28 @@
+<?php $this->headTitle($this->translate('ARTICLE_ADMIN_INDEX')); ?>
+
+<a href="<?php echo $this->url(array(), 'articleadminmanage'); ?>" class="btn btn-mini btn-primary"><?php echo $this->translate('ADD'); ?></a>
+<br /><br />
+
+<table class="table table-striped">
+
+	<?php foreach ($this->paginator as $article) { ?>
+	
+		<?php //Zend_Debug::dump($article); ?>
+
+		<tr>
+			<td><a href="<?php echo $this->url(array('id' => $article['_id']), 'articleindexread'); ?>"><?php echo $this->escape($article['title']); ?></a></td>
+			<?php if ($article['status'] == 2) { ?>
+				<td><div class="active_dot" style="background-color: green; width: 20px; height: 20px;"></div></td>
+			<?php } else { ?>
+				<td><div class="inactive_dot" style="background-color: red; width: 20px; height: 20px;"></td>
+			<?php } ?>
+			<td><a href="<?php echo $this->url(array('id' => $article['_id']), 'articleadminmanage'); ?>" class="btn btn-mini btn-primary"><?php echo $this->translate('EDIT'); ?></a></td>
+			<td><a href="<?php echo $this->url(array('id' => $article['_id']), 'articleadmindelete'); ?>" class="btn btn-mini btn-primary"><?php echo $this->translate('DELETE'); ?></a></td>
+		</tr>
+
+	<?php } ?>
+
+</table>
+<br /><br />
+
+<div class="paginator"><?php echo $this->paginationControl($this->paginator, null, null, array('routeName' => $this->routeName)); ?></div>

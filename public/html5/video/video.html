@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>html5 video track with playr.js</title>
+    </head>
+    <body>
+        <video controls="controls" preload="auto" width="640" height="360">
+            <source src="../video_track/bunny.webm" type="video/webm" />
+            <source src="../video_track/bunny.mp4" type="video/mp4" />
+            <object classid='clsid:D27CDB6E-AE6D-11cf-96B8-444553540000'>
+                <param name='movie'           value='player.swf'>
+                <param name='allowfullscreen' value='true'>
+                <param name='flashvars'       value='file=../video_track/bunny.mp4'>
+                <embed src='player.swf'
+                        allowscriptaccess='always'
+                        allowfullscreen='true'
+                        flashvars="file=../video_track/bunny.mp4"
+                />
+            </object>
+        </video>
+    </body>
+</html>

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tmx version="2.0" xmlns="http://www.lisa.org/tmx20">
+    <body>
+		<tu tuid="ADD">
+            <tuv xml:lang="en">
+                <seg>Add</seg>
+            </tuv>
+        </tu>
+		<tu tuid="EDIT">
+            <tuv xml:lang="en">
+                <seg>Edit</seg>
+            </tuv>
+        </tu>
+		<tu tuid="DELETE">
+            <tuv xml:lang="en">
+                <seg>Delete</seg>
+            </tuv>
+        </tu>
+		<tu tuid="SUBMIT">
+            <tuv xml:lang="en">
+                <seg>Submit</seg>
+            </tuv>
+        </tu>
+		<tu tuid="YES">
+            <tuv xml:lang="en">
+                <seg>Yes</seg>
+            </tuv>
+        </tu>
+		<tu tuid="NO">
+            <tuv xml:lang="en">
+                <seg>No</seg>
+            </tuv>
+        </tu>
+		<tu tuid="FIRST">
+            <tuv xml:lang="en">
+                <seg>First</seg>
+            </tuv>
+        </tu>
+		<tu tuid="PREVIOUS">
+            <tuv xml:lang="en">
+                <seg>Previous</seg>
+            </tuv>
+        </tu>
+		<tu tuid="NEXT">
+            <tuv xml:lang="en">
+                <seg>Next</seg>
+            </tuv>
+        </tu>
+		<tu tuid="LAST">
+            <tuv xml:lang="en">
+                <seg>Last</seg>
+            </tuv>
+        </tu>
+        <tu tuid="ADMIN_USER_MANAGE">
+            <tuv xml:lang="en">
+                <seg>User management</seg>
+            </tuv>
+        </tu>
+		<tu tuid="AUTH_USERNAME">
+            <tuv xml:lang="en">
+                <seg>Username</seg>
+            </tuv>
+        </tu>
+		<tu tuid="AUTH_PASSWORD">
+            <tuv xml:lang="en">
+                <seg>Password</seg>
+            </tuv>
+        </tu>
+		<tu tuid="AUTH_PASSWORD_CONFIRM">
+            <tuv xml:lang="en">
+                <seg>Confirm password</seg>
+            </tuv>
+        </tu>
+		<tu tuid="AUTH_REMEMBER">
+            <tuv xml:lang="en">
+                <seg>Remember me</seg>
+            </tuv>
+        </tu>
+		<tu tuid="AUTH_ROLE">
+            <tuv xml:lang="en">
+                <seg>Role</seg>
+            </tuv>
+        </tu>
+		<tu tuid="ADMIN_USER_DELETE">
+            <tuv xml:lang="en">
+                <seg>Delete user account</seg>
+            </tuv>
+        </tu>
+		<tu tuid="REALLY_DELETE_USER">
+            <tuv xml:lang="en">
+                <seg>Do you really want to delete this user account and all the data attached to it?</seg>
+            </tuv>
+        </tu>
+		<tu tuid="MISSING_RIGHTS">
+            <tuv xml:lang="en">
+                <seg>Access vorbidden. You don't have the permissions required to access this section of the website.</seg>
+            </tuv>
+        </tu>
+		<tu tuid="LOG_IN">
+            <tuv xml:lang="en">
+                <seg>Log in</seg>
+            </tuv>
+        </tu>
+		<tu tuid="LOG_IN_FAILED">
+            <tuv xml:lang="en">
+                <seg>Log in failed</seg>
+            </tuv>
+        </tu>
+		
+    </body>
+</tmx>

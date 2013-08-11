@@ -1,0 +1,84 @@
+
+<?php if ($this->pageCount) { ?>
+
+    <ul class="pagination">
+
+        <?php if (isset($this->first) && $this->first != $this->current) { ?>
+
+            <li>
+                <a href="<?php echo $this->url(array('page' => $this->first), $this->routeName); ?>"><?php echo $this->translate('FIRST'); ?></a>
+            </li>
+
+        <?php } else { ?>
+
+            <li class="disabled">
+                <span><?php echo $this->translate('FIRST'); ?></span>
+            </li>
+
+        <?php } ?>
+
+        <?php if (isset($this->previous)) { ?>
+
+            <li>
+                <a href="<?php echo $this->url(array('page' => $this->previous), $this->routeName); ?>"><?php echo $this->translate('PREVIOUS'); ?></a>
+            </li>
+
+        <?php } else { ?>
+
+            <li class="disabled">
+                <span><?php echo $this->translate('PREVIOUS'); ?></span>
+            </li>
+
+        <?php } ?>
+
+        <?php foreach ($this->pagesInRange as $page) { ?>
+
+            <?php if ($page != $this->current) { ?>
+
+                <li>
+                    <a href="<?php echo $this->url(array('page' => $page), $this->routeName); ?>">
+                        <?php echo $page; ?>
+                    </a>
+                </li>
+
+            <?php } else { ?>
+
+                <li class="active">
+                    <span><?php echo $page; ?></span>
+                </li>
+
+            <?php } ?>
+
+        <?php } ?>
+
+        <?php if (isset($this->next)) { ?>
+
+            <li>
+                <a href="<?php echo $this->url(array('page' => $this->next), $this->routeName); ?>"><?php echo $this->translate('NEXT'); ?></a>
+            </li>
+
+        <?php } else { ?>
+
+            <li class="disabled">
+                <span><?php echo $this->translate('NEXT'); ?></span>
+            </li>
+
+        <?php } ?>
+
+        <?php if (isset($this->last) && $this->last != $this->current) { ?>
+
+            <li>
+                <a href="<?php echo $this->url(array('page' => $this->last), $this->routeName); ?>" ><?php echo $this->translate('LAST'); ?></a>
+            </li>
+
+        <?php } else { ?>
+
+            <li class="disabled">
+                <span><?php echo $this->translate('LAST'); ?></span>
+            </li>
+
+        <?php } ?>
+
+    </ul>
+    
+<?php } ?>

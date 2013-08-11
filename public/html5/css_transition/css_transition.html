@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>css3 transition</title>
+        <style>
+            #ex1 {
+                background-color: brown;
+                color: yellow;
+                margin-bottom: 20px;
+            }
+            
+            #ex1:hover {
+                -moz-transition-property: background-color, color;
+                -moz-transition-duration: 3s;
+                -moz-transition-timing-function: ease-out;
+                -webkit-transition-property: background-color, color;
+                -webkit-transition-duration: 3s;
+                -webkit-transition-timing-function: ease-out;
+                background-color: yellow;
+                color: brown;
+            }
+            
+            #ex2 {
+                -moz-transition-property: background-color, color;
+                -moz-transition-duration: 3s;
+                -moz-transition-timing-function: ease-out;
+                -webkit-transition-property: background-color, color;
+                -webkit-transition-duration: 3s;
+                -webkit-transition-timing-function: ease-out;
+                background-color: blue;
+                color: white;
+                margin-bottom: 20px;
+            }
+            
+            #ex2:hover {
+                -moz-transition-property: background-color, color;
+                -moz-transition-duration: 3s;
+                -moz-transition-timing-function: ease-out;
+                -webkit-transition-property: background-color, color;
+                -webkit-transition-duration: 3s;
+                -webkit-transition-timing-function: ease-out;
+                background-color: white;
+                color: blue;
+            }
+            
+            #ex3 {
+                border: 1px solid black;
+            }
+            
+            #ex3:hover {
+                -moz-transition-property: box-shadow;
+                -moz-transition-duration: 3s;
+                -moz-transition-timing-function: ease-out;
+                -webkit-transition-property: box-shadow;
+                -webkit-transition-duration: 3s;
+                -webkit-transition-timing-function: ease-out;
+                -moz-box-shadow: 10px 10px 10px black;
+                -webkit-box-shadow: 10px 10px 10px black;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="ex1">Example 1</div>
+        <div id="ex2">Example 2</div>
+        <div id="ex3">Example 3</div>
+    </body>
+</html>

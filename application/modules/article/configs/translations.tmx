@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tmx version="2.0" xmlns="http://www.lisa.org/tmx20">
+    <body>
+		<tu tuid="ADD">
+            <tuv xml:lang="en">
+                <seg>Add</seg>
+            </tuv>
+        </tu>
+		<tu tuid="EDIT">
+            <tuv xml:lang="en">
+                <seg>Edit</seg>
+            </tuv>
+        </tu>
+		<tu tuid="DELETE">
+            <tuv xml:lang="en">
+                <seg>Delete</seg>
+            </tuv>
+        </tu>
+		<tu tuid="SUBMIT">
+            <tuv xml:lang="en">
+                <seg>Submit</seg>
+            </tuv>
+        </tu>
+		<tu tuid="YES">
+            <tuv xml:lang="en">
+                <seg>Yes</seg>
+            </tuv>
+        </tu>
+		<tu tuid="NO">
+            <tuv xml:lang="en">
+                <seg>No</seg>
+            </tuv>
+        </tu>
+		<tu tuid="FIRST">
+            <tuv xml:lang="en">
+                <seg>First</seg>
+            </tuv>
+        </tu>
+		<tu tuid="PREVIOUS">
+            <tuv xml:lang="en">
+                <seg>Previous</seg>
+            </tuv>
+        </tu>
+		<tu tuid="NEXT">
+            <tuv xml:lang="en">
+                <seg>Next</seg>
+            </tuv>
+        </tu>
+		<tu tuid="LAST">
+            <tuv xml:lang="en">
+                <seg>Last</seg>
+            </tuv>
+        </tu>
+		
+		<tu tuid="ADMIN_ARTICLE_MANAGE">
+            <tuv xml:lang="en">
+                <seg>Article Administration</seg>
+            </tuv>
+        </tu>
+		<tu tuid="TITLE">
+            <tuv xml:lang="en">
+                <seg>Title</seg>
+            </tuv>
+        </tu>
+		<tu tuid="HEADER">
+            <tuv xml:lang="en">
+                <seg>Header</seg>
+            </tuv>
+        </tu>
+		<tu tuid="BODY">
+            <tuv xml:lang="en">
+                <seg>Body</seg>
+            </tuv>
+        </tu>
+		<tu tuid="PUBLICATION_DATE_START">
+            <tuv xml:lang="en">
+                <seg>Publication date start</seg>
+            </tuv>
+        </tu>
+		<tu tuid="PUBLICATION_DATE_END">
+            <tuv xml:lang="en">
+                <seg>Publication date end</seg>
+            </tuv>
+        </tu>
+		<tu tuid="TAGS">
+            <tuv xml:lang="en">
+                <seg>Tags</seg>
+            </tuv>
+        </tu>
+		<tu tuid="TAG">
+            <tuv xml:lang="en">
+                <seg>Tag</seg>
+            </tuv>
+        </tu>
+		<tu tuid="STATUS">
+            <tuv xml:lang="en">
+                <seg>Status</seg>
+            </tuv>
+        </tu>
+		<tu tuid="ACTIV">
+            <tuv xml:lang="en">
+                <seg>Activ</seg>
+            </tuv>
+        </tu>
+		<tu tuid="INACTIV">
+            <tuv xml:lang="en">
+                <seg>Inactiv</seg>
+            </tuv>
+        </tu>
+		<tu tuid="UPLOAD">
+            <tuv xml:lang="en">
+                <seg>Image upload</seg>
+            </tuv>
+        </tu>
+		<tu tuid="IMAGE_ALT">
+            <tuv xml:lang="en">
+                <seg>Image alt text</seg>
+            </tuv>
+        </tu>
+		<tu tuid="ADMIN_ARTICLE_DELETE">
+            <tuv xml:lang="en">
+                <seg>Article delete</seg>
+            </tuv>
+        </tu>
+		<tu tuid="REALLY_DELETE_ARTICLE">
+            <tuv xml:lang="en">
+                <seg>Do you really want to delete this article?</seg>
+            </tuv>
+        </tu>
+		<tu tuid="RELATED_ARTICLES">
+            <tuv xml:lang="en">
+                <seg>Related articles:</seg>
+            </tuv>
+        </tu>
+		<tu tuid="RELATED_TAG">
+            <tuv xml:lang="en">
+                <seg>Related articles tag</seg>
+            </tuv>
+        </tu>
+		<tu tuid="HIGHLIGHT_CODE">
+            <tuv xml:lang="en">
+                <seg>To highlight code use this html: </seg>
+            </tuv>
+        </tu>
+		<tu tuid="SOCIAL_BUTTONS">
+            <tuv xml:lang="en">
+                <seg>Share me</seg>
+            </tuv>
+        </tu>
+    </body>
+</tmx>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>html5 file API</title>
+        <script>
+            document.querySelector('#dropzone').addEventListener('drop', function(e) {
+  var reader = new FileReader();
+  reader.onload = function(evt) {
+    document.querySelector('img').src = evt.target.result;
+  };
+
+  reader.readAsDataURL(e.dataTransfer.files[0]);
+}, false);
+
+        </script>
+    </head>
+    <body>
+        
+    </body>
+</html>

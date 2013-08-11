@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tmx version="2.0" xmlns="http://www.lisa.org/tmx20">
+    <body>
+		<tu tuid="FIRST">
+            <tuv xml:lang="en">
+                <seg>First</seg>
+            </tuv>
+        </tu>
+		<tu tuid="PREVIOUS">
+            <tuv xml:lang="en">
+                <seg>Previous</seg>
+            </tuv>
+        </tu>
+		<tu tuid="NEXT">
+            <tuv xml:lang="en">
+                <seg>Next</seg>
+            </tuv>
+        </tu>
+		<tu tuid="LAST">
+            <tuv xml:lang="en">
+                <seg>Last</seg>
+            </tuv>
+        </tu>
+        <tu tuid="ERROR">
+            <tuv xml:lang="en">
+                <seg>Error</seg>
+            </tuv>
+        </tu>
+		<tu tuid="PAGE_NOT_FOUND">
+            <tuv xml:lang="en">
+                <seg>Page not found 404</seg>
+            </tuv>
+        </tu>
+		<tu tuid="APPLICATION_ERROR">
+            <tuv xml:lang="en">
+                <seg>Application error 500</seg>
+            </tuv>
+        </tu>
+		<tu tuid="HOME">
+            <tuv xml:lang="en">
+                <seg>Home</seg>
+            </tuv>
+        </tu>
+		<tu tuid="MYNETWORKPAGES">
+            <tuv xml:lang="en">
+                <seg>MyNetworkPages</seg>
+            </tuv>
+        </tu>
+		<tu tuid="MYPROFILE">
+            <tuv xml:lang="en">
+                <seg>MyProfile</seg>
+            </tuv>
+        </tu>
+    </body>
+</tmx>

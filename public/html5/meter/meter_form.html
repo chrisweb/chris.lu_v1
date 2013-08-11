@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang=en>
+    <head>
+        <meta charset=UTF-8>
+        <title>meter form attribute</title>
+
+        <script>
+            
+            function updateMeter(myValue) {
+                
+                var meterDOM = document.getElementById('myMeter');
+                
+                console.log(myValue);
+
+                meterDOM.value = parseInt(myValue);
+
+            }
+            
+        </script>
+    </head>
+    <body>
+        <meter value=0 form=myForm min=0 max=100 low=20 high=80 optimum=50 title=seconds id=myMeter>meter not suppored</meter>
+        <form id=myForm>
+            <input type=range min=0 max=100 onChange=updateMeter(this.value)>
+        </form>
+    </body>
+</html>

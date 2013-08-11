@@ -1,0 +1,5 @@
+<?php $this->headTitle($this->translate('ADMIN_USER_DELETE')); ?>
+
+<p><?php echo $this->translate('REALLY_DELETE_USER'); ?> "<?php echo $this->escape($this->user['username']); ?>"</p>
+
+<?php echo $this->deleteUserForm; ?>

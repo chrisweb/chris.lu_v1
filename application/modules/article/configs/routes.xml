@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<routes>
+
+	<articleindexrss type="Zend_Controller_Router_Route_Static">
+		<route>article/rss</route>
+		<defaults module="article" controller="index" action="rss" />
+	</articleindexrss>
+
+	<articleadminindex type="Zend_Controller_Router_Route">
+		<route>article/admin/:page</route>
+		<defaults module="article" controller="admin" action="index" page="1" />
+	</articleadminindex>
+
+	<articleadminmanage type="Zend_Controller_Router_Route">
+		<route>article/admin/manage/:id</route>
+		<defaults module="article" controller="admin" action="manage" id="" />
+	</articleadminmanage>
+	
+	<articleadmindelete type="Zend_Controller_Router_Route">
+		<route>article/admin/delete/:id</route>
+		<defaults module="article" controller="admin" action="delete" id="" />
+	</articleadmindelete>
+	
+	<articleindexread type="Zend_Controller_Router_Route">
+		<route>article/read/:id</route>
+		<defaults module="article" controller="index" action="read" id="" />
+	</articleindexread>
+	
+	<articleindextag type="Zend_Controller_Router_Route">
+		<route>article/tag/:id</route>
+		<defaults module="article" controller="index" action="tag" id="" />
+	</articleindextag>
+
+</routes>

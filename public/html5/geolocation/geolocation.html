@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>html5 geolocation</title>
+        <script>
+            
+            var watchId;
+            
+            function initialize() {
+                
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(successCallback, errorCallback, {maximumAge:1});
+                } else {
+                    console.log("geolocation is not supported by your browser!");
+                }
+                
+                watchId = navigator.geolocation.watchPosition(function(position) {  
+                    successCallback(position);
+                });
+                    
+            }
+            
+            function stopTracking() {
+                navigator.geolocation.clearWatch(watchId);
+            }
+
+            function successCallback(position) {
+                
+                // By using the 'maximumAge' option above, the position
+                // object is guaranteed to be at most 10 minutes old.
+                console.log(position.coords);
+
+
+            }
+
+            function errorCallback(error) {
+                
+                console.log(error);
+
+            }
+            
+            /*
+             * if (navigator.geolocation) {
+  navigator.geolocation.getCurrentPosition(function(position) {
+    var latLng = new google.maps.LatLng(
+        position.coords.latitude, position.coords.longitude);
+    var marker = new google.maps.Marker({position: latLng, map: map});
+    map.setCenter(latLng);
+  }, errorHandler);
+}
+             * 
+             */
+            
+        </script>
+    </head>
+    <body onload="initialize();">
+        <p>Geolocation</p>
+        <form>
+            <input type="button" onClick="initialize();" value="re-initialize" />
+            <input type="button" onClick="stopTracking();" value="stop tracking" />
+        </form>
+    </body>
+</html>

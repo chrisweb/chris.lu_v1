@@ -1,0 +1,23 @@
+<?php $this->headTitle($this->translate('BOOKMARK_ADMIN_INDEX')); ?>
+
+<a href="<?php echo $this->url(array(), 'bookmarkadminmanage'); ?>" class="btn btn-mini btn-primary">ADD</a>
+<br /><br />
+
+<table class="table table-striped">
+
+	<?php foreach ($this->paginator as $bookmark) { ?>
+	
+		<?php //Zend_Debug::dump($bookmark); ?>
+
+		<tr>
+			<td><?php echo $this->escape($bookmark['title']); ?></td>
+			<td><a href="<?php echo $this->url(array('id' => $bookmark['_id']), 'bookmarkadminmanage'); ?>" class="btn btn-mini btn-primary"><?php echo $this->translate('EDIT'); ?></a></td>
+			<td><a href="<?php echo $this->url(array('id' => $bookmark['_id']), 'bookmarkadmindelete'); ?>" class="btn btn-mini btn-primary"><?php echo $this->translate('DELETE'); ?></a></td>
+		</tr>
+
+	<?php } ?>
+
+</table>
+<br /><br />
+
+<div class="paginator"><?php echo $this->paginationControl($this->paginator, null, null, array('routeName' => $this->routeName)); ?></div>

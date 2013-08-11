@@ -1,0 +1,28 @@
+<?php $this->headTitle($this->translate('MYBOOKMARKS')); ?>
+
+<section id="bookmark_container">
+
+	<?php foreach($this->bookmarks as $bookmarksTagName => $bookmarksByTagList) { ?>
+
+		<div class="bookmark_box">
+		
+			<h3><?php echo $this->escape($bookmarksTagName); ?></h3>
+			
+			<ul>
+			
+			<?php foreach($bookmarksByTagList as $bookmark) { ?>
+			
+				<li><a href="<?php echo $this->escape($bookmark['url']); ?>"><?php echo $this->escape($bookmark['title']); ?></a></li>
+			
+			<?php } ?>
+			
+			</ul>
+		
+		</div>
+
+	<?php } ?>
+
+</section>
+
+
+

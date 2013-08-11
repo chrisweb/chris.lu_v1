@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>html5 audio api</title>
+        <script>
+            function initialze() {
+                console.log(document.getElementByID('example').duration);
+                console.log(document.getElementByID('example').currentTime);
+            }
+        </script>
+    </head>
+    <body>
+        <audio id="audio_example" preload="auto">
+            <source src="song.ogg" type="audio/ogg" />
+            <source src="example.mp3" type="audio/mpeg" />
+        </audio>  
+        <div>  
+            <button onclick="document.getElementById('audio_example').play()">Play the Audio</button>  
+            <button onclick="document.getElementById('audio_example').pause()">Pause the Audio</button>  
+            <button onclick="document.getElementById('audio_example').volume+=0.1">Increase Volume</button>  
+            <button onclick="document.getElementById('audio_example').volume-=0.1">Decrease Volume</button>  
+        </div>
+    </body>
+</html>

@@ -1,0 +1,30 @@
+***** UPDATING *****
+
+Twitter Bootstrap
+Download: https://github.com/twitter/bootstrap
+Documentation: http://twitter.github.com/bootstrap/getting-started.html
+
+jQuery
+Download: https://github.com/jquery/jquery
+Documentation: http://api.jquery.com/
+
+jQuery Mobile
+Download: https://github.com/jquery/jquery-mobile
+Documentation: http://jquerymobile.com/demos/1.3.0-beta.1
+
+RequireJS
+Download: https://github.com/jrburke/requirejs
+Documentation: http://requirejs.org/docs/jquery.html
+
+Codrops Direction Aware Hover Effect
+Download: https://github.com/codrops/DirectionAwareHoverEffect
+
+Blocksit (Pinterest Like jQuery Plugin)
+Download: http://www.inwebson.com/jquery/blocksit-js-dynamic-grid-layout-jquery-plugin/
+
+Modernizr
+Download: https://github.com/Modernizr/Modernizr
+Documentation: http://modernizr.com/docs/
+
+Prettify
+Download: http://code.google.com/p/google-code-prettify/

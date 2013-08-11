@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<configdata>
+    <production>
+		<authentification>
+			<loggedin>
+				<session>
+					<lifetime>604800</lifetime>
+				</session>
+			</loggedin>
+			<rememberme>
+				<cookie>
+					<lifetime>43200</lifetime>
+					<secure>false</secure>
+					<httponly>true</httponly>
+					<domain>http://www.chris.lu</domain>
+					<path>/</path>
+					<content>RememberMe</content>
+					<name>RememberMe</name>
+				</cookie>
+			</rememberme>
+			<password>
+				<salt>0000000000000000000000000000000000</salt>
+			</password>
+			<default>
+				<role>guest</role>
+			</default>
+		</authentification>
+    </production>
+    <testing extends="production">
+		<authentification>
+			<rememberme>
+				<cookie>
+					<domain>http://www.chris.dev</domain>
+				</cookie>
+			</rememberme>
+		</authentification>
+    </testing>
+    <development extends="testing">
+		<authentification>
+			<rememberme>
+				<cookie>
+					<domain>http://www.chris.test</domain>
+				</cookie>
+			</rememberme>
+		</authentification>
+    </development>
+</configdata>

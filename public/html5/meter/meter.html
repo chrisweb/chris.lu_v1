@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>meter</title>
+    </head>
+    <body onload="updateMeter();">
+        <meter value=0 min=0 max="100" low="20" high="80" optimum="50" title=seconds id=m></meter>
+        <script>
+            
+            var meterDOM = document.getElementById('m');
+            
+            function updateMeter() {
+                
+                var newValue = Math.random();
+                newValue = newValue * 100;
+                
+                meterDOM.value = newValue;
+                
+                window.setTimeout('updateMeter();', 1000);
+                
+            }
+            
+        </script>
+    </body>
+</html>

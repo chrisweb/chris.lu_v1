@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tmx version="2.0" xmlns="http://www.lisa.org/tmx20">
+    <body>
+        <tu tuid="ADMIN_INDEX">
+            <tuv xml:lang="en">
+                <seg>Administration</seg>
+            </tuv>
+        </tu>
+    </body>
+</tmx>

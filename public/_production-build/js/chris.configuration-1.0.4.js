@@ -1,0 +1,1 @@
+define([],function(){return{enableLoggingInDebuggerDiv:!1,enableLoggingInConsoleLog:!0}});

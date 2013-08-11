@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<routes>
+
+	<projectsadminindex type="Zend_Controller_Router_Route_Static">
+		<route>projects/admin</route>
+		<defaults module="projects" controller="admin" action="index" />
+	</projectsadminindex>
+
+	<projectsadminmanage type="Zend_Controller_Router_Route">
+		<route>projects/admin/manage/:id</route>
+		<defaults module="projects" controller="admin" action="manage" id="" />
+	</projectsadminmanage>
+	
+	<projectsadmindelete type="Zend_Controller_Router_Route">
+		<route>projects/admin/delete/:id</route>
+		<defaults module="projects" controller="admin" action="delete" id="" />
+	</projectsadmindelete>
+	
+	<projectsindex type="Zend_Controller_Router_Route_Static">
+		<route>myprojects</route>
+		<defaults module="projects" controller="index" action="index" />
+	</projectsindex>
+	
+	<projectsindexread type="Zend_Controller_Router_Route">
+		<route>myprojects/read/:id</route>
+		<defaults module="projects" controller="index" action="read" id="" />
+	</projectsindexread>
+
+</routes>

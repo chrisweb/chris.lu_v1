@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tmx version="2.0" xmlns="http://www.lisa.org/tmx20">
+    <body>
+		<tu tuid="ADD">
+            <tuv xml:lang="en">
+                <seg>Add</seg>
+            </tuv>
+        </tu>
+		<tu tuid="EDIT">
+            <tuv xml:lang="en">
+                <seg>Edit</seg>
+            </tuv>
+        </tu>
+		<tu tuid="DELETE">
+            <tuv xml:lang="en">
+                <seg>Delete</seg>
+            </tuv>
+        </tu>
+		<tu tuid="SUBMIT">
+            <tuv xml:lang="en">
+                <seg>Submit</seg>
+            </tuv>
+        </tu>
+		<tu tuid="YES">
+            <tuv xml:lang="en">
+                <seg>Yes</seg>
+            </tuv>
+        </tu>
+		<tu tuid="NO">
+            <tuv xml:lang="en">
+                <seg>No</seg>
+            </tuv>
+        </tu>
+		<tu tuid="FIRST">
+            <tuv xml:lang="en">
+                <seg>First</seg>
+            </tuv>
+        </tu>
+		<tu tuid="PREVIOUS">
+            <tuv xml:lang="en">
+                <seg>Previous</seg>
+            </tuv>
+        </tu>
+		<tu tuid="NEXT">
+            <tuv xml:lang="en">
+                <seg>Next</seg>
+            </tuv>
+        </tu>
+		<tu tuid="LAST">
+            <tuv xml:lang="en">
+                <seg>Last</seg>
+            </tuv>
+        </tu>
+		
+		<tu tuid="MYBOOKMARKS">
+            <tuv xml:lang="en">
+                <seg>MyBookmarks</seg>
+            </tuv>
+        </tu>
+		<tu tuid="ADMIN_BOOKMARK_MANAGE">
+            <tuv xml:lang="en">
+                <seg>Bookmark Administration</seg>
+            </tuv>
+        </tu>
+		<tu tuid="TITLE">
+            <tuv xml:lang="en">
+                <seg>Title</seg>
+            </tuv>
+        </tu>
+		<tu tuid="URL">
+            <tuv xml:lang="en">
+                <seg>Url</seg>
+            </tuv>
+        </tu>
+		<tu tuid="TAGS">
+            <tuv xml:lang="en">
+                <seg>Tags</seg>
+            </tuv>
+        </tu>
+		<tu tuid="ADMIN_BOOKMARK_DELETE">
+            <tuv xml:lang="en">
+                <seg>Bookmark delete</seg>
+            </tuv>
+        </tu>
+		<tu tuid="REALLY_DELETE_BOOKMARK">
+            <tuv xml:lang="en">
+                <seg>Do you really want to delete this bookmark?</seg>
+            </tuv>
+        </tu>
+		
+    </body>
+</tmx>

@@ -1,0 +1,16 @@
+<VirtualHost *:80>
+
+    ServerName www.chris.dev
+    DocumentRoot C:\Users\chris\Documents\GitHub\chris.lu\public
+    ErrorLog "logs/chris-error.log"
+    CustomLog "logs/chris-access.log" combined
+    SetEnv APPLICATION_ENV "development"
+ 
+    <Directory C:\Users\chris\Documents\GitHub\chris.lu\public>
+        DirectoryIndex index.php
+        AllowOverride All
+        Order allow,deny
+        Allow from all
+    </Directory>
+	
+</VirtualHost>

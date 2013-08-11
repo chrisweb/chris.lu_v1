@@ -1,0 +1,7 @@
+<?php $this->headTitle($this->translate('LOG_IN')); ?>
+
+<h1><?php echo $this->translate('LOG_IN'); ?></h1>
+
+<?php if (isset($this->failed) && $this->failed) echo $this->translate('LOG_IN_FAILED'); ?>
+
+<?php echo $this->form; ?>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<routes>
+
+	<readinglistadminindex type="Zend_Controller_Router_Route">
+		<route>readinglist/admin/:page</route>
+		<defaults module="readinglist" controller="admin" action="index" page="1" />
+	</readinglistadminindex>
+
+	<readinglistadminmanage type="Zend_Controller_Router_Route">
+		<route>readinglist/admin/manage/:id</route>
+		<defaults module="readinglist" controller="admin" action="manage" id="" />
+	</readinglistadminmanage>
+	
+	<readinglistadmindelete type="Zend_Controller_Router_Route">
+		<route>readinglist/admin/delete/:id</route>
+		<defaults module="readinglist" controller="admin" action="delete" id="" />
+	</readinglistadmindelete>
+	
+	<readinglistadminautopopulate type="Zend_Controller_Router_Route_Static">
+		<route>readinglist/admin/ajax/getwebsitedata</route>
+		<defaults module="readinglist" controller="admin" action="autopopulate" />
+	</readinglistadminautopopulate>
+	
+	<readinglistindex type="Zend_Controller_Router_Route">
+		<route>myreadinglist/:page</route>
+		<defaults module="readinglist" controller="index" action="index" page="1" />
+	</readinglistindex>
+
+</routes>

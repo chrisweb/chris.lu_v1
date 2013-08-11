@@ -1,0 +1,19 @@
+<?php $this->headTitle($this->translate('ERROR')); ?>
+
+<section id="error">
+
+	<?php echo $this->translate($this->errorMessage); ?>
+
+	<?php if (isset($this->exception)) echo '<pre>'.$this->exception.'</pre>' ?>
+	
+	<?php // unfortunatly not https compatible, deactivated until google allows https
+	/*
+	<script type="text/javascript">
+	  var GOOG_FIXURL_LANG = (navigator.language || 'en').slice(0,2);
+	  var GOOG_FIXURL_SITE = 'http://www.chris.lu'
+	</script>
+	<script src="//linkhelp.clients.google.com/tbproxy/lh/wm/fixurl.js"></script>
+	*/
+	?>
+
+</section>

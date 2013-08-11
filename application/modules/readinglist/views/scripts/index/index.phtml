@@ -1,0 +1,54 @@
+<?php $this->headTitle($this->translate('MYREADINGLIST')); ?>
+
+<div class="readinglist_container">
+
+	<?php foreach ($this->paginator as $readinglist) { ?>
+
+		<div class="readinglist_box">
+
+			<a href="<?php echo $this->escape($readinglist['url']); ?>">
+		
+				<article>
+				
+					<header>
+						<h3>
+							<?php echo $this->escape($readinglist['title']); ?>
+						</h3>
+					</header>
+
+					<?php if (!empty($readinglist['imageUrl'])) { ?>
+					
+						<?php if (!array_key_exists('imageAlt', $readinglist) || empty($readinglist['imageAlt'])) {
+							$readinglist['imageAlt'] = 'readinglist image';
+						} ?>
+
+						<img src="<?php echo $this->escape($readinglist['imageUrl']); ?>" alt="<?php echo $this->escape($readinglist['imageAlt']); ?>" class="readinglist_image">
+					
+					<?php } ?>
+
+					<?php if (!empty($readinglist['headline'])) { ?>
+					
+						<p><?php echo $this->escape($readinglist['headline']); ?></p>
+					
+					<?php } ?>
+					
+					<footer>
+						<p>Source: <?php echo $this->escape($readinglist['domain']); ?></p>
+					</footer>
+					
+				</article>
+			
+				<div></div>
+				
+			</a>
+			
+		</div>
+
+	<?php } ?>
+	
+</div>
+
+<div class="clearfix"></div>
+
+<div class="paginator"><?php echo $this->paginationControl($this->paginator); ?></div>
+	

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>html5 drag and drop API</title>
+        <script>
+            document.addEventListener('dragstart', function(event) {
+                event.dataTransfer.setData('text', 'Customized text');
+                event.dataTransfer.effectAllowed = 'copy';
+            }, false);
+        </script>
+    </head>
+    <body>
+        
+    </body>
+</html>

@@ -1,0 +1,26 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:05.000
+<b>Hello</b>, <u>World</u>
+
+2
+00:00:05.000 --> 00:00:10.000 D:vertical
+<u>vertical</u>
+
+3
+00:00:10.000 --> 00:00:15.000 S:150%
+More then one line is supported
+as well as custom <c.customClass>css</c>.
+
+4
+00:00:15.000 --> 00:00:20.000 A:middle L:0%
+Im above the bird
+
+5
+00:00:21.000 --> 00:00:23.000 A:middle L:20% S:150%
+HAHA
+
+6
+00:00:25.000 --> 00:00:30.000
+<v.Chuck Norris>Foo Bar</v>

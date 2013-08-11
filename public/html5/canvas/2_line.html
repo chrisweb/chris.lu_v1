@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>html5 line canvas</title>
+        <script>
+		
+            function initialize() {
+			
+                var canvas = document.getElementById('example');
+				
+                if (canvas.getContext) {
+				
+                    var ctx = canvas.getContext('2d');
+					
+                    drawLine(ctx);
+					
+                }
+				
+            }
+			
+            function drawLine(ctx) {
+			
+                ctx.moveTo(100, 150);
+                ctx.lineTo(250, 50);
+                ctx.stroke();
+			
+            }
+			
+        </script>
+        <style>
+            canvas { 
+                border: 1px solid blue;
+            }
+        </style>
+    </head>
+    <body onLoad="initialize();">
+        <canvas id="example" width="500" height="300">Your browser does not support canvas ... go away!</canvas>
+    </body>
+</html>

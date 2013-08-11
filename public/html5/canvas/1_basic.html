@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>html5 basic canvas</title>
+		<script>
+		
+			function initialize() {
+			
+				var canvas = document.getElementById('example');
+				
+				if (canvas.getContext) {
+					var ctx = canvas.getContext('2d');
+				}
+				
+			}
+			
+		</script>
+		<style>
+			canvas { 
+				border: 1px solid blue;
+			}
+		</style>
+	</head>
+	<body onLoad="initialize();">
+		<canvas id="example" width="500" height="300">Your browser does not support canvas ... go away!</canvas>
+	</body>
+</html>

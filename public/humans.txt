@@ -1,0 +1,22 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+/* TEAM */   
+
+chris weber
+Position: Senior Developer
+Site: http://www.chris.lu
+Twitter: @chriswwweb
+Location: Luxembourg
+
+/* THANKS */
+
+gerome grandfond
+Site: http://www.geromegrandfond.fr/
+Location: France
+
+/* SITE */                       
+Standards: HTML5, CSS3
+Core: Nginx, PHP5, Zend Framework, CentOS, MongoDB
+Components: RequireJS, Modernizr, jQuery, jQuery Mobile, Twitter Bootstrap, HTML5 Boilerplate, html5shiv
+Desktop software: Netbeans, Gimp

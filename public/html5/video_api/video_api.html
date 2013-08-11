@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>html5 video API</title>
+        <script>
+            
+        </script>
+    </head>
+    <body>
+        <video preload="auto" width="640" height="360">
+            <source src="../video_track/bunny.webm" type="video/webm" />
+            <source src="../video_track/bunny.mp4" type="video/mp4" />
+            </object>
+        </video>
+        <div>  
+            <button onclick="document.getElementById('example').play()">Play the Audio</button>  
+            <button onclick="document.getElementById('example').pause()">Pause the Audio</button>  
+            <button onclick="document.getElementById('example').volume+=0.1">Increase Volume</button>  
+            <button onclick="document.getElementById('example').volume-=0.1">Decrease Volume</button>  
+        </div>
+    </body>
+</html>

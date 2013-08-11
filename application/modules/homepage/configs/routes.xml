@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<routes>
+
+	<homepagepages type="Zend_Controller_Router_Route">
+		<route>articles/:page</route>
+		<defaults module="homepage" controller="index" action="index" page="1" />
+	</homepagepages>
+	
+	<testroute type="Zend_Controller_Router_Route_Static">
+		<route>testing</route>
+		<defaults module="homepage" controller="index" action="test" />
+	</testroute>
+
+</routes>
