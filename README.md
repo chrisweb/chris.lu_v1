@@ -1,6 +1,15 @@
 chris.lu
 ========
 
+https://chris.lu
+
+My personal development blog, using PHP and the Zend Framework 1 for the backend. The frontend uses the Twitter Bootstrap 3 and and jQuery Mobile 1.4.
+
+In production the blog is hosted on NGINX with php-fpm and apc cache. The database is MongoDB.
+
+Install
+-------
+
 In "/application/configs/", rename the "application_default.ini" into "application.ini" and use your own values where needed
 
 Do the same for each config.xml in "/application/modules/MODULE_NAME/configs/"
@@ -27,6 +36,11 @@ TODO
 * comments system for articles (remove disqus)
 * form to allow visitors to suggest bookmarks, article topics and readinglist entries
 
+TODO (maybe):
+-------------
+
 * update / improve mongodb models
 * improve tags system
 * create about page
+* add the option to switch to MariaDB
+* upgrade to zf2 if I have time to do it some free time left in the future ;)
