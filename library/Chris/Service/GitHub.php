@@ -34,7 +34,13 @@ class Chris_Service_GitHub extends Zend_Rest_Client
     /**
      * 
      */
-    const API_URL = 'https://api.github.com/';
+    const API_URL = 'https://api.github.com';
+    
+    /**
+     *
+     * @var type 
+     */
+    protected $_path = '';
 
     /**
      * Constructor
@@ -48,7 +54,7 @@ class Chris_Service_GitHub extends Zend_Rest_Client
             $options = $options->toArray();
         }
 
-        //Zend_Debug::dump($options);
+        //Zend_Debug::dump($options, '$options: ');
         //
         if (is_array($options)) {
             $this->setOptions($options);
@@ -59,7 +65,7 @@ class Chris_Service_GitHub extends Zend_Rest_Client
         $this->setUri(self::API_URL);
         $this->_localHttpClient->setHeaders('Accept-Charset', 'ISO-8859-1,utf-8');
 
-        //Zend_Debug::dump($this->_localHttpClient);
+        //Zend_Debug::dump($this->_localHttpClient, '$this->_localHttpClient: ');
 
     }
 
@@ -110,6 +116,39 @@ class Chris_Service_GitHub extends Zend_Rest_Client
     {
         $this->_localHttpClient = null;
     }
+    
+    /**
+     * 
+     * @param String $path
+     * @return \Chris_Service_GitHub
+     */
+    public function setPath($path)
+    {
+        if ($path[0] !== '/') {
+            $path = '/' . $path;
+        }
+        
+        $this->_path = $path;
+        
+        return $this;
+    }
+
+    /**
+     * 
+     * @return type
+     */
+    public function getPath()
+    {
+        return $this->_path;
+    }
+
+    /**
+     * 
+     */
+    public function clearPath()
+    {
+        $this->_path = null;
+    }
 
     /**
      * 
@@ -121,23 +160,19 @@ class Chris_Service_GitHub extends Zend_Rest_Client
      */
     public function query()
     {
-        
-        $path = '';
-        $query = '';
-        
         // retrieve response
-        $response = $this->_getResponse($path, $query);
+        $response = $this->_getResponse();
 
         // check if response is not empty
         if (!is_null($response)) {
             $body   = $response->getBody();
             $status = $response->getStatus();
         } else {
-            require_once 'Zend/Service/Facebook/Exception.php';
-            throw new Zend_Service_Facebook_Exception('the response we recieved is emtpy');
+            require_once 'Chris/Service/GitHub/Exception.php';
+            throw new Chris_Service_GitHub_Exception('the response we recieved is emtpy');
         }
 
-        //Zend_Debug::dump($body, 'body');
+        //Zend_Debug::dump($body, 'body: ');
         //exit;
 
         // convert json response into an array
@@ -145,8 +180,8 @@ class Chris_Service_GitHub extends Zend_Rest_Client
 
         // if status code is different then 200 throw exception
         if ($status != '200') {
-            require_once 'Zend/Oauth2/Exception.php';
-            throw new Zend_Oauth2_Exception('we recieved an error ('.$status.') as response: '.$responseAsArray['error']['type'].' => '.$responseAsArray['error']['message']);
+            require_once 'Chris/Service/GitHub/Exception.php';
+            throw new Chris_Service_GitHub_Exception('we recieved an error ('.$status.') as response: '.$responseAsArray['error']['type'].' => '.$responseAsArray['error']['message']);
         }
 
         return $responseAsArray;
@@ -162,31 +197,27 @@ class Chris_Service_GitHub extends Zend_Rest_Client
      * @return type
      * @throws Zend_Rest_Client_Exception
      */
-    protected function _getResponse($path, array $query = null)
+    protected function _getResponse()
     {
-        // Get the URI object and configure it
-        if (!$this->_uri instanceof Zend_Uri_Http) {
-            require_once 'Zend/Rest/Client/Exception.php';
-            throw new Zend_Rest_Client_Exception('URI object must be set before performing call');
+        // check if the path was set
+        if (empty($this->_path)) {
+            require_once 'Chris/Service/GitHub/Exception.php';
+            throw new Chris_Service_GitHub_Exception('Path must be set before performing call, use setPath() to set one.');
         }
-
-        $uri = $this->_uri->getUri();
-
-        if ($path[0] != '/') {
-            $path = '/' . $path;
-        }
-
-        $this->_uri->setPath($path);
-
+        
+        //Zend_Debug::dump(self::API_URL.$this->_path, 'self::API_URL.$this->_path: ');
+        
         /**
          * Get the HTTP client and configure it for the endpoint URI. Do this
          * each time because the Zend_Http_Client instance is shared among all
          * Zend_Service_Abstract subclasses.
          */
         $this->_localHttpClient ->resetParameters()
-                                ->setUri($this->_uri)
-                                ->setParameterGet($query);
+                                ->setUri(self::API_URL.$this->_path);
+                                //->setParameterGet();
         
+        //Zend_Debug::dump($this->_localHttpClient, '$this->_localHttpClient: ');exit;
+
         return $this->_localHttpClient->request('GET');
     }
 

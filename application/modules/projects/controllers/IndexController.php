@@ -14,8 +14,24 @@ class Projects_IndexController extends Zend_Controller_Action {
 
     public function indexAction() {
 
+        
+        $githubService = new Chris_Service_GitHub();
+        
+        $githubService->setPath('/users/chrisweb/repos');
+        
+        $results = $githubService->query();
+        
+        //Zend_Debug::dump($results, '$githubService $results: ');
 
-
+        foreach ($results as $key => $value) {
+            
+            Zend_Debug::dump($key, '$key: ');
+            Zend_Debug::dump($value, '$value: ');
+            
+        }
+        
+        
+        
         $feed = Zend_Feed_Reader::import('https://github.com/chrisweb.atom');
 
         //Zend_Debug::dump($feed);
@@ -27,6 +43,8 @@ class Projects_IndexController extends Zend_Controller_Action {
             Zend_Debug::dump('('.$entry->getDateCreated()->toString('F').') '.$entry->getTitle());
             
         }
+        
+        
     }
 
 }
