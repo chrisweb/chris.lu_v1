@@ -22,28 +22,14 @@ class Projects_IndexController extends Zend_Controller_Action {
         $results = $githubService->query();
         
         //Zend_Debug::dump($results, '$githubService $results: ');
+        
+        $this->view->githubResults = $results;
 
-        foreach ($results as $key => $value) {
-            
-            Zend_Debug::dump($key, '$key: ');
-            Zend_Debug::dump($value, '$value: ');
-            
-        }
-        
-        
-        
         $feed = Zend_Feed_Reader::import('https://github.com/chrisweb.atom');
 
         //Zend_Debug::dump($feed);
         
-        Zend_Debug::dump('Last ' . $feed->count() . ' GitHub actions: ');
-
-        foreach ($feed as $entry) {
-
-            Zend_Debug::dump('('.$entry->getDateCreated()->toString('F').') '.$entry->getTitle());
-            
-        }
-        
+        $this->view->githubActivityFeed = $feed;
         
     }
 
