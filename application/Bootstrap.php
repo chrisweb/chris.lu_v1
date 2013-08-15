@@ -216,6 +216,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
     protected function _initMasterFilesCache()
 	{
 	
+        // TODO: implement master file cache
 		$this->masterFilesCache = '';
 		
 		return $this->masterFilesCache;
@@ -225,6 +226,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
     protected function _initAPCCache()
 	{
 	
+        // TODO: implement apc cache
 		$this->apcCache = '';
 		
 		return $this->apcCache;

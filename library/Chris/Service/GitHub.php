@@ -165,26 +165,41 @@ class Chris_Service_GitHub extends Zend_Rest_Client
 
         // check if response is not empty
         if (!is_null($response)) {
-            $body   = $response->getBody();
-            $status = $response->getStatus();
+            
+            if (!is_string($response)) {
+                
+                $body   = $response->getBody();
+                $status = $response->getStatus();
+                
+            } else {
+                require_once 'Chris/Service/GitHub/Exception.php';
+                throw new Chris_Service_GitHub_Exception($response);
+            }
+
         } else {
             require_once 'Chris/Service/GitHub/Exception.php';
             throw new Chris_Service_GitHub_Exception('the response we recieved is emtpy');
         }
 
-        //Zend_Debug::dump($body, 'body: ');
-        //exit;
-
+        //Zend_Debug::dump($body, 'body: ');exit;
+        
         // convert json response into an array
-        $responseAsArray = Zend_Json::decode($body);
+        try {
+            $result = Zend_Json::decode($body);
+        } catch (Exception $exception) {
+            require_once 'Chris/Service/GitHub/Exception.php';
+            throw new Chris_Service_GitHub_Exception('JSON decoding failed: '.$exception->getMessage());
+        }
+
+        //Zend_Debug::dump($responseAsArray, '$responseAsArray: ');exit;
 
         // if status code is different then 200 throw exception
         if ($status != '200') {
             require_once 'Chris/Service/GitHub/Exception.php';
-            throw new Chris_Service_GitHub_Exception('we recieved an error ('.$status.') as response: '.$responseAsArray['error']['type'].' => '.$responseAsArray['error']['message']);
+            throw new Chris_Service_GitHub_Exception('we recieved an error ('.$status.') as response: '.$result['message']);
         }
 
-        return $responseAsArray;
+        return $result;
 
     }
 
@@ -217,8 +232,14 @@ class Chris_Service_GitHub extends Zend_Rest_Client
                                 //->setParameterGet();
         
         //Zend_Debug::dump($this->_localHttpClient, '$this->_localHttpClient: ');exit;
-
-        return $this->_localHttpClient->request('GET');
+        
+        try {
+            $response = $this->_localHttpClient->request('GET');
+        } catch (Exception $exception) {
+            $response = $exception->getMessage();
+        }
+        
+        return $response;
     }
 
 }

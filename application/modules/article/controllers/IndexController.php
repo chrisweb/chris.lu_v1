@@ -131,17 +131,17 @@ class Article_IndexController extends Zend_Controller_Action
 	
 		$id = $this->getRequest()->getParam('id', 0);
 		
-		$this->view->tagId = $id;
-		
 		//Zend_Debug::dump($id);
 		
 		$alnumFilter = new Zend_Filter_Alnum();
 		
 		$filteredId = $alnumFilter->filter($id);
+        
+        $this->view->tagId = $filteredId;
 
 		$articleModel = new Article_Model_MongoDB_Article();
 		
-		$where = array('status' => '2', 'tags.id' => $id);
+		$where = array('status' => '2', 'tags.id' => $filteredId);
 		$keys = array('_id', 'title', 'header', 'tags', 'image', 'image_alt');
 		
 		$cursor = $articleModel->getList($where, $keys);

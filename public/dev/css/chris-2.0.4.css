@@ -1,3 +1,5 @@
+
+@import url('../vendor/jQuery_mobile/jquery.mobile-1.4.0-alpha.1.css');
 @import url('../vendor/jQuery_mobile/jquery.mobile.structure-1.4.0-alpha.1.css');
 @import url('../vendor/bootstrap/dist/css/bootstrap.css');
 @import url('../vendor/google-code-prettify/prettify.css');
@@ -9,10 +11,6 @@ body, article, p, section {
 	line-height: 22px !important;
 	color: #000000 !important;
 	text-shadow: none !important;
-}
-
-#core {
-	margin-right: 3%;
 }
 
 .ui-content {
@@ -101,7 +99,13 @@ h3:hover a.uri_change_anchor::before, h4:hover a.uri_change_anchor::before {
 	text-align: center;
 }
 
-article, section {
+section#core {
+	background-color: #f3f3f3;
+	padding: 3%;
+	margin-bottom: 3%;
+}
+
+article {
 	background-color: #f3f3f3;
 	padding: 3%;
 	margin-bottom: 3%;
@@ -170,6 +174,15 @@ ul.nav {
 ul.nav li {
 	margin-bottom: 0px !important;
     display: inline-block;
+}
+
+.list-group-item {
+    border-radius: 0px !important;
+}
+
+.badge {
+    border-radius: 0px !important;
+    background-color: #1b88c9;
 }
 
 .navbar {
@@ -386,6 +399,35 @@ a.btn {
     height: 100px;
     margin: 0px;
     padding: 0px;
+}
+
+.ui-collapsible-heading-toggle {
+	-webkit-font-smoothing: antialiased;
+    font-family: 'Electrolize', Tahoma, Arial, sans-serif;
+	color: #1b88c9 !important;
+    background-color: #ffffff !important;
+    padding-top: 20px !important;
+    padding-right: 20px !important;
+    padding-bottom: 20px !important;
+    padding-left: 50px !important;
+}
+
+.ui-collapsible-content {
+    background-color: #ffffff !important;
+    border: 1px #21a4f3 solid !important;
+    margin-bottom: 15px !important;
+	-webkit-border-radius: 0px !important;
+	-moz-border-radius: 0px !important;
+	border-radius: 0px !important;
+}
+
+a.ui-link:active, a.ui-link:link, a.ui-link:visited, a.ui-link:active {
+    -webkit-font-smoothing: antialiased;
+    color: #1b88c9;
+}
+
+.project_header {
+    text-align: right;
 }
 
 /* webkit scrollbar style */
@@ -618,10 +660,6 @@ a.btn {
 /* Landscape phones and down */
 @media (max-width: 767px) {
 
-    #core {
-        margin-right: 0% !important;
-    }
-    
 	.ui-content, h1#websitetitle , h2#websitesubtitle, .nav.main {
 		width: 90% !important;
         padding: 0px !important;

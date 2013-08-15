@@ -57,6 +57,12 @@
                 <seg>MyProjects</seg>
             </tuv>
         </tu>
+		<tu tuid="MYPROJECTS_GITHUB">
+            <tuv xml:lang="en">
+                <seg>My Projects on GitHub</seg>
+            </tuv>
+        </tu>
+        
 		<tu tuid="ADMIN_PROJECTS_DELETE">
             <tuv xml:lang="en">
                 <seg>Project delete</seg>
