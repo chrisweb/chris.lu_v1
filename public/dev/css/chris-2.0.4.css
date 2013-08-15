@@ -232,6 +232,12 @@ ul.nav li {
 
 .navbar-toggle {
     display: none !important;
+    margin-top: 4px !important;
+    float: left !important;
+}
+
+.nav-collapse {
+    margin-top: 0px !important;
 }
 
 .ui-page {

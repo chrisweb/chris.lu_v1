@@ -187,6 +187,8 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 	{
 
 		$filesCacheDirectory = APPLICATION_PATH.'/caches';
+        
+        if (!is_dir($filesCacheDirectory)) @mkdir($filesCacheDirectory, 0755);
 
 		// we already checked in public/index.php if the directory exists
 		

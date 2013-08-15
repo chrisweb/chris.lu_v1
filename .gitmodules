@@ -1,6 +1,12 @@
-[submodule "php-markdown"]
-	path = php-markdown
-	url = git@github.com:michelf/php-markdown.git
 [submodule "library/markdown"]
 	path = library/markdown
 	url = git@github.com:michelf/php-markdown.git
+[submodule "public/dev/vendor/bootstrap"]
+	path = public/dev/vendor/bootstrap
+	url = git://github.com/twbs/bootstrap.git
+[submodule "public/dev/vendor/DirectionAwareHoverEffect"]
+	path = public/dev/vendor/DirectionAwareHoverEffect
+	url = git://github.com/codrops/DirectionAwareHoverEffect.git
+[submodule "public/dev/vendor/requirejs"]
+	path = public/dev/vendor/requirejs
+	url = git://github.com/jrburke/requirejs.git

@@ -1,6 +1,7 @@
 <VirtualHost *:80>
 
-    ServerName www.chris.dev
+    ServerName chris.dev
+	ServerAlias www.chris.dev
     DocumentRoot C:\Users\chris\Documents\GitHub\chris.lu\public
     ErrorLog "logs/chris-error.log"
     CustomLog "logs/chris-access.log" combined

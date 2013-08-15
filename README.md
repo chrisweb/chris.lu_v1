@@ -12,11 +12,14 @@ This is not a Wordpress Blog with lots of features, it is just replacement an ex
 Install
 -------
 
+Install the submodules with this command:
+git submodule foreach git pull
+
 In "/application/configs/", rename the "application_default.ini" into "application.ini" and use your own values where needed
 
-Do the same for each config.xml in "/application/modules/MODULE_NAME/configs/"
+Do the same for each config.xml of each module in "/application/modules/MODULE_NAME/configs/"
 
-Create the folder "caches", "searchindexes" and "logs" in the "application" folder and in the "/public/" folder create an "upload" folder
+If the Bootstrap failed to create the followind folders you may have to create them manually, create the folder "caches", "searchindexes" and "logs" in the "application" folder and in the "/public/" folder create an "upload" folder
 
 Put a copy of the zend framework 1 into "/library/Zend/" (this repository got tested using zf1 1.12.3)
 
