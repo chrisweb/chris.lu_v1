@@ -36,7 +36,7 @@ class User_Bootstrap extends Zend_Application_Module_Bootstrap {
 
         $router->addConfig($routesConfigObject);
 		
-		//Zend_Debug::dump($router);
+		//Zend_Debug::dump($router);exit;
 		
         $front->setRouter($router);
 	

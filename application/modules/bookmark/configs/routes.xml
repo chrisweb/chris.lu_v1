@@ -16,15 +16,15 @@
 		<route>bookmark/admin/delete/:id</route>
 		<defaults module="bookmark" controller="admin" action="delete" id="" />
 	</bookmarkadmindelete>
+
+	<bookmarkbytag type="Zend_Controller_Router_Route">
+		<route>mybookmarks/:tag</route>
+		<defaults module="bookmark" controller="index" action="bookmarksbytag" tag="" />
+	</bookmarkbytag>
 	
-	<bookmarkindex type="Zend_Controller_Router_Route_Static">
+    <bookmarkindex type="Zend_Controller_Router_Route_Static">
 		<route>mybookmarks</route>
 		<defaults module="bookmark" controller="index" action="index" />
 	</bookmarkindex>
-	
-	<bookmarkindextag type="Zend_Controller_Router_Route">
-		<route>mybookmarks/tag/:id</route>
-		<defaults module="bookmark" controller="index" action="index" id="" />
-	</bookmarkindextag>
 
 </routes>

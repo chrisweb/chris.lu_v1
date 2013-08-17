@@ -7,9 +7,12 @@ class Bookmark_IndexController extends Zend_Controller_Action
 	{
 
 		$chrisContext = $this->_helper->getHelper('ChrisContext');
-
 		$chrisContext	->addActionContext('index', 'jquerymobile')
 						->initContext('jquerymobile');
+        
+        $ajaxContext = $this->_helper->getHelper('AjaxContext');
+        $ajaxContext->addActionContext('bookmarksbytag', 'json')
+                    ->initContext();
 		
 		parent::init();
 		
@@ -18,30 +21,52 @@ class Bookmark_IndexController extends Zend_Controller_Action
     public function indexAction()
 	{
 
-		$projectsModel = new Bookmark_Model_MongoDB_Bookmark();
+		$bookmarksModel = new Bookmark_Model_MongoDB_Bookmark();
 		
-		$keys = array('title', 'url', 'tags');
+		$keys = array('tags');
 		
-		$cursor = $projectsModel->getList(array(), $keys);
+		$cursor = $bookmarksModel->getList(array(), $keys);
 		
-		$bookmarks = array();
+		$tags = array();
 		
-		foreach ($cursor as $bookmark) {
+		foreach ($cursor as $bookmarkTag) {
 		
 			//Zend_Debug::dump($bookmark);
 			
-			foreach ($bookmark['tags'] as $tag) {
+			foreach ($bookmarkTag['tags'] as $tag) {
 			
-				if (!array_key_exists($tag, $bookmarks)) $bookmarks[$tag] = array();
+                $filterChain = new Zend_Filter();
+                $filterChain->addFilter(new Zend_Filter_Alnum())
+                            ->addFilter(new Zend_Filter_StringToLower(array('encoding' => 'UTF-8')));
+                
+                $filteredTag = $filterChain->filter($tag);
+                
+				if (!array_key_exists($filteredTag, $tags)) {
 				
-				$bookmarks[$tag][] = array('title' => $bookmark['title'], 'url' => $bookmark['url']);
+                    $tags[$filteredTag] = $tag;
+                    
+                }
 			
 			}
 		
 		}
 		
-		$this->view->bookmarks = $bookmarks;
+		$this->view->tags = $tags;
 	
+    }
+    
+    public function bookmarksbytagAction() {
+        
+        $tag = $this->getRequest()->getParam('tag', '');
+        
+        $bookmarksModel = new Bookmark_Model_MongoDB_Bookmark();
+        
+        $keys = array('title', 'url');
+        
+        $cursor = $bookmarksModel->getList(array('tags' => $tag), $keys);
+        
+        Zend_Debug::dump($cursor);
+        
     }
 
 }

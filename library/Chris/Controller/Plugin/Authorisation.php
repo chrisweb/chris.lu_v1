@@ -43,6 +43,7 @@ class Chris_Controller_Plugin_Authorisation extends Zend_Controller_Plugin_Abstr
 		// set resources
 		$acl->add(new Zend_Acl_Resource('admin')); // admin controllers
 		$acl->add(new Zend_Acl_Resource('index')); // index controllers
+        $acl->add(new Zend_Acl_Resource('error')); // error controller
 		
         /*if (is_array($resourcesData)) {
 
@@ -58,6 +59,7 @@ class Chris_Controller_Plugin_Authorisation extends Zend_Controller_Plugin_Abstr
 		
 		// set rules
 		$acl->allow($defaultRole, 'index');
+        $acl->allow($defaultRole, 'error');
 		$acl->allow('admin', 'admin');
 		
 		// user role
@@ -70,14 +72,13 @@ class Chris_Controller_Plugin_Authorisation extends Zend_Controller_Plugin_Abstr
 		}
 		
 		$resource = $request->getControllerName();
+        
+        //Zend_Debug::dump($resource);
+        //Zend_Debug::dump($request);exit;
 		
 		if ($acl->has($resource)) {
 		
-			if ($acl->isAllowed($role, $resource)) {
-			
-				
-			
-			} else {
+			if (!$acl->isAllowed($role, $resource)) {
 			
 				if ($auth->hasIdentity()) {
 				

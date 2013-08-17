@@ -2,25 +2,19 @@
 
 <section id="core">
 
-	<?php foreach($this->bookmarks as $bookmarksTagName => $bookmarksByTagList) { ?>
+    <ul id="bookmarks" data-role="listview" data-autodividers="true" data-filter="true" data-inset="true">
 
-		<div class="bookmark_box">
-		
-			<h3><?php echo $this->escape($bookmarksTagName); ?></h3>
-			
-			<ul>
-			
-			<?php foreach($bookmarksByTagList as $bookmark) { ?>
-			
-				<li><a href="<?php echo $this->escape($bookmark['url']); ?>"><?php echo $this->escape($bookmark['title']); ?></a></li>
-			
-			<?php } ?>
-			
-			</ul>
-		
-		</div>
+        <?php foreach ($this->tags as $key => $value) { ?>
 
-	<?php } ?>
+            <li>
+                <a href="/bookmarksbytag/<?php echo $this->escape($key); ?>" title="<?php echo $this->escape($value); ?>">
+                    <?php echo $this->escape($value); ?>
+                </a>
+            </li>
+
+        <?php } ?>
+
+    </ul>
 
 </section>
 

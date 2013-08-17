@@ -5,7 +5,7 @@ require.config({
     paths: {
         'jquery' : './vendor/jQuery/jquery-2.0.3',
         'jquery.mobile' : './vendor/jQuery_mobile/jquery.mobile-1.4.0-alpha.1',
-        'chris.application' : './js/chris.application-2.0.2',
+        'chris.application' : './js/chris.application-2.0.6',
         'chris.library' : './js/chris.library-1.0.7',
         'chris.configuration' : './js/chris.configuration-1.0.4',
         'blocksit': './vendor/blocksit/blocksit',
@@ -77,6 +77,21 @@ require(['jquery', 'chris.application', 'chris.library', 'collapse'], function($
             contextId = context.attr('id');
 			
             library.log('contextId: ' + contextId);
+            
+            // bookmarks page
+            if (contextId.substr(0, 13) === 'bookmarkindex') {
+                
+                try {
+
+                    application.initializeBookmarks();
+
+                } catch(error) {
+				
+                    library.log('bookmarks page error: ' + error);
+				
+                }
+                
+            }
 
             // code google pretty print
             if (contextId.substr(0, 16) === 'articleindexread' || contextId.substr(0, 15) === 'articleindextag' || contextId === 'default') {

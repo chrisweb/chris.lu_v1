@@ -94,6 +94,17 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 		$this->frontController->registerPlugin(new Chris_Controller_Plugin_Headers());
 
 	}
+    
+	protected function _initApplicationRoutes()
+	{
+	
+        $front = Zend_Controller_Front::getInstance();
+        $router = $front->getRouter();
+        
+        //$router->removeDefaultRoutes();
+		
+		return $router;
+	}
 	
     protected function _initApplicationView()
     {

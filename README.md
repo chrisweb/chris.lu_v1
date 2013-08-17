@@ -34,10 +34,10 @@ TODO
 * DONE: upgrade jQuery mobile to version 1.4
 * DONE: responsive layout improvements, for example the main area is too small on tablets
 * DONE: use Zend_Feed to read GitHub activity feed
-* use GitHub API to retrieve repositories list from GitHub (with zend file cache)
+* DONE: use GitHub API to retrieve repositories list from GitHub (with zend file cache)
 * use Stackoverflow API to retrieve some public data (with zend file cache)
-* add zend file cache for GitHub feed in projects module
-* rewrite of the bookmarks module that is useless as it is right now
+* DONE: add zend file cache for GitHub feed in projects module
+* DONE: rewrite of the bookmarks module that is useless as it is right now
 * comments system for articles (remove disqus)
 * form to allow visitors to suggest bookmarks, article topics and readinglist entries
 
