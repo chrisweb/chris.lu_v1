@@ -111,7 +111,7 @@ vendor/jQuery_mobile/jquery.mobile.theme-1.4.0-alpha.1.min.css
 ----------------
 vendor/jQuery_mobile/jquery.mobile.theme-1.4.0-alpha.1.min.css
 
-./js/main-2.0.3.js
+./js/main-2.0.4.js
 ----------------
 vendor/jQuery/jquery-2.0.3.js
 js/chris.configuration-1.0.4.js
@@ -120,7 +120,7 @@ vendor/blocksit/blocksit.js
 vendor/google-code-prettify/prettify.js
 vendor/DirectionAwareHoverEffect/js/modernizr.custom.97074.js
 vendor/DirectionAwareHoverEffect/js/jquery.hoverdir.js
-js/chris.application-2.0.6.js
+js/chris.application-2.0.7.js
 vendor/bootstrap/js/collapse.js
 vendor/jQuery_mobile/jquery.mobile-1.4.0-alpha.1.js
-js/main-2.0.3.js
+js/main-2.0.4.js

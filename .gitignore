@@ -12,4 +12,5 @@ public/_production-build/vendor/
 
 application.ini
 application.log
+build.txt
 config.xml

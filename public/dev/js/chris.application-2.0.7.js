@@ -185,7 +185,7 @@ define(['jquery', 'chris.library', 'blocksit', 'prettify', 'jquery.hoverdir'], f
                         
                         resultsHtml += '<li>';
                         resultsHtml += '<a href="' + value.url + '" title="' + value.title + '">';
-                        resultsHtml += value.title;
+                        resultsHtml += value.title + '<br>' + value.url;
                         resultsHtml += '</a>';
                         resultsHtml += '</li>';
                         
