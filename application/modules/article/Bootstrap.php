@@ -15,6 +15,8 @@ class Article_Bootstrap extends Zend_Application_Module_Bootstrap {
 	protected function _initModuleRoutes()
 	{
 	
+        // TODO: use masterfile cache to cache routes configuration
+        
         $routesPath = $this->modulePath.'configs/routes.xml';
 
         $front = Zend_Controller_Front::getInstance();
@@ -23,10 +25,6 @@ class Article_Bootstrap extends Zend_Application_Module_Bootstrap {
 		$routesConfigObject = new Zend_Config_Xml($routesPath);
 
         $router->addConfig($routesConfigObject);
-		
-		//Zend_Debug::dump($router);
-		
-        $front->setRouter($router);
 	
 	}
 	
