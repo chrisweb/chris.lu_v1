@@ -101,7 +101,9 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         $front = Zend_Controller_Front::getInstance();
         $router = $front->getRouter();
         
-        //$router->removeDefaultRoutes();
+        // remove the default "/:controller/:action" and "" (root url) routes
+        // as we will just use custom routes
+        $router->removeDefaultRoutes();
 		
 		return $router;
 	}
