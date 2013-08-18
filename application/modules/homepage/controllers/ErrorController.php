@@ -2,13 +2,23 @@
 
 class Homepage_ErrorController extends Zend_Controller_Action
 {
+
+    public function init()
+	{
+
+        $ajaxContext = $this->_helper->getHelper('AjaxContext');
+        $ajaxContext->addActionContext('error', 'json')
+                    ->initContext();
+		
+		parent::init();
+		
+	}
+    
     public function errorAction()
     {
 
         $errors = $this->_getParam('error_handler');
-		
-		//Zend_Debug::dump($errors->type);
- 
+
         switch ($errors->type) {
             case Zend_Controller_Plugin_ErrorHandler::EXCEPTION_NO_ROUTE:
             case Zend_Controller_Plugin_ErrorHandler::EXCEPTION_NO_CONTROLLER:
@@ -24,11 +34,20 @@ class Homepage_ErrorController extends Zend_Controller_Action
 				if ($errors->exception instanceof My_Exception) {
 					// do something special
 				}
-			
+
 				// application error
                 $this->getResponse()->setHttpResponseCode(500);
                 $this->view->errorMessage = 'APPLICATION_ERROR';
-				if (APPLICATION_ENV != 'production') $this->view->exception = $errors->exception;
+                
+				if (APPLICATION_ENV !== 'production') {
+                    
+                    $this->view->exceptionMessage = $errors->exception->getMessage();
+                    $this->view->exceptionTrace = $errors->exception->getTrace();
+                    $this->view->type = $errors->type;
+                    $this->view->request = $errors->request;
+                    
+                }
+                
                 break;
 				
         }
@@ -47,7 +66,7 @@ class Homepage_ErrorController extends Zend_Controller_Action
 		
 		$delemiter = '/*****************************/';
 		
-		$logger->log($moduleName.' - '.$controllerName.' - '.$actionName.' :: '.$exception."\r\n".$errorInFile."\r\n".$delemiter."\r\n", Zend_Log::ERR);
+		$logger->log($moduleName.' - '.$controllerName.' - '.$actionName.' :: '.$errorMessage."\r\n".$exception."\r\n".' IN FILE: '.$errorInFile.' @LINE: '.$errorAtLine."\r\n".$delemiter."\r\n", Zend_Log::ERR);
  
         // Clear previous content
         $this->getResponse()->clearBody();
