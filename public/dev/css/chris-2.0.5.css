@@ -407,6 +407,7 @@ a.btn {
     padding: 0px;
 }
 
+/* projects page */
 .ui-collapsible-heading-toggle {
 	-webkit-font-smoothing: antialiased;
     font-family: 'Electrolize', Tahoma, Arial, sans-serif;
@@ -434,6 +435,19 @@ a.ui-link:active, a.ui-link:link, a.ui-link:visited, a.ui-link:active {
 
 .project_header {
     text-align: right;
+}
+
+/* bookmarks listview */
+.ui-corner-all {
+	-webkit-border-radius: 0px !important;
+	-moz-border-radius: 0px !important;
+	border-radius: 0px !important;
+}
+
+.ui-bar-inherit {
+    background-color: #1b88c9 !important;
+    border: 1px solid #dddddd !important;
+    color: #ffffff !important;
 }
 
 /* webkit scrollbar style */

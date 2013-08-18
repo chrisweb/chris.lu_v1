@@ -80,7 +80,7 @@ class Bookmark_IndexController extends Zend_Controller_Action
         
         foreach ($cursor as $bookmarkTag) {
 
-            $results = array(
+            $results[] = array(
                 'title' => $bookmarkTag['title'],
                 'url' => $bookmarkTag['url']
             );

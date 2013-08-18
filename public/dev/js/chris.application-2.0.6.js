@@ -154,9 +154,11 @@ define(['jquery', 'chris.library', 'blocksit', 'prettify', 'jquery.hoverdir'], f
 
         var containerClass = 'readinglist_container';
 
-        $('#bookmarks').on('click', 'a', function(event) {
+        $('#bookmarks').on('tap', 'a', function(event) {
 
             event.preventDefault();
+            
+            var tagKey = $(this).attr('data-chris-tag-key');
 
             var request = $.ajax({
                 url: $(this).attr('href') + '?format=json',
@@ -165,30 +167,96 @@ define(['jquery', 'chris.library', 'blocksit', 'prettify', 'jquery.hoverdir'], f
             });
 
             request.done(function(data) {
-                
+
                 library.log(data);
-                
-                /*window.scrollTo(0, 0);
-                
-                var width = parseInt($('#slider').css('width'));
-                
-                var transfer = $('<div class="transfer"></div>').css({ 'width': (2 * width) + 'px' });
-                var current = $('<div class="current"></div>').css({ 'width': width + 'px', 'left': '0', 'float': 'left' }).html($('#slider').html());
-                var next = $('<div class="next"></div>').css({ 'width': width + 'px', 'left': width + 'px', 'float': 'left' }).html(data);
-                transfer.append(current).append(next);
-                $('#slider').html('').append(transfer);
-                transfer.animate({ 'margin-left': '-' + width + 'px' }, 300, function () {
-                    $('#slider').html(data);
-                });*/
-                
+
+                if ($.type(data.results) === 'array' && data.results.length > 0) {
+
+                    window.scrollTo(0, 0);
+                    
+                    var core = $('section#core');
+
+                    core.css('overflow', 'hidden');
+                    core.css('min-height', core.height())
+
+                    var resultsHtml = '';
+
+                    $.each(data.results, function(index, value) {
+                        
+                        resultsHtml += '<li>';
+                        resultsHtml += '<a href="' + value.url + '" title="' + value.title + '">';
+                        resultsHtml += value.title;
+                        resultsHtml += '</a>';
+                        resultsHtml += '</li>';
+                        
+                    });
+
+                    var newPane = $('<div id="bookmarks_list"></div>');
+                    
+                    var backButton = '<a class="btn btn-primary ui-link" href="/mybookmarks" id="bookmarks_back">BACK</a>';
+                    
+                    newPane.append(backButton);
+                    
+                    var bookmarksListing = $('<ul id="boomarks_' + tagKey + '" data-role="listview" data-autodividers="true" data-inset="true">' + resultsHtml + '</ul>');
+                    
+                    newPane.append(bookmarksListing);
+
+                    var bookmarksTagsListing = $('#tags_list');
+                    
+                    bookmarksTagsListing.css('width', bookmarksTagsListing.width());
+                    
+                    newPane.css('width', bookmarksTagsListing.width());
+                    
+                    var bookmarksContainer = core.find('#bookmarks_container');
+
+                    bookmarksContainer.css('width', (parseInt(core.width()) * 2) + 500);
+
+                    bookmarksTagsListing.after(newPane);
+                    
+                    bookmarksTagsListing.css('float', 'left');
+                    newPane.css('float', 'left');
+                    
+                    // tell jquery mobile to intialize the new listview
+                    bookmarksListing.listview().trigger('create');
+
+                    bookmarksTagsListing.animate({ width: 'toggle' }, 300, function() {
+                        
+                        
+                        
+                    });
+
+                }
+
             });
 
             request.fail(function(jqXHR, textStatus) {
-                
+
                 library.log('bookmarks request failed: ' + textStatus);
-                
+
             });
 
+        });
+        
+        $('#core').on('tap', 'a#bookmarks_back', function(event) {
+            
+            event.preventDefault();
+            
+            library.log('#bookmarks_list click BACK');
+            
+            window.scrollTo(0, 0);
+            
+            var bookmarksTagsListing = $('#tags_list');
+            
+            bookmarksTagsListing.find('#bookmarks').find('li').find('a').removeClass($.mobile.activeBtnClass);
+            
+            bookmarksTagsListing.animate({ width: 'toggle' }, 300, function() {
+                
+                var bookmarksList = $('#bookmarks_list');
+                
+                bookmarksList.remove();
+                        
+            });
+            
         });
 
     };
