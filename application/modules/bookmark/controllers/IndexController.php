@@ -57,15 +57,37 @@ class Bookmark_IndexController extends Zend_Controller_Action
     
     public function bookmarksbytagAction() {
         
-        $tag = $this->getRequest()->getParam('tag', '');
+        $unfilteredTag = $this->getRequest()->getParam('tag', '');
+        
+        $filterChain = new Zend_Filter();
+        $filterChain->addFilter(new Zend_Filter_StringTrim())
+                    ->addFilter(new Zend_Filter_StringToLower());
+
+        $filteredTag = $filterChain->filter($unfilteredTag);
+        
+        //Zend_Debug::dump($tag, '$tag: ');
         
         $bookmarksModel = new Bookmark_Model_MongoDB_Bookmark();
-        
+
+        // search for the tag that got passed as parameter in the "tags" array
+        // that is in mongodb
+        $where = array('tags' => $filteredTag);
         $keys = array('title', 'url');
         
-        $cursor = $bookmarksModel->getList(array('tags' => $tag), $keys);
+        $cursor = $bookmarksModel->getList($where, $keys);
         
-        Zend_Debug::dump($cursor);
+        $results = array();
+        
+        foreach ($cursor as $bookmarkTag) {
+
+            $results = array(
+                'title' => $bookmarkTag['title'],
+                'url' => $bookmarkTag['url']
+            );
+ 
+        }
+        
+        $this->view->results = $results;
         
     }
 
