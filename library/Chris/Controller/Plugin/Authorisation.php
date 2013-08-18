@@ -13,23 +13,27 @@ class Chris_Controller_Plugin_Authorisation extends Zend_Controller_Plugin_Abstr
 		// http://stackoverflow.com/questions/5209671/zend-framework-need-typical-example-of-acl
 		// http://zendguru.wordpress.com/2008/11/05/zend-framework-acl-with-example/
 		// http://framework.zend.com/manual/1.12/en/zend.acl.refining.html
-	
-		//Zend_Debug::dump($request->getModuleName(), 'module name');
-		//Zend_Debug::dump($request->getControllerName(), 'controller name');
-		//Zend_Debug::dump($request->getActionName(), 'action name');
-	
+
 		$auth = Zend_Auth::getInstance();
 		$acl = new Zend_Acl();
-		
-		$identity = $auth->getIdentity();
 		
 		$userConfiguration = Zend_Registry::get('UserConfiguration');
 		
 		$defaultRole = $userConfiguration->authentification->default->role;
+        
+		$identity = $auth->getIdentity();
+
+		if (isset($identity->role)) {
+			$role = strtolower($identity->role);
+		} else {
+			$role = $defaultRole;
+		}
 
 		// set roles
 		$acl->addRole(new Zend_Acl_Role($defaultRole));
 		$acl->addRole(new Zend_Acl_Role('admin'), $defaultRole);
+        
+        // get roles from database and add them
 		/*if (is_array($rolesData)) {
 
             foreach($rolesData as $role) {
@@ -62,16 +66,12 @@ class Chris_Controller_Plugin_Authorisation extends Zend_Controller_Plugin_Abstr
         $acl->allow($defaultRole, 'error');
 		$acl->allow('admin', 'admin');
 		
-		// user role
-		$identity = $auth->getIdentity();
-		
-		if (isset($identity->role)) {
-			$role = strtolower($identity->role);
-		} else {
-			$role = $userConfiguration->authentification->default->role;
-		}
-		
 		$resource = $request->getControllerName();
+        
+        //Zend_Debug::dump($request->getModuleName(), '$request->getModuleName(): ');
+        //Zend_Debug::dump($request->getActionName(), '$request->getActionName(): ');
+        //Zend_Debug::dump($request->getControllerName(), '$request->getControllerName(): ');
+        //Zend_Debug::dump($request->getParams(), '$request->getParams(): ');
         
         //Zend_Debug::dump($resource);
         //Zend_Debug::dump($request);exit;
@@ -80,17 +80,43 @@ class Chris_Controller_Plugin_Authorisation extends Zend_Controller_Plugin_Abstr
 		
 			if (!$acl->isAllowed($role, $resource)) {
 			
-				if ($auth->hasIdentity()) {
+				if ($auth->hasIdentity() && !$isAjax) {
 				
 					$this->_response->setRedirect('/user/missingrights', 403);
 				
 				} else {
 			
-					$flashMessenger = new Zend_Controller_Action_Helper_FlashMessenger();
-					$flashMessenger->setNamespace('authorisationErrors');
-					$flashMessenger->addMessage('AUTH_MUST_LOGIN');
-					
-					$this->_response->setRedirect('/user/login');
+                    $frontController = Zend_Controller_Front::getInstance();
+
+                    $bootstrap = $frontController->getParam('bootstrap');
+                    
+                    $isAjax = false;
+
+                    if ($bootstrap->hasResource('AjaxDetection')) {
+                        
+                          $isAjax = $bootstrap->getResource('ajaxDetection');
+                          
+                    }
+                    
+                    //Zend_Debug::dump($isAjax, '$isAjax: ');exit;
+                    
+                    // if its an ajax request use user module "needauthentification" 
+                    // action json response else redirect to login page
+                    if ($isAjax) {
+
+                        $request->setModuleName('user');
+                        $request->setControllerName('index');
+                        $request->setActionName('needauthentification');
+                        
+                    } else {
+                        
+                        $flashMessenger = new Zend_Controller_Action_Helper_FlashMessenger();
+                        $flashMessenger->setNamespace('authorisationErrors');
+                        $flashMessenger->addMessage('AUTH_MUST_LOGIN');
+
+                        $this->_response->setRedirect('/user/login');
+                        
+                    }
 					
 				}
 			

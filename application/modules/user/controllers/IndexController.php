@@ -3,6 +3,20 @@
 class User_IndexController extends Zend_Controller_Action
 {
 
+    public function init()
+	{
+
+        $ajaxContext = $this->_helper->getHelper('AjaxContext');
+        $ajaxContext->addActionContext('needauthentification', 'json')
+                    ->initContext();
+		
+		parent::init();
+		
+	}
+    
+    /**
+     * user log in page
+     */
     public function loginAction()
 	{
 
@@ -103,10 +117,26 @@ class User_IndexController extends Zend_Controller_Action
 	
     }
 	
+    /**
+     * redirects here if user is authentificated but blocked by acl rule
+     */
 	public function missingrightsAction()
 	{
 	
 		
+	
+	}
+    
+    /**
+     * 
+     * redirects here if user does ajax request but request is missing
+     * authentification data
+     * 
+     */
+    public function needauthentificationAction()
+	{
+	
+		$this->view->errorMessage = 'Missing User Authentification Data';
 	
 	}
 

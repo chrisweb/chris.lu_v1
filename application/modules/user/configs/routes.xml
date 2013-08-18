@@ -27,4 +27,9 @@
 		<defaults module="user" controller="index" action="missingrights" />
 	</userindexmissingrights>
 
+	<userneedauthentification type="Zend_Controller_Router_Route_Static">
+		<route>user/needauthentification</route>
+		<defaults module="user" controller="index" action="needauthentification" />
+	</userneedauthentification>
+
 </routes>
