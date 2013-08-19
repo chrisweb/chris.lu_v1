@@ -153,8 +153,10 @@ define(['jquery', 'chris.library', 'blocksit', 'prettify', 'jquery.hoverdir'], f
         library.log('# initializeBookmarks');
 
         var containerClass = 'readinglist_container';
+        
+        var core = $('#core');
 
-        $('#bookmarks').on('tap', 'a', function(event) {
+        core.on('tap', 'a:not(#bookmarks_back)', function(event) {
 
             event.preventDefault();
             
@@ -177,7 +179,7 @@ define(['jquery', 'chris.library', 'blocksit', 'prettify', 'jquery.hoverdir'], f
                     var core = $('section#core');
 
                     core.css('overflow', 'hidden');
-                    core.css('min-height', core.height())
+                    core.css('min-height', core.height());
 
                     var resultsHtml = '';
 
@@ -237,7 +239,7 @@ define(['jquery', 'chris.library', 'blocksit', 'prettify', 'jquery.hoverdir'], f
 
         });
         
-        $('#core').on('tap', 'a#bookmarks_back', function(event) {
+        core.on('tap', 'a#bookmarks_back', function(event) {
             
             event.preventDefault();
             
