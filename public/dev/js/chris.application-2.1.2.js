@@ -156,7 +156,7 @@ define(['jquery', 'chris.library', 'blocksit', 'prettify', 'jquery.hoverdir'], f
         
         container.off();
 
-        container.on('tap', 'a:not(#bookmarks_back)', function(event) {
+        container.on('tap', 'a.bookmarks_tags', function(event) {
 
             event.preventDefault();
             
@@ -197,7 +197,7 @@ define(['jquery', 'chris.library', 'blocksit', 'prettify', 'jquery.hoverdir'], f
 
                     var newPane = $('<div id="bookmarks_list"></div>');
                     
-                    var backButton = '<a class="btn btn-primary ui-link" href="/mybookmarks" id="bookmarks_back">BACK</a>';
+                    var backButton = '<a class="btn btn-primary ui-link bookmarks_back" href="/mybookmarks">BACK</a>';
                     
                     newPane.append(backButton);
                     
@@ -241,7 +241,7 @@ define(['jquery', 'chris.library', 'blocksit', 'prettify', 'jquery.hoverdir'], f
 
         });
         
-        container.on('tap', 'a#bookmarks_back', function(event) {
+        container.on('tap', 'a.bookmarks_back', function(event) {
             
             event.preventDefault();
             

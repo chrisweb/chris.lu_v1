@@ -11,7 +11,7 @@
                 <?php foreach ($this->tags as $key => $value) { ?>
 
                     <li>
-                        <a href="/mybookmarks/<?php echo $this->escape($value); ?>" title="<?php echo $this->escape($value); ?>" data-chris-tag-key="<?php echo $this->escape($key); ?>">
+                        <a href="/mybookmarks/<?php echo $this->escape($value); ?>" title="<?php echo $this->escape($value); ?>" data-chris-tag-key="<?php echo $this->escape($key); ?>" class="bookmarks_tags">
                             <?php echo $this->escape($value); ?>
                         </a>
                     </li>
