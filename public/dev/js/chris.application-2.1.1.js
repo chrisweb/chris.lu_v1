@@ -21,7 +21,7 @@ define(['jquery', 'chris.library', 'blocksit', 'prettify', 'jquery.hoverdir'], f
         var mainDom = pageDom.find('div#main');
         var complementaryDom = pageDom.find('aside#right-side');
 
-        library.log(pageWidth);
+        //library.log(pageWidth);
 
         modifyClasses(mainDom, complementaryDom, pageWidth);
 
@@ -29,7 +29,7 @@ define(['jquery', 'chris.library', 'blocksit', 'prettify', 'jquery.hoverdir'], f
 
             pageWidth = $('.ui-page-active').width();
 
-            library.log(pageWidth);
+            //library.log(pageWidth);
 
             modifyClasses(mainDom, complementaryDom, pageWidth);
 
@@ -51,8 +51,8 @@ define(['jquery', 'chris.library', 'blocksit', 'prettify', 'jquery.hoverdir'], f
 
         library.log('responsive classes ...');
 
-        library.log(mainDom);
-        library.log(complementaryDom);
+        //library.log(mainDom);
+        //library.log(complementaryDom);
 
         if (pageWidth <= 767) {
 
@@ -152,15 +152,17 @@ define(['jquery', 'chris.library', 'blocksit', 'prettify', 'jquery.hoverdir'], f
 
         library.log('# initializeBookmarks');
 
-        var containerClass = 'readinglist_container';
+        var container = $('#bookmarks_container');
         
-        var core = $('#core');
+        container.off();
 
-        core.on('tap', 'a:not(#bookmarks_back)', function(event) {
+        container.on('tap', 'a:not(#bookmarks_back)', function(event) {
 
             event.preventDefault();
             
             var tagKey = $(this).attr('data-chris-tag-key');
+            
+            library.log($(this).attr('href') + '?format=json');
 
             var request = $.ajax({
                 url: $(this).attr('href') + '?format=json',
@@ -176,7 +178,7 @@ define(['jquery', 'chris.library', 'blocksit', 'prettify', 'jquery.hoverdir'], f
 
                     window.scrollTo(0, 0);
                     
-                    var core = $('section#core');
+                    var core = $('section#core-box');
 
                     core.css('overflow', 'hidden');
                     core.css('min-height', core.height());
@@ -239,7 +241,7 @@ define(['jquery', 'chris.library', 'blocksit', 'prettify', 'jquery.hoverdir'], f
 
         });
         
-        core.on('tap', 'a#bookmarks_back', function(event) {
+        container.on('tap', 'a#bookmarks_back', function(event) {
             
             event.preventDefault();
             

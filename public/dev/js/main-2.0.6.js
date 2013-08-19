@@ -5,7 +5,7 @@ require.config({
     paths: {
         'jquery' : './vendor/jQuery/jquery-2.0.3',
         'jquery.mobile' : './vendor/jQuery_mobile/jquery.mobile-1.4.0-alpha.1',
-        'chris.application' : './js/chris.application-2.1.0',
+        'chris.application' : './js/chris.application-2.1.1',
         'chris.library' : './js/chris.library-1.0.7',
         'chris.configuration' : './js/chris.configuration-1.0.4',
         'blocksit': './vendor/blocksit/blocksit',

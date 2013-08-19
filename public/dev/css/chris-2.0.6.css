@@ -99,7 +99,7 @@ h3:hover a.uri_change_anchor::before, h4:hover a.uri_change_anchor::before {
 	text-align: center;
 }
 
-section#core {
+section#core-box {
 	background-color: #f3f3f3;
 	padding: 3%;
 	margin-bottom: 3%;
