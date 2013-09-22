@@ -1,0 +1,30 @@
+<?php $this->headTitle($this->translate('MYBOOKMARKS')); ?>
+
+<section id="core-box">
+    
+    <div id="bookmarks_container">
+        
+        <div id="tags_list">
+
+            <ul id="bookmarks" data-role="listview" data-autodividers="true" data-filter="true" data-inset="true" data-filter-placeholder="Filter tags...">
+
+                <?php foreach ($this->results as $bookmark) { ?>
+
+                    <li>
+                        <a href="<?php echo $this->escape($bookmark['url']); ?>" title="<?php echo $this->escape($bookmark['title']); ?>" class="bookmarks_bookmark">
+                            <?php echo $this->escape($bookmark['title']); ?>
+                        </a>
+                    </li>
+
+                <?php } ?>
+
+            </ul>
+
+        </div>
+        
+    </div>
+
+</section>
+
+
+

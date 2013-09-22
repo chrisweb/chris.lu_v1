@@ -31,17 +31,20 @@ class Bookmark_IndexController extends Zend_Controller_Action
 		
 		foreach ($cursor as $bookmarkTag) {
 		
-			//Zend_Debug::dump($bookmark);
+			//Zend_Debug::dump($bookmarkTag);
 			
 			foreach ($bookmarkTag['tags'] as $tag) {
+                
+                //Zend_Debug::dump($tag);
 			
                 $filterChain = new Zend_Filter();
                 $filterChain->addFilter(new Zend_Filter_Alnum())
+                            ->addFilter(new Zend_Filter_StringTrim())
                             ->addFilter(new Zend_Filter_StringToLower(array('encoding' => 'UTF-8')));
                 
                 $filteredTag = $filterChain->filter($tag);
                 
-				if (!array_key_exists($filteredTag, $tags)) {
+				if (!empty($filteredTag) && !array_key_exists($filteredTag, $tags)) {
 				
                     $tags[$filteredTag] = $tag;
                     
@@ -50,6 +53,8 @@ class Bookmark_IndexController extends Zend_Controller_Action
 			}
 		
 		}
+        
+        sort($tags);
 		
 		$this->view->tags = $tags;
 	

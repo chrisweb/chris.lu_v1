@@ -326,5 +326,45 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         Zend_View_Helper_PaginationControl::setDefaultViewPartial($partial);
 	
 	}
+    
+	protected function _initBugsnag()
+	{
+    
+        // bugsnag tool
+        if (APPLICATION_ENV === 'production') {
+
+            require_once('../library/Bugsnag/lib/bugsnag.php');
+
+            Bugsnag::register($this->applicationConfiguration->bugsnag->api->key);
+            Bugsnag::setReleaseStage(APPLICATION_ENV);
+            Bugsnag::setNotifyReleaseStages('production');
+            Bugsnag::setUseSSL(true);
+            Bugsnag::setProjectRoot(APPLICATION_PATH.'/../');
+            //Bugsnag::setFilters('password');
+            
+            $auth = Zend_Auth::getInstance();
+            
+            if ($auth->hasIdentity()) {
+                
+                $identity = $auth->getIdentity();
+                
+                Bugsnag::setUserId($identity->username.' '.$identity->role);
+                
+            } else {
+                
+                $userIp = isset($_SERVER['HTTP_X_FORWARDED_FOR']) ? $_SERVER['HTTP_X_FORWARDED_FOR'] : $_SERVER['REMOTE_ADDR'];
+
+                Bugsnag::setUserId($userIp.' guest');
+                
+            }
+            
+            Bugsnag::setContext($this->ajaxStatus);
+
+            set_error_handler('Bugsnag::errorHandler');
+            //set_exception_handler("Bugsnag::exceptionHandler");
+
+        }
 	
+    }
+        
 }

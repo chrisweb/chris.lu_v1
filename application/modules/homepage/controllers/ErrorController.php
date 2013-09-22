@@ -66,8 +66,24 @@ class Homepage_ErrorController extends Zend_Controller_Action
 		
 		$delemiter = '/*****************************/';
 		
-		$logger->log($moduleName.' - '.$controllerName.' - '.$actionName.' :: '.$errorMessage."\r\n".$exception."\r\n".' IN FILE: '.$errorInFile.' @LINE: '.$errorAtLine."\r\n".$delemiter."\r\n", Zend_Log::ERR);
+		//$logger->log($moduleName.' - '.$controllerName.' - '.$actionName.' :: '.$errorMessage."\r\n".$exception."\r\n".' IN FILE: '.$errorInFile.' @LINE: '.$errorAtLine."\r\n".$delemiter."\r\n", Zend_Log::ERR);
  
+        $metaData = array('custom data' =>
+            array(
+                'moduleName' => $moduleName,
+                'controllerName' => $controllerName,
+                'actionName' => $actionName,
+                'errorMessage' => $errorMessage,
+                'errorInFile' => $errorInFile,
+                'errorAtLine' => $errorAtLine
+            )
+        );
+
+        require_once(APPLICATION_PATH.'/../library/Bugsnag/lib/bugsnag.php');
+        
+        Bugsnag::setMetaData($metaData);
+        Bugsnag::notifyException($exception);
+        
         // Clear previous content
         $this->getResponse()->clearBody();
 		
