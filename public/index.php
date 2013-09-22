@@ -70,6 +70,15 @@ try {
 				
 } catch (Exception $e) {
 
-	die($e);
+    if (APPLICATION_ENV === 'production') {
+        
+        die();
+        
+    } else {
+        
+        die($e);
+        
+    }
+	
 
 }
