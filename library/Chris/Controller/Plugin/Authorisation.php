@@ -30,8 +30,10 @@ class Chris_Controller_Plugin_Authorisation extends Zend_Controller_Plugin_Abstr
 		}
 
 		// set roles
+        // user inherits rights from default user and admin inherits from user
 		$acl->addRole(new Zend_Acl_Role($defaultRole));
-		$acl->addRole(new Zend_Acl_Role('admin'), $defaultRole);
+		$acl->addRole(new Zend_Acl_Role('user'), $defaultRole);
+        $acl->addRole(new Zend_Acl_Role('admin'), 'user');
         
         // get roles from database and add them
 		/*if (is_array($rolesData)) {
@@ -65,8 +67,7 @@ class Chris_Controller_Plugin_Authorisation extends Zend_Controller_Plugin_Abstr
 		$acl->allow($defaultRole, 'index');
         $acl->allow($defaultRole, 'error');
 		$acl->allow('admin', 'admin');
-		
-		$resource = $request->getControllerName();
+
         
         //Zend_Debug::dump($request->getModuleName(), '$request->getModuleName(): ');
         //Zend_Debug::dump($request->getActionName(), '$request->getActionName(): ');
@@ -75,7 +76,19 @@ class Chris_Controller_Plugin_Authorisation extends Zend_Controller_Plugin_Abstr
         
         //Zend_Debug::dump($resource);
         //Zend_Debug::dump($request);exit;
+        
+        // acl comment assert
+        // http://www.amazium.com/blog/content-driven-access-control-with-zend-acl
+        // http://ralphschindler.com/2009/08/13/dynamic-assertions-for-zend_acl-in-zf
+        // http://stackoverflow.com/questions/11668785/zend-acl-dynamic-assertion
+        // http://wiip.fr/content/zend-acl-et-les-assertions
+        $acl->add(new Zend_Acl_Resource('comment'));
+        
+        $acl->allow('user', 'comment', null, new Chris_Acl_CommentAssert());
 		
+        // check if user is allowed to access resource
+        $resource = $request->getControllerName();
+        
 		if ($acl->has($resource)) {
 		
 			if (!$acl->isAllowed($role, $resource)) {
@@ -135,6 +148,8 @@ class Chris_Controller_Plugin_Authorisation extends Zend_Controller_Plugin_Abstr
 			}
 		
 		}
+        
+        Zend_Registry::set('Acl', $acl);
 	
 	}
 

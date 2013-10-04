@@ -42,6 +42,8 @@ class Homepage_ErrorController extends Zend_Controller_Action
 				if (APPLICATION_ENV !== 'production') {
                     
                     $this->view->exceptionMessage = $errors->exception->getMessage();
+                    $this->view->exceptionFile = $errors->exception->getFile();
+                    $this->view->exceptionLine = $errors->exception->getLine();
                     $this->view->exceptionTrace = $errors->exception->getTrace();
                     $this->view->type = $errors->type;
                     $this->view->request = $errors->request;

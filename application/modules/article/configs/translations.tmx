@@ -147,5 +147,30 @@
                 <seg>Share me</seg>
             </tuv>
         </tu>
+		<tu tuid="CAPTCHA">
+            <tuv xml:lang="en">
+                <seg>Captcha (Type the letters you see below in the following field)</seg>
+            </tuv>
+        </tu>
+		<tu tuid="NAME">
+            <tuv xml:lang="en">
+                <seg>Your name</seg>
+            </tuv>
+        </tu>
+		<tu tuid="EMAIL">
+            <tuv xml:lang="en">
+                <seg>Your e-mail address</seg>
+            </tuv>
+        </tu>
+		<tu tuid="COMMENT">
+            <tuv xml:lang="en">
+                <seg>Your comment</seg>
+            </tuv>
+        </tu>
+		<tu tuid="COMMENTS">
+            <tuv xml:lang="en">
+                <seg>Comments</seg>
+            </tuv>
+        </tu>
     </body>
 </tmx>

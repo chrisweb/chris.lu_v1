@@ -31,5 +31,10 @@
 		<route>article/tag/:id</route>
 		<defaults module="article" controller="index" action="tag" id="" />
 	</articleindextag>
+    
+	<articlecomment type="Zend_Controller_Router_Route">
+		<route>article/comment/:article_id/:id</route>
+		<defaults module="article" controller="index" action="comment" id="" article_id="" />
+	</articlecomment>
 
 </routes>
