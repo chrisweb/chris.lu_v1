@@ -186,10 +186,7 @@ class Readinglist_AdminController extends Zend_Controller_Action {
 			$dom->preserveWhiteSpace = false; 
 			$dom->formatOutput = true;
 			$dom->strictErrorChecking = false;*/
-			
-			//$url = 'http://davidwalsh.name/firefox-html';
-			//$url = 'http://www.golem.de/news/samsung-ativ-smart-pc-im-test-windows-8-und-atom-im-tablet-das-beste-aus-beiden-welten-1210-95423.html';
-			
+
 			$url = $this->getRequest()->getPost('articleurl');
 
 			//Zend_Debug::dump($url, '$url');
@@ -221,7 +218,7 @@ class Readinglist_AdminController extends Zend_Controller_Action {
 					
 				}
 				
-				$htmlDocument = file_get_contents($url);
+				$htmlDocument = @file_get_contents($url);
 				
 				//Zend_Debug::dump($htmlDocument, '$htmlDocument');
 				
@@ -402,7 +399,7 @@ class Readinglist_AdminController extends Zend_Controller_Action {
 		
 		//Zend_Debug::dump($fileUrl, '$fileUrl after');
 	
-		$fileContent = file_get_contents($fileUrl);
+		$fileContent = @file_get_contents($fileUrl);
 		
 		if ($fileContent) {
 			

@@ -16,7 +16,7 @@ class Application_Layouts_Helpers_ArticleTags extends Zend_View_Helper_Abstract 
 				
 					if (!empty($tag['name'])) {
 				
-						$articleTags .= '<a class="btn btn-primary" href="'.$this->view->url(array('id' => $tag['id'])).'">'.$this->view->escape($tag['name']).'</a>';
+						$articleTags .= '<a class="btn btn-primary" href="'.$this->view->url(array('id' => $tag['id']), 'articleindextag').'">'.$this->view->escape($tag['name']).'</a>';
 					
 					}
 					
