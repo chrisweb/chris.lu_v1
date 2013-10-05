@@ -36,5 +36,10 @@
 		<route>article/comment/:article_id/:id</route>
 		<defaults module="article" controller="index" action="comment" id="" article_id="" />
 	</articlecomment>
+    
+	<deletecomment type="Zend_Controller_Router_Route">
+		<route>article/comment/delete/:id</route>
+		<defaults module="article" controller="index" action="deletecomment" id="" />
+	</deletecomment>
 
 </routes>

@@ -3,6 +3,9 @@
 class Article_IndexController extends Zend_Controller_Action
 {
 
+    /**
+     * 
+     */
     public function init()
 	{
 
@@ -16,6 +19,9 @@ class Article_IndexController extends Zend_Controller_Action
 		
 	}
 
+    /**
+     * 
+     */
     public function readAction()
 	{
 	
@@ -82,6 +88,9 @@ class Article_IndexController extends Zend_Controller_Action
 
     }
     
+    /**
+     * 
+     */
     public function commentAction()
 	{
         
@@ -223,7 +232,53 @@ class Article_IndexController extends Zend_Controller_Action
         }
 
     }
+    
+    /**
+     * 
+     */
+    public function deletecommentAction()
+	{
+        
+        $auth = Zend_Auth::getInstance();
+        $acl = Zend_Registry::get('Acl');
+        
+        $role = '';
+
+        if ($auth->hasIdentity()) {
+
+            $user = $auth->getIdentity();
+            
+            $role = strtolower($user->role);
+            
+            //Zend_Debug::dump((string) $user->_id, '$user->_id: ');
+
+        }
+        
+        if (!empty($role) && $acl->isAllowed($role, 'comment', 'delete')) {
+        
+            $rawId = $this->getRequest()->getParam('id', '');
+
+            $alnumFilter = new Zend_Filter_Alnum();
+
+            $filteredId = $alnumFilter->filter($rawId);
+
+            $commentModel = new Article_Model_MongoDB_Comment();
+
+            $commentModel->deleteEntry($filteredId);
+            
+            $this->view->message = 'comment got deleted';
+            
+        } else {
+            
+            $this->view->message = 'you are not allowed to delete comments';
+            
+        }
+        
+    }
 	
+    /**
+     * 
+     */
     public function rssAction()
 	{
 
@@ -301,6 +356,9 @@ class Article_IndexController extends Zend_Controller_Action
 
     }
 	
+    /**
+     * 
+     */
 	public function tagAction()
 	{
 	

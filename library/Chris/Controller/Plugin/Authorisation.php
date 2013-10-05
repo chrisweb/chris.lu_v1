@@ -86,6 +86,7 @@ class Chris_Controller_Plugin_Authorisation extends Zend_Controller_Plugin_Abstr
         
         //$acl->allow('admin', 'comment', 'edit');
         $acl->allow('user', 'comment', 'edit', new Chris_Acl_CommentAssert());
+        $acl->allow('admin', 'comment', 'delete');
 		
         // check if user is allowed to access resource
         $resource = $request->getControllerName();
