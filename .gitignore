@@ -10,6 +10,8 @@ public/upload/
 
 public/_production-build/vendor/
 
+mongodb_backups
+
 application.ini
 application.log
 build.txt
