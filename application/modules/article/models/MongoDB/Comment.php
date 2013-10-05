@@ -5,6 +5,10 @@ class Article_Model_MongoDB_Comment
 
 	protected $articleCollection;
 
+    /**
+     * 
+     * @throws Exception
+     */
 	public function __construct()
 	{
 
@@ -32,6 +36,12 @@ class Article_Model_MongoDB_Comment
 	
 	}
 
+    /**
+     * 
+     * @param type $id
+     * @param array $keys
+     * @return type
+     */
 	public function getById($id, array $keys = array())
 	{
 	
@@ -41,6 +51,12 @@ class Article_Model_MongoDB_Comment
 	
 	}
 	
+    /**
+     * 
+     * @param array $where
+     * @param array $keys
+     * @return type
+     */
 	public function getList(array $where = array(), array $keys = array())
 	{
 	
@@ -52,6 +68,11 @@ class Article_Model_MongoDB_Comment
 	
 	}
 	
+    /**
+     * 
+     * @param array $data
+     * @return boolean
+     */
 	public function saveData(array $data = array())
 	{
 	
@@ -97,6 +118,10 @@ class Article_Model_MongoDB_Comment
 	
 	}
 
+    /**
+     * 
+     * @param type $id
+     */
 	public function deleteEntry($id)
 	{
 	
@@ -104,11 +129,4 @@ class Article_Model_MongoDB_Comment
 	
 	}
     
-    public function isOwner($user)
-    {
-        
-        
-        
-    }
-
 }

@@ -7,7 +7,7 @@ class Application_Layouts_Helpers_RelatedArticles extends Zend_View_Helper_Abstr
 
 		$relatedArticles = '';
 	
-		if (array_key_exists('relatedArticles', $this->view->article)) {
+		if (is_array($this->view->article) && array_key_exists('relatedArticles', $this->view->article)) {
 	
 			$relatedArticles .= '<div class="widget">';
 				$relatedArticles .= '<h4>'.$this->view->translate('RELATED_ARTICLES').'</h4>';

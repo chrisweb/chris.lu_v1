@@ -159,7 +159,7 @@
         </tu>
 		<tu tuid="EMAIL">
             <tuv xml:lang="en">
-                <seg>Your e-mail address</seg>
+                <seg>Your e-mail address (required because of anti spam verification and for gravatar)</seg>
             </tuv>
         </tu>
 		<tu tuid="COMMENT">

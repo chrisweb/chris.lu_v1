@@ -19,63 +19,77 @@ class Article_IndexController extends Zend_Controller_Action
     public function readAction()
 	{
 	
-		$id = $this->getRequest()->getParam('id', 0);
-		
-		$alnumFilter = new Zend_Filter_Alnum();
-		
-		$filteredId = $alnumFilter->filter($id);
+		$id = $this->getRequest()->getParam('id', '');
+        
+        if (!empty($id)) { 
 
-		$articleModel = new Article_Model_MongoDB_Article();
-		
-		$article = $articleModel->getById($filteredId);
-		
-		//Zend_Debug::dump($article);
-		
-		// fetch related articles list based on related tag
-		if (array_key_exists('relatedTag', $article)) {
-		
-			$where = array('relatedTag' => $article['relatedTag']);
-			$keys = array('_id', 'title');
-		
-			$relatedArticles = $articleModel->getList($where, $keys);
-			
-			$article['relatedArticles'] = $relatedArticles;
-			
-			unset($article['relatedTag']);
-		
-		}
-		
-		$this->view->article = $article;
-        
-        // get the comments for this article
-        // TODO: comments pagination
-		$commentModel = new Article_Model_MongoDB_Comment();
-        
-        $where = array('article_id' => $filteredId);
-        $keys = array();
-		
-		$commentsCursor = $commentModel->getList($where, $keys);
-        
-        $sort = array('publish_date' => -1);
-        
-        $commentsCursor->sort($sort);
-        
-        $this->view->comments = $commentsCursor;
-        
-        // get the comment form
-        $commentForm = new Article_Form_ManageComment();
-        
-        $this->view->commentForm = $commentForm;
-        
-        $commentForm->setAction($this->_helper->url->url(array('article_id' => $filteredId), 'articlecomment'));
+            //Zend_Debug::dump($id, '$id: ');
+            //exit;
+
+            $alnumFilter = new Zend_Filter_Alnum();
+
+            $filteredId = $alnumFilter->filter($id);
+
+            $articleModel = new Article_Model_MongoDB_Article();
+
+            $article = $articleModel->getById($filteredId);
+
+            //Zend_Debug::dump($article, '$article: ');
+
+            // fetch related articles list based on related tag
+            if (array_key_exists('relatedTag', $article)) {
+
+                $where = array('relatedTag' => $article['relatedTag']);
+                $keys = array('_id', 'title');
+
+                $relatedArticles = $articleModel->getList($where, $keys);
+
+                $article['relatedArticles'] = $relatedArticles;
+
+                unset($article['relatedTag']);
+
+            }
+
+            $this->view->article = $article;
+
+            // get the comments for this article
+            // TODO: comments pagination
+            $commentModel = new Article_Model_MongoDB_Comment();
+
+            $where = array('article_id' => $filteredId);
+            $keys = array();
+
+            $commentsCursor = $commentModel->getList($where, $keys);
+
+            $sort = array('publish_date' => 1);
+
+            $commentsCursor->sort($sort);
+
+            $this->view->comments = $commentsCursor;
+
+            // get the comment form
+            $commentForm = new Article_Form_ManageComment();
+
+            $this->view->commentForm = $commentForm;
+
+            $commentForm->setAction($this->_helper->url->url(array('article_id' => $filteredId), 'articlecomment'));
+            
+        } else {
+            
+            // TODO: show 404
+            
+        }
 
     }
     
     public function commentAction()
 	{
         
-        $rawId = $this->getRequest()->getParam('id', 0);
-        $rawArticleId = $this->getRequest()->getParam('article_id', 0);
+        $rawId = $this->getRequest()->getParam('id', '');
+        $rawArticleId = $this->getRequest()->getParam('article_id', '');
+        
+        //Zend_Debug::dump($rawId, '$rawId: ');
+        //Zend_Debug::dump($rawArticleId, '$rawArticleId: ');
 
         $alnumFilter = new Zend_Filter_Alnum();
 
@@ -83,6 +97,7 @@ class Article_IndexController extends Zend_Controller_Action
 
         $filteredArticleId = $alnumFilter->filter($rawArticleId);
         
+        //Zend_Debug::dump($filteredId, '$filteredId: ');
         //Zend_Debug::dump($filteredArticleId, '$filteredArticleId: ');
 
         $auth = Zend_Auth::getInstance();
@@ -93,7 +108,7 @@ class Article_IndexController extends Zend_Controller_Action
 
             $user = $auth->getIdentity();
             
-            //Zend_Debug::dump($user->_id, '$user->_id: ');
+            //Zend_Debug::dump((string) $user->_id, '$user->_id: ');
 
         }
         
@@ -104,7 +119,17 @@ class Article_IndexController extends Zend_Controller_Action
         $commentForm = new Article_Form_ManageComment();
         
         // add the action (submit url) to the form
-        $commentForm->setAction($this->_helper->url->url(array('article_id' => $filteredId, 'id' => $rawId), 'articlecomment'));
+        if (!empty($filteredId)) {
+        
+            $parameters = array('id' => $filteredId, 'article_id' => $filteredArticleId);
+            
+        } else {
+            
+            $parameters = array('id' => $filteredId);
+            
+        }
+        
+        $commentForm->setAction($this->_helper->url->url($parameters, 'articlecomment'));
         
         if ($this->getRequest()->isPost()) {
 
@@ -119,21 +144,31 @@ class Article_IndexController extends Zend_Controller_Action
                 // get form POST values, now with applied filters
                 $formData = $commentForm->getValues();
                 
-                //Zend_Debug::dump($formData);
-                //exit;
-                
                 unset($formData['captcha']);
                 
                 if (is_object($user)) {
                     
-                    $formData['user_id'] = $user->id;
+                    $formData['user_id'] = (string) $user->_id;
                     
                 }
                 
                 $formData['article_id'] = $filteredArticleId;
                 
+                //Zend_Debug::dump($filteredId);
+                
+                if (!empty($filteredId)) {
+                    
+                    $formData['_id'] = $filteredId;
+                    
+                }
+                
+                //Zend_Debug::dump($formData);
+                //exit;
+                
+                // save the comment in the database
                 $commentModel->saveData($formData);
                 
+                // redirect to the article
                 $this->_helper->redirector->setGotoRoute(array('id' => $filteredArticleId), 'articleindexread');
                 
             } else {
@@ -146,37 +181,46 @@ class Article_IndexController extends Zend_Controller_Action
 
         } else {
             
+            $acl = Zend_Registry::get('Acl');
+
+            $comment = '';
+
+            if ($filteredId !== 0) {
+
+                $keys = array('name', 'email', 'comment');
+
+                $comment = $commentModel->getById($filteredId, $keys);
+
+            }
+            
+            //Zend_Debug::dump($comment, '$comment: ');
+            //Zend_Debug::dump($user, '$user: ');
+
+            // if the id is defined and the user is the owner load the comment
+            // and populate the form, so that he can edit it
+            if (is_array($comment) && is_object($user)) {
+                
+                $aclUser = new Chris_Acl_UserRole($user);
+                $aclComment = new Chris_Acl_CommentResource($comment);
+                
+                if ($acl->isAllowed($aclUser, $aclComment, 'edit')) {
+
+                    $commentModel = new Article_Model_MongoDB_Comment();
+
+                    $comment = $commentModel->getById($filteredId);
+
+                    //Zend_Debug::dump($comment, '$comment: ');
+
+                    $commentForm->populate($comment);
+                    
+                }
+
+
+            }
+
             $this->view->commentForm = $commentForm;
             
         }
-        
-        $acl = Zend_Registry::get('Acl');
-        
-        $comment = '';
-        
-        if ($filteredId !== 0) {
-        
-            $keys = array('name', 'email', 'comment');
-            
-            $comment = $commentModel->getById($filteredId, $keys);
-            
-        }
-        
-        // if the id is defined and the user is the owner load the comment
-        // and populate the form, so that he can edit it
-        if (is_object($comment) && is_object($user) && $acl->isAllowed($user, $comment)) {
-
-            $commentModel = new Article_Model_MongoDB_Comment();
-
-            $comment = $commentModel->getById($filteredId);
-		
-            //Zend_Debug::dump($comment);
-            
-            $commentForm->populate($comment);
-            
-        }
-		
-		$this->view->commentForm = $commentForm;
 
     }
 	

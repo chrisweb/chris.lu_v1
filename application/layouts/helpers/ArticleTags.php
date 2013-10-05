@@ -7,7 +7,7 @@ class Application_Layouts_Helpers_ArticleTags extends Zend_View_Helper_Abstract 
 
 		$articleTags = '';
 		
-		if (array_key_exists('tags', $this->view->article) && count($this->view->article['tags']) > 0) {
+		if (is_array($this->view->article) && array_key_exists('tags', $this->view->article) && count($this->view->article['tags']) > 0) {
 	
 			$articleTags .= '<div class="widget">';
 				$articleTags .= '<h4>'.$this->view->translate('TAGS').'</h4>';

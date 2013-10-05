@@ -3,6 +3,10 @@
 class Article_Form_ManageComment extends Zend_Form
 {
 
+    /**
+     * 
+     * @param type $options
+     */
     public function __construct($options = null)
 	{
 	

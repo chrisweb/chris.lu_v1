@@ -17,6 +17,10 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 	// i often use the word "Application" in init method names to
 	// avoid conflicts with resources which could have the same name
 	
+    /**
+     * 
+     * @return type
+     */
 	protected function _initApplicationFrontController()
     {
 	
@@ -26,6 +30,10 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         return $this->applicationFrontController;
     }
 	
+    /**
+     * 
+     * @return type
+     */
 	protected function _initApplicationAutoloader()
 	{
 	
@@ -41,6 +49,10 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 	
 	}
 
+    /**
+     * 
+     * @return \Zend_Application_Module_Autoloader
+     */
 	protected function _initApplicationModulesAutoloader()
     {
 	
@@ -51,6 +63,10 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         return $modulesAutoLoader;
     }
 	
+    /**
+     * 
+     * @return type
+     */
 	protected function _initApplicationLibrariesAutoloader()
 	{
 	
@@ -61,6 +77,10 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 		return $librariesAutoloader;
 	}
 	
+    /**
+     * 
+     * @return type
+     */
 	protected function _initApplicationConfiguration()
     {
         
@@ -72,6 +92,10 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         return $this->applicationConfiguration;
     }
 	
+    /**
+     * 
+     * @return \Zend_Log
+     */
     protected function _initApplicationLogging()
 	{
 
@@ -88,6 +112,9 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         return $logger;
     }
 	
+    /**
+     * 
+     */
 	protected function _initApplicationResponse()
 	{
 	
@@ -95,6 +122,10 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 
 	}
     
+    /**
+     * 
+     * @return type
+     */
 	protected function _initApplicationRoutes()
 	{
 	
@@ -108,6 +139,10 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 		return $router;
 	}
 	
+    /**
+     * 
+     * @return type
+     */
     protected function _initApplicationView()
     {
 	
@@ -132,6 +167,10 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         return $view;
     }
 	
+    /**
+     * 
+     * @return type
+     */
     protected function _initAjaxDetection()
 	{
 
@@ -147,6 +186,10 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 
     }
 	
+    /**
+     * 
+     * @return type
+     */
 	protected function _initDatabaseConnection()
 	{
 	
@@ -167,6 +210,10 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 
 	}
 	
+    /**
+     * 
+     * @return \Zend_Db_Profiler
+     */
     protected function _initMysqlDatabaseProfiler()
 	{
 	
@@ -195,7 +242,12 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 
     }
 	
-	// usefull to cache database queries if no memory cache like apc or memcache is available
+	/**
+     * 
+     * usefull to cache database queries if no memory cache like apc or memcache is available
+     * 
+     * @return type
+     */
     protected function _initFilesCache()
 	{
 
@@ -226,8 +278,13 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 
     }
 	
-	// usefull to cache loaded files, like routes configuration, acl rules or translation files
-	// the masterfiles cache will automatically get updated every time a file content changes
+	/**
+     * 
+     * usefull to cache loaded files, like routes configuration, acl rules or translation files
+	 * the masterfiles cache will automatically get updated every time a file content changes
+     * 
+     * @return type
+     */
     protected function _initMasterFilesCache()
 	{
 	
@@ -238,7 +295,12 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         
 	}
 	
-	// usefull to cache database queries
+	/**
+     * 
+     * usefull to cache database queries
+     * 
+     * @return type
+     */
     protected function _initAPCCache()
 	{
 	
@@ -249,6 +311,9 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         
 	}
     
+    /**
+     * 
+     */
     protected function _initApplicationLanguageDetection()
 	{
 
@@ -256,6 +321,10 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         
     }
 
+    /**
+     * 
+     * @return \Zend_Translate
+     */
 	protected function _initApplicationTranslations()
 	{
 	
@@ -277,6 +346,10 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 	
 	}
     
+    /**
+     * 
+     * @return type
+     */
     protected function _initApplicationLocale()
 	{
 
@@ -291,7 +364,9 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         
     }
 	
-    
+    /**
+     * 
+     */
 	protected function _initLanguageRoutes()
 	{
 	
@@ -299,6 +374,9 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 	
 	}
 	
+    /**
+     * 
+     */
     protected function _initActionHelpers()
 	{
 
@@ -308,6 +386,10 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 
     }
 	
+    /**
+     * 
+     * @return \Zend_Session_Namespace
+     */
 	protected function _initApplicationSession()
 	{
 	
@@ -316,6 +398,9 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 		return $session;
 	}
 	
+    /**
+     * 
+     */
 	protected function _initApplicationAuthentification()
     {
 	
@@ -323,6 +408,9 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 	
 	}
 	
+    /**
+     * 
+     */
 	protected function _initApplicationAuthorisation()
     {
 	
@@ -330,6 +418,9 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 	
 	}
 	
+    /**
+     * 
+     */
 	protected function _initApplicationPaginator()
 	{
 	
@@ -338,6 +429,9 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 	
 	}
     
+    /**
+     * 
+     */
 	protected function _initBugsnag()
 	{
     
