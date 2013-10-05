@@ -82,9 +82,10 @@ class Chris_Controller_Plugin_Authorisation extends Zend_Controller_Plugin_Abstr
         // http://ralphschindler.com/2009/08/13/dynamic-assertions-for-zend_acl-in-zf
         // http://stackoverflow.com/questions/11668785/zend-acl-dynamic-assertion
         // http://wiip.fr/content/zend-acl-et-les-assertions
-        $acl->add(new Zend_Acl_Resource('comment'));
+        $acl->addResource('comment');
         
-        $acl->allow('user', 'comment', null, new Chris_Acl_CommentAssert());
+        //$acl->allow('admin', 'comment', 'edit');
+        $acl->allow('user', 'comment', 'edit', new Chris_Acl_CommentAssert());
 		
         // check if user is allowed to access resource
         $resource = $request->getControllerName();
