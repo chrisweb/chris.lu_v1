@@ -16,6 +16,14 @@ class Chris_Controller_Plugin_LanguageRoute extends Zend_Controller_Plugin_Abstr
 			$locale = $bootstrap->getResource('ApplicationLocale');
 			
 			$router = $frontController->getRouter();
+            
+            // commented as i don't use any translated routes yet
+            // $translate = $bootstrap->getResource('ApplicationTranslations');
+            //Zend_Controller_Router_Route::setDefaultTranslator($translate);
+
+            // pass language to the routes as global parameter
+            // avoids having to pass it every time you use the url view helper
+            //$router->setGlobalParam('language', strtolower(substr($locale->toString(), 0, 2)));
 
 			$routeLang = new Zend_Controller_Router_Route(
 				':lang',

@@ -235,6 +235,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 		$this->masterFilesCache = '';
 		
 		return $this->masterFilesCache;
+        
 	}
 	
 	// usefull to cache database queries
@@ -245,8 +246,37 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 		$this->apcCache = '';
 		
 		return $this->apcCache;
+        
 	}
+    
+    protected function _initApplicationLanguageDetection()
+	{
+
+		$this->frontController->registerPlugin(new Chris_Controller_Plugin_LanguageDetection());
+        
+    }
+
+	protected function _initApplicationTranslations()
+	{
 	
+		$filesCache = $this->getResource('FilesCache');
+        
+        Zend_Translate::setCache($filesCache);
+        
+        $translationsPath = APPLICATION_PATH.'/configs/translations.tmx';
+		
+		$translate = new Zend_Translate('tmx', $translationsPath, 'en');
+
+		// TODO: replace with bootstrap invoke arg system
+        Zend_Registry::set('Translate', $translate);
+        
+        Zend_Form::setDefaultTranslator($translate);
+        //Zend_Validate_Abstract::setDefaultTranslator($translate);
+		
+		return $translate;
+	
+	}
+    
     protected function _initApplicationLocale()
 	{
 
@@ -254,37 +284,18 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 		$locale = $this->getResource('Locale');
 	
         Zend_Locale::setCache($this->filesCache);
+        
+        $locale->setDefault('en');
 
 		return $locale;
+        
     }
 	
+    
 	protected function _initLanguageRoutes()
 	{
 	
 		$this->frontController->registerPlugin(new Chris_Controller_Plugin_LanguageRoute());
-	
-	}
-	
-	protected function _initApplicationTranslations()
-	{
-	
-		Zend_Translate::setCache($this->filesCache);
-		
-		$translate = new Zend_Translate('tmx', null, 'en');
-
-        //Zend_Controller_Router_Route::setDefaultTranslator($translate);
-        Zend_Form::setDefaultTranslator($translate);
-        //Zend_Validate_Abstract::setDefaultTranslator($translate);
-
-		// TODO: replace with bootstrap invoke arg system
-        Zend_Registry::set('Translate', $translate);
-        
-        // pass language to the routes as global parameter
-        // avoids having to pass it every time you use the url view helper
-        //$router = Zend_Controller_Front::getInstance()->getRouter();
-        //$router->setGlobalParam('language', $this->_language);
-		
-		return $translate;
 	
 	}
 	
