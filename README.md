@@ -7,7 +7,9 @@ My personal development blog, using PHP and the Zend Framework 1 for the backend
 
 In production the blog is hosted on NGINX with php-fpm and apc cache. The database is MongoDB.
 
-This is not a Wordpress Blog with lots of features, it is just replacement an expirement with enough features to host my own stuff online. I have put it on GitHub because maybe some parts like my library, the layout helpers or my module structure where each module has its own boostrap and configuration files may be helpfull for zf1 starters.
+This is not a Wordpress Blog with lots of features, it is an expirement with just enough features to host my own stuff online.
+
+I have put it on GitHub because maybe some parts like my library, the layout helpers or my "modules structure" where each module has its own boostrap and configuration files may be helpfull for zf1 starters.
 
 Install
 -------
