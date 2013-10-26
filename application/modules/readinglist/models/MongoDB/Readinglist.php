@@ -98,21 +98,17 @@ class Readinglist_Model_MongoDB_Readinglist extends Chris_Db_MongoDB
 
                         $preparedData = $this->prepareData($data, $previousData);
 
-                        // we are using $set here because without $set the existing
+                        // * we are using $set here because without $set the existing
                         // document would get replaced by the new, but we want to
                         // some fields like for example the creation date
-                        if (count($preparedData['set']) > 0) {
-                            
-                            $this->readinglistCollection->update(array('_id' => $mongoId), array('$set' => $preparedData['set']), array('safe' => true));
-                            
-                        }
 
-                        // as we use $set fields that have been emptied by the user
+                        // * as we use $set fields that have been emptied by the user
                         // will remain in the document and have an empty value, to
                         // remove those fields completly we have to unset them
-                        if (count($preparedData['unset']) > 0) {
-                            
-                            $this->readinglistCollection->update(array('_id' => $mongoId), array('$unset' => $preparedData['unset']), array('safe' => true));
+                        
+                        if (count($preparedData) > 0) {
+                        
+                            $this->readinglistCollection->update(array('_id' => $mongoId), $preparedData, array('safe' => true));
                             
                         }
 

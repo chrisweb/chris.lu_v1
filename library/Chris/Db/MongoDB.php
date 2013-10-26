@@ -52,8 +52,20 @@ class Chris_Db_MongoDB extends Mongo
 		
 		}
         
-        $preparedData = array('set' => $updateFields, 'unset' => $deleteFields);
-        
+        $preparedData = array();
+
+        if (count($updateFields) > 0) {
+
+            $preparedData['$set'] = $updateFields;
+
+        }
+
+        if (count($deleteFields) > 0) {
+
+            $preparedData['$unset'] = $deleteFields;
+
+        }
+
         //Zend_Debug::dump($preparedData);exit;
 	
 		return $preparedData;
