@@ -1,6 +1,6 @@
 <?php
  
-class Article_Model_MongoDB_Article
+class Article_Model_MongoDB_Article extends Chris_Db_MongoDB
 {
 
 	protected $articleCollection;
@@ -69,17 +69,17 @@ class Article_Model_MongoDB_Article
 		//exit;
 		
 		if (count($data) > 0) {
-		
+
 			try {
 		
 				if (array_key_exists('_id', $data)) {
-
+                    
 					$id = $data['_id'];
 
 					unset($data['_id']);
 
 					$data['last_update_date'] = new MongoDate();
-                    
+
                     try {
                         
                         $mongoId = new MongoId($id);
@@ -89,11 +89,33 @@ class Article_Model_MongoDB_Article
                         return false;
                         
                     }
-					
-					$this->articleCollection->update(array('_id' => $mongoId), array('$set' => $data), array('safe' => true));
+
+                    $previousData = $this->getById($id);
+                    
+                    $preparedData = $this->prepareData($data, $previousData);
+                    
+                    // we are using $set here because without $set the existing
+                    // document would get replaced by the new, but we want to
+                    // some fields like for example the creation date
+                    if (count($preparedData['set']) > 0) {
+                        
+                        $this->articleCollection->update(array('_id' => $mongoId), array('$set' => $preparedData['set']), array('safe' => true));
+                        
+                    }
+                    
+                    // as we use $set fields that have been emptied by the user
+                    // will remain in the document and have an empty value, to
+                    // remove those fields completly we have to unset them
+                    if (count($preparedData['unset']) > 0) {
+                    
+                        $this->articleCollection->update(array('_id' => $mongoId), array('$unset' => $preparedData['unset']), array('safe' => true));
+                        
+                    }
 
 				} else {
-		
+                    
+                    $data = $this->removeEmptyFields($data);
+
 					$data['last_update_date'] = new MongoDate();
 					$data['publish_date'] = new MongoDate();
 		

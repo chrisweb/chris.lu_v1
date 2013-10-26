@@ -68,16 +68,12 @@ class Readinglist_Model_MongoDB_Readinglist extends Chris_Db_MongoDB
 	{
 	
 		//Zend_Debug::dump($data);
+        //exit;
 		
 		if (!is_null($this->readinglistCollection)) {
-			
-			$data = $this->removeEmptyEntries($data);
-			
-			//Zend_Debug::dump($data);
-			//exit;
-			
+
 			if (count($data) > 0) {
-			
+
 				try {
 			
 					if (array_key_exists('_id', $data)) {
@@ -88,15 +84,42 @@ class Readinglist_Model_MongoDB_Readinglist extends Chris_Db_MongoDB
 
 						$data['last_update_date'] = new MongoDate();
 
-						// if you use $set only fields that get passed in array will be updated other fields will be unchanged
-						// if you dont use $set, mongodb will delete existing entry and replace it completly with new data
-						
-						// we dont use set, because if user deletes content of field in form, we also want to remove the key/value pair completly from db, we don't keep keys that have an empty value in the db
-						// we could use set and pass empty values for the fields we want to be empty, but this would also keep the key, we prefer to delete it all (key and value) if there is no data in the field
-						$this->readinglistCollection->update(array('_id' => new MongoId($id)), array('$set' => $data), array('safe' => true));
+                        try {
+
+                            $mongoId = new MongoId($id);
+
+                        } catch (Exception $exception) {
+
+                            return false;
+
+                        }
+
+                        $previousData = $this->getById($id);
+
+                        $preparedData = $this->prepareData($data, $previousData);
+
+                        // we are using $set here because without $set the existing
+                        // document would get replaced by the new, but we want to
+                        // some fields like for example the creation date
+                        if (count($preparedData['set']) > 0) {
+                            
+                            $this->readinglistCollection->update(array('_id' => $mongoId), array('$set' => $preparedData['set']), array('safe' => true));
+                            
+                        }
+
+                        // as we use $set fields that have been emptied by the user
+                        // will remain in the document and have an empty value, to
+                        // remove those fields completly we have to unset them
+                        if (count($preparedData['unset']) > 0) {
+                            
+                            $this->readinglistCollection->update(array('_id' => $mongoId), array('$unset' => $preparedData['unset']), array('safe' => true));
+                            
+                        }
 
 					} else {
-			
+                        
+                        $data = $this->removeEmptyFields($data);
+
 						$data['last_update_date'] = new MongoDate();
 						$data['publish_date'] = new MongoDate();
 			

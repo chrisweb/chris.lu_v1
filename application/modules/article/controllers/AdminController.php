@@ -86,18 +86,7 @@ class Article_AdminController extends Zend_Controller_Action
                 $formData = $manageArticleForm->getValues();
 
 				if ($filteredId) $formData['_id'] = $filteredId;
-				
-                //Zend_Debug::dump($formData);
-                //exit;
-				
-				if (empty($formData['body'])) unset($formData['body']);
-				if (is_null($formData['image'])) unset($formData['image']);
-				if (empty($formData['image_alt'])) unset($formData['image_alt']);
-				if (empty($formData['date_start'])) unset($formData['date_start']);
-				if (empty($formData['date_end'])) unset($formData['date_end']);
-				if (empty($formData['tags'])) unset($formData['tags']);
-				if (empty($formData['relatedTag'])) unset($formData['relatedTag']);
-				
+
 				// explode tags
 				if (array_key_exists('tags', $formData)) {
 				
