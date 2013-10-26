@@ -11,7 +11,7 @@
                 <?php foreach ($this->results as $bookmark) { ?>
 
                     <li>
-                        <a href="<?php echo $this->escape($bookmark['url']); ?>" title="<?php echo $this->escape($bookmark['title']); ?>" class="bookmarks_bookmark">
+                        <a href="<?php echo $this->escape($bookmark['url']); ?>" title="<?php echo $this->escape($bookmark['title']); ?>" class="bookmarks_bookmark" rel="external">
                             <?php echo $this->escape($bookmark['title']); ?>
                         </a>
                     </li>
