@@ -63,6 +63,8 @@ class Readinglist_AdminController extends Zend_Controller_Action {
         $options = null;
 		
 		$manageReadinglistForm = new Readinglist_Form_ManageReadinglist($options);
+        
+        $this->view->status = 'success';
 
         if ($this->getRequest()->isPost()) {
 
@@ -93,6 +95,8 @@ class Readinglist_AdminController extends Zend_Controller_Action {
 					//Zend_Debug::dump($response);
 					$manageReadinglistForm->populate($formData);
 					$this->view->manageReadinglistForm = $manageReadinglistForm;
+                    
+                    $this->view->status = 'failed';
 				
 				}
 
@@ -255,7 +259,7 @@ class Readinglist_AdminController extends Zend_Controller_Action {
 										
 										$thumbnailPath = $this->saveFile($imageUrl, $domain, 'thumbnail');
 										
-										if ($thumbnailPath) {
+										if ($thumbnailPath !== false) {
 										
 											$websiteData['image'] = $thumbnailPath;
 											
@@ -308,7 +312,7 @@ class Readinglist_AdminController extends Zend_Controller_Action {
 								
 								$faviconPath = $this->saveFile($faviconUrl, $domain, 'favicon');
 								
-								if ($faviconPath) {
+								if ($faviconPath !== false) {
 								
 									$websiteData['favicon'] = $faviconPath;
 									
@@ -401,7 +405,7 @@ class Readinglist_AdminController extends Zend_Controller_Action {
 	
 		$fileContent = @file_get_contents($fileUrl);
 		
-		if ($fileContent) {
+		if ($fileContent !== false) {
 			
 			$bootstrap = $this->getInvokeArg('bootstrap');
 			$configuration = $bootstrap->getResource('ApplicationConfiguration');
@@ -434,16 +438,34 @@ class Readinglist_AdminController extends Zend_Controller_Action {
 			$filePath = $articleUploadPath.'/'.$fileName;
 			
 			$filePointer = fopen($filePath, 'w');
-			fwrite($filePointer, $fileContent);
-			fclose($filePointer);
-			
-			if ($type === 'thumbnail') {
-			
-				$imageHelper->thumbs($filePath, 200);
-			
-			}
-			
-			return $configuration->upload->path.'/readinglist/'.$cleanedWebsitePath.'/'.$fileName;
+            
+            if ($filePointer !== false) {
+            
+                $written = fwrite($filePointer, $fileContent);
+                
+                if ($written !== false) {
+                
+                    fclose($filePointer);
+
+                    if ($type === 'thumbnail') {
+
+                        $imageHelper->thumbs($filePath, 200);
+
+                    }
+
+                    return $configuration->upload->path.'/readinglist/'.$cleanedWebsitePath.'/'.$fileName;
+                    
+                } else {
+                    
+                    return false;
+                    
+                }
+                
+            } else {
+                
+                return false;
+                
+            }
 			
 		} else {
 		

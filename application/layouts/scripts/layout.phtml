@@ -58,10 +58,15 @@
 
         //Zend_Debug::dump($key, '$key');
         //Zend_Debug::dump($value, '$value');
+
         // check for object because if there is an error
         // key will be error_handler and value an exception object
-        if (!is_object($value))
-            $routename .= '_' . $key . '_' . $value;
+        if (!is_object($value) && !is_array($value)) {
+            
+            $routename .= '_'.$key.'_'.$value;
+            
+        }
+
     }
     ?>
 

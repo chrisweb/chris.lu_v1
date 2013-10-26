@@ -172,5 +172,15 @@
                 <seg>Comments</seg>
             </tuv>
         </tu>
+		<tu tuid="DELETE_FAILED">
+            <tuv xml:lang="en">
+                <seg>Deletation failed</seg>
+            </tuv>
+        </tu>
+		<tu tuid="SAVING_FAILED">
+            <tuv xml:lang="en">
+                <seg>Saving failed</seg>
+            </tuv>
+        </tu>
     </body>
 </tmx>

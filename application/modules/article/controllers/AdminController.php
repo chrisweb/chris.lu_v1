@@ -184,6 +184,8 @@ class Article_AdminController extends Zend_Controller_Action
 		$options = array();
 		
 		$deleteArticleForm = new Article_Form_DeleteArticle($options);
+        
+        $this->view->status = 'success';
 
         if ($this->getRequest()->isPost()) {
 
@@ -197,7 +199,13 @@ class Article_AdminController extends Zend_Controller_Action
 				
 				if (array_key_exists('yes', $formData)) {
 				
-					$articleModel->deleteEntry($id);
+					$deleted = $articleModel->deleteEntry($id);
+                    
+                    if (!$deleted) {
+                        
+                        $this->view->status = 'failed';
+                        
+                    }
 					
 				}
 				

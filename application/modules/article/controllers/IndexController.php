@@ -27,6 +27,8 @@ class Article_IndexController extends Zend_Controller_Action
 	
 		$id = $this->getRequest()->getParam('id', '');
         
+        $this->view->article = null;
+        
         if (!empty($id)) { 
 
             //Zend_Debug::dump($id, '$id: ');
@@ -41,48 +43,56 @@ class Article_IndexController extends Zend_Controller_Action
             $article = $articleModel->getById($filteredId);
 
             //Zend_Debug::dump($article, '$article: ');
+            
+            if (!is_null($article)) { 
 
-            // fetch related articles list based on related tag
-            if (array_key_exists('relatedTag', $article)) {
+                // fetch related articles list based on related tag
+                if (array_key_exists('relatedTag', $article)) {
 
-                $where = array('relatedTag' => $article['relatedTag']);
-                $keys = array('_id', 'title');
+                    $where = array('relatedTag' => $article['relatedTag']);
+                    $keys = array('_id', 'title');
 
-                $relatedArticles = $articleModel->getList($where, $keys);
+                    $relatedArticles = $articleModel->getList($where, $keys);
 
-                $article['relatedArticles'] = $relatedArticles;
+                    $article['relatedArticles'] = $relatedArticles;
 
-                unset($article['relatedTag']);
+                    unset($article['relatedTag']);
 
+                }
+
+                $this->view->article = $article;
+
+                // get the comments for this article
+                // TODO: comments pagination
+                $commentModel = new Article_Model_MongoDB_Comment();
+
+                $where = array('article_id' => $filteredId);
+                $keys = array();
+
+                $commentsCursor = $commentModel->getList($where, $keys);
+
+                $sort = array('publish_date' => 1);
+
+                $commentsCursor->sort($sort);
+
+                $this->view->comments = $commentsCursor;
+
+                // get the comment form
+                $commentForm = new Article_Form_ManageComment();
+
+                $this->view->commentForm = $commentForm;
+
+                $commentForm->setAction($this->_helper->url->url(array('article_id' => $filteredId), 'articlecomment'));
+                
+            } else {
+                
+                $this->getResponse()->setHttpResponseCode(404);
+                
             }
-
-            $this->view->article = $article;
-
-            // get the comments for this article
-            // TODO: comments pagination
-            $commentModel = new Article_Model_MongoDB_Comment();
-
-            $where = array('article_id' => $filteredId);
-            $keys = array();
-
-            $commentsCursor = $commentModel->getList($where, $keys);
-
-            $sort = array('publish_date' => 1);
-
-            $commentsCursor->sort($sort);
-
-            $this->view->comments = $commentsCursor;
-
-            // get the comment form
-            $commentForm = new Article_Form_ManageComment();
-
-            $this->view->commentForm = $commentForm;
-
-            $commentForm->setAction($this->_helper->url->url(array('article_id' => $filteredId), 'articlecomment'));
             
         } else {
             
-            // TODO: show 404
+            $this->getResponse()->setHttpResponseCode(404);
             
         }
 

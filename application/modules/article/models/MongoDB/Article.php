@@ -35,9 +35,19 @@ class Article_Model_MongoDB_Article
 	public function getById($id, array $keys = array())
 	{
 	
-		$data = $this->articleCollection->findOne(array('_id' => new MongoId($id)), $keys);
-		
-		return $data;
+        try {
+            
+            $mongoId = new MongoId($id);
+            
+            $data = $this->articleCollection->findOne(array('_id' => $mongoId), $keys);
+            
+            return $data;
+            
+        } catch (MongoException $exception) {
+            
+            return null;
+            
+        }
 	
 	}
 	
@@ -69,8 +79,18 @@ class Article_Model_MongoDB_Article
 					unset($data['_id']);
 
 					$data['last_update_date'] = new MongoDate();
+                    
+                    try {
+                        
+                        $mongoId = new MongoId($id);
+                        
+                    } catch (Exception $exception) {
+
+                        return false;
+                        
+                    }
 					
-					$this->articleCollection->update(array('_id' => new MongoId($id)), array('$set' => $data), array('safe' => true));
+					$this->articleCollection->update(array('_id' => $mongoId), array('$set' => $data), array('safe' => true));
 
 				} else {
 		
@@ -100,7 +120,19 @@ class Article_Model_MongoDB_Article
 	public function deleteEntry($id)
 	{
 	
-		$this->articleCollection->remove(array('_id' => new MongoId($id)));
+        try {
+            
+            $mongoId = new MongoId($id);
+            
+            $this->articleCollection->remove(array('_id' => $mongoId));
+            
+        } catch (Exception $exception) {
+
+            return false;
+            
+        }
+        
+		return true;
 	
 	}
 
