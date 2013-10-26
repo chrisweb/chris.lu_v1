@@ -38,11 +38,11 @@ class Application_Layouts_Helpers_MyReadinglist extends Zend_View_Helper_Abstrac
 					
 						$fileContent = file_get_contents(APPLICATION_PATH.'/../public'.$readinglist['favicon']);
 				
-						$myReadinglist .= '<li style="list-style-type: none !important;"><img src="data:image/ico;base64,'.base64_encode($fileContent).'" class="readinglist_icon"><a href="'.$this->view->escape($readinglist['url']).'">'.$this->view->escape($readinglist['title']).'</a></li>';
+						$myReadinglist .= '<li style="list-style-type: none !important;"><img src="data:image/ico;base64,'.base64_encode($fileContent).'" class="readinglist_icon"><a href="'.$this->view->escape($readinglist['url']).'" rel="external">'.$this->view->escape($readinglist['title']).'</a></li>';
 
 					} else {
 					
-						$myReadinglist .= '<li><a href="'.$this->view->escape($readinglist['url']).'">'.$this->view->escape($readinglist['title']).'</a></li>';
+						$myReadinglist .= '<li><a href="'.$this->view->escape($readinglist['url']).'" rel="external">'.$this->view->escape($readinglist['title']).'</a></li>';
 					
 					}
 					
