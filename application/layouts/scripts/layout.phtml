@@ -46,28 +46,45 @@
 
     //Zend_Debug::dump(Zend_Controller_Front::getInstance()->getRequest()->getParams(), 'params');
 
-    $routename .= Zend_Controller_Front::getInstance()->getRouter()->getCurrentRouteName();
-
-    $parameters = Zend_Controller_Front::getInstance()->getRequest()->getParams();
-
-    unset($parameters['module']);
-    unset($parameters['controller']);
-    unset($parameters['action']);
-
-    foreach ($parameters as $key => $value) {
-
-        //Zend_Debug::dump($key, '$key');
-        //Zend_Debug::dump($value, '$value');
-
-        // check for object because if there is an error
-        // key will be error_handler and value an exception object
-        if (!is_object($value) && !is_array($value)) {
+    if (isset($this->errorMessage)) {
+        
+        if ($this->errorMessage === PAGE_NOT_FOUND) {
             
-            $routename .= '_'.$key.'_'.$value;
+            $routename .= 'error_404';
+            
+        } else {
+            
+            $routename .= 'error_500';
             
         }
+        
+    } else {
+        
+        $routename .= Zend_Controller_Front::getInstance()->getRouter()->getCurrentRouteName();
 
+        $parameters = Zend_Controller_Front::getInstance()->getRequest()->getParams();
+
+        unset($parameters['module']);
+        unset($parameters['controller']);
+        unset($parameters['action']);
+
+        foreach ($parameters as $key => $value) {
+
+            //Zend_Debug::dump($key, '$key');
+            //Zend_Debug::dump($value, '$value');
+
+            // check for object because if there is an error
+            // key will be error_handler and value an exception object
+            if (!is_object($value) && !is_array($value)) {
+
+                $routename .= '_'.$key.'_'.$value;
+
+            }
+
+        }
+    
     }
+
     ?>
 
     <!-- <?php echo $routename; ?> -->
