@@ -1,8 +1,14 @@
 <?php
 
+/**
+ * 
+ */
 class Article_AdminController extends Zend_Controller_Action
 {
 
+    /**
+     * 
+     */
     public function init()
 	{
 
@@ -17,6 +23,9 @@ class Article_AdminController extends Zend_Controller_Action
 		
 	}
 
+    /**
+     * 
+     */
     public function indexAction()
 	{
 	
@@ -45,6 +54,9 @@ class Article_AdminController extends Zend_Controller_Action
 
     }
 	
+    /**
+     * 
+     */
     public function manageAction()
 	{
 
@@ -162,6 +174,9 @@ class Article_AdminController extends Zend_Controller_Action
 
     }
 	
+    /**
+     * 
+     */
 	public function deleteAction()
 	{
 	
@@ -220,5 +235,36 @@ class Article_AdminController extends Zend_Controller_Action
 		}
 	
 	}
+    
+    /**
+     * 
+     */
+    public function commentsAction()
+	{
+	
+		$commentModel = new Article_Model_MongoDB_Comment();
+		
+		$keys = array();
+		
+		$cursor = $commentModel->getList(array(), $keys);
+		
+		$sort = array('publish_date' => 1);
+		
+		// paginator
+		$cacheIdentifier = md5('article_comments_admin');
+        $adapter = new Chris_Paginator_Adapter_MongoDB($cursor, $cacheIdentifier, $sort);
+        $paginator = new Zend_Paginator($adapter);
+
+        $page = (int) $this->getRequest()->getParam('page', 1);
+
+        $paginator->setCurrentPageNumber($page);
+        $paginator->setItemCountPerPage(10);
+        $paginator->setPageRange(5);
+		
+		$this->view->paginator = $paginator;
+		
+		$this->view->routeName = 'articlecommentadminindex';
+
+    }
 
 }

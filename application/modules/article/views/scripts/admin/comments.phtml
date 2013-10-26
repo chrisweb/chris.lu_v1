@@ -1,0 +1,30 @@
+<?php $this->headTitle($this->translate('ARTICLE_COMMENT_ADMIN_INDEX')); ?>
+
+<table class="table table-striped">
+
+	<?php foreach ($this->paginator as $comment) { ?>
+	
+		<?php //Zend_Debug::dump($comment); ?>
+
+		<tr>
+            <td>
+                [<?php
+                    $locale = new Zend_Locale();
+                    $date = new Zend_Date($comment['last_update_date']->sec, false, $locale);
+                    echo $date->get(Zend_Date::DATE_FULL);
+                ?>]
+            </td>
+            <td>
+                <a href="<?php echo $this->url(array('id' => $comment['article_id']), 'articleindexread'); ?>">
+                    <?php echo $this->escape(substr($comment['name'], 0, 30)); ?>: <?php echo $this->escape(substr($comment['comment'], 0, 30)); ?>
+                </a>
+            </td>
+			<td><a href="<?php echo $this->url(array('id' => $comment['_id']), 'deletecomment'); ?>" class="btn btn-mini btn-primary"><?php echo $this->translate('DELETE'); ?></a></td>
+		</tr>
+
+	<?php } ?>
+
+</table>
+<br /><br />
+
+<div class="paginator"><?php echo $this->paginationControl($this->paginator, null, null, array('routeName' => $this->routeName)); ?></div>

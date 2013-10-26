@@ -51,10 +51,14 @@
                 <seg>Last</seg>
             </tuv>
         </tu>
-		
 		<tu tuid="ADMIN_ARTICLE_MANAGE">
             <tuv xml:lang="en">
                 <seg>Article Administration</seg>
+            </tuv>
+        </tu>
+		<tu tuid="ADMIN_ARTICLE_COMMENT_MANAGE">
+            <tuv xml:lang="en">
+                <seg>Article Comment Administration</seg>
             </tuv>
         </tu>
 		<tu tuid="TITLE">
