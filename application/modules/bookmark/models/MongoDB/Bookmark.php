@@ -57,7 +57,7 @@ class Bookmark_Model_MongoDB_Bookmark extends Chris_Db_MongoDB
 	
 		//Zend_Debug::dump($data);
 		
-		$data = $this->removeEmptyEntries($data);
+		$data = $this->removeEmptyFields($data);
 		
 		//Zend_Debug::dump($data);
 		//exit;
