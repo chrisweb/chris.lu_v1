@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<routes>
+
+	<playlistsadminindex type="Zend_Controller_Router_Route_Static">
+		<route>playlists/admin</route>
+		<defaults module="playlist" controller="admin" action="index" />
+	</playlistsadminindex>
+
+	<playlistsadminmanage type="Zend_Controller_Router_Route">
+		<route>playlists/admin/manage/:id</route>
+		<defaults module="playlist" controller="admin" action="manage" id="" />
+	</playlistsadminmanage>
+	
+	<playlistsadmindelete type="Zend_Controller_Router_Route">
+		<route>playlists/admin/delete/:id</route>
+		<defaults module="playlist" controller="admin" action="delete" id="" />
+	</playlistsadmindelete>
+	
+	<playlistsindex type="Zend_Controller_Router_Route_Static">
+		<route>myplaylists</route>
+		<defaults module="playlist" controller="index" action="index" />
+	</playlistsindex>
+	
+	<playlistsindexread type="Zend_Controller_Router_Route">
+		<route>myplaylists/view/:id</route>
+		<defaults module="playlist" controller="index" action="view" id="" />
+	</playlistsindexread>
+
+</routes>

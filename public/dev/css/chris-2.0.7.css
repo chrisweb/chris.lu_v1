@@ -201,7 +201,6 @@ ul.nav li {
     font-family: 'Electrolize', sans-serif;
 	text-decoration: none;
 	background-color: transparent;
-	font-size: 22px;
 	-webkit-border-radius: 0px !important;
 	-moz-border-radius: 0px !important;
 	border-radius: 0px !important;
@@ -484,7 +483,7 @@ a.ui-link:active, a.ui-link:link, a.ui-link:visited, a.ui-link:active {
 	}
 	
 	ul.nav li {
-		width: 250px !important;
+		width: 200px !important;
 		height: 80px !important;
 	}
 	
@@ -498,6 +497,7 @@ a.ui-link:active, a.ui-link:link, a.ui-link:visited, a.ui-link:active {
 		line-height: 80px;
 		padding: 0px 0px 0px 0px !important;
 		border-left: 1px solid #575757;
+        font-size: 22px;
 	}
 	
 	#rss_button {
@@ -552,7 +552,7 @@ a.ui-link:active, a.ui-link:link, a.ui-link:visited, a.ui-link:active {
 	}
 	
 	ul.nav li {
-		width: 200px !important;
+		width: 170px !important;
 		height: 60px !important;
 	}
 	
@@ -566,6 +566,7 @@ a.ui-link:active, a.ui-link:link, a.ui-link:visited, a.ui-link:active {
 		line-height: 60px;
 		padding: 0px 0px 0px 0px !important;
 		border-left: 1px solid #575757;
+        font-size: 20px;
 	}
 	
 	#rss_button {
@@ -619,7 +620,7 @@ a.ui-link:active, a.ui-link:link, a.ui-link:visited, a.ui-link:active {
 	}
 	
 	ul.nav li {
-		width: 160px !important;
+		width: 130px !important;
 		height: 60px !important;
 	}
 	
@@ -633,6 +634,7 @@ a.ui-link:active, a.ui-link:link, a.ui-link:visited, a.ui-link:active {
 		line-height: 60px;
 		padding: 0px 0px 0px 0px !important;
 		border-left: 1px solid #575757;
+        font-size: 16px;
 	}
 	
 	#rss_button {
@@ -687,6 +689,9 @@ a.ui-link:active, a.ui-link:link, a.ui-link:visited, a.ui-link:active {
 	
 	.navbar .nav > li {
 		border-top: 1px solid #575757 !important;
+        height: 30px !important;
+        line-height: 12px !important;
+        vertical-align: middle !important;
 	}
     
 	.navbar .nav > li#first {

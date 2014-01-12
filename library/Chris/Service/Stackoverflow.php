@@ -67,7 +67,7 @@ class Chris_Service_Stackoverflow extends Zend_Rest_Client
      * Set options
      *
      * @param  $options
-     * @return Zend_Service_Facebook
+     * @return Zend_Service_Stackoverflow
      */
     public function setOptions(array $options)
     {
@@ -116,7 +116,7 @@ class Chris_Service_Stackoverflow extends Zend_Rest_Client
      * Performs a GitHub query
      * 
      * @return type
-     * @throws Zend_Service_Facebook_Exception
+     * @throws Zend_Service_Stackoverflow_Exception
      * @throws Zend_Oauth2_Exception
      */
     public function query()
@@ -133,8 +133,8 @@ class Chris_Service_Stackoverflow extends Zend_Rest_Client
             $body   = $response->getBody();
             $status = $response->getStatus();
         } else {
-            require_once 'Zend/Service/Facebook/Exception.php';
-            throw new Zend_Service_Facebook_Exception('the response we recieved is emtpy');
+            require_once 'Zend/Service/Stackoverflow/Exception.php';
+            throw new Zend_Service_Stackoverflow_Exception('the response we recieved is emtpy');
         }
 
         //Zend_Debug::dump($body, 'body');

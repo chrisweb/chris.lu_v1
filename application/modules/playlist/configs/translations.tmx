@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tmx version="2.0" xmlns="http://www.lisa.org/tmx20">
+    <body>
+		<tu tuid="PLAYLIST">
+            <tuv xml:lang="en">
+                <seg>Playlist</seg>
+            </tuv>
+        </tu>
+		<tu tuid="PLAYLISTS">
+            <tuv xml:lang="en">
+                <seg>Playlists</seg>
+            </tuv>
+        </tu>
+		<tu tuid="MYPLAYLISTS">
+            <tuv xml:lang="en">
+                <seg>MyPlaylists</seg>
+            </tuv>
+        </tu>
+		<tu tuid="MYPLAYLIST_JAMENDO">
+            <tuv xml:lang="en">
+                <seg>My Jamendo Playlist</seg>
+            </tuv>
+        </tu>
+		<tu tuid="MYPLAYLISTS_YOUTUBE">
+            <tuv xml:lang="en">
+                <seg>My Youtube Playlists</seg>
+            </tuv>
+        </tu>
+		<tu tuid="MYPLAYLISTS_SPOTIFY">
+            <tuv xml:lang="en">
+                <seg>My Spotify Playlist</seg>
+            </tuv>
+        </tu>
+    </body>
+</tmx>

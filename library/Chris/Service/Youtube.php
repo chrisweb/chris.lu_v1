@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Chris Service GitHub for Zend Framework 1
+ * Chris Service Youtube for Zend Framework 1
  *
  * LICENSE
  *
@@ -26,15 +26,15 @@ require_once 'Zend/Json.php';
 require_once 'Chrisweb/Oauth2.php';
 
 /**
- * Chris Service GitHub
+ * Chris Service Youtube
  */
-class Chris_Service_GitHub extends Zend_Rest_Client
+class Chris_Service_Youtube extends Zend_Rest_Client
 {
 
     /**
      * 
      */
-    const API_URL = 'https://api.github.com';
+    const API_URL = 'https://www.googleapis.com/youtube/v3';
     
     /**
      *
@@ -73,7 +73,7 @@ class Chris_Service_GitHub extends Zend_Rest_Client
      * Set options
      *
      * @param  $options
-     * @return Zend_Service_GitHub
+     * @return Zend_Service_Youtube
      */
     public function setOptions(array $options)
     {
@@ -120,7 +120,7 @@ class Chris_Service_GitHub extends Zend_Rest_Client
     /**
      * 
      * @param String $path
-     * @return \Chris_Service_GitHub
+     * @return \Chris_Service_Youtube
      */
     public function setPath($path)
     {
@@ -152,10 +152,10 @@ class Chris_Service_GitHub extends Zend_Rest_Client
 
     /**
      * 
-     * Performs a GitHub query
+     * Performs a Youtube query
      * 
      * @return type
-     * @throws Zend_Service_GitHub_Exception
+     * @throws Zend_Service_Youtube_Exception
      * @throws Zend_Oauth2_Exception
      */
     public function query()
@@ -172,13 +172,13 @@ class Chris_Service_GitHub extends Zend_Rest_Client
                 $status = $response->getStatus();
                 
             } else {
-                require_once 'Chris/Service/GitHub/Exception.php';
-                throw new Chris_Service_GitHub_Exception($response);
+                require_once 'Chris/Service/Youtube/Exception.php';
+                throw new Chris_Service_Youtube_Exception($response);
             }
 
         } else {
-            require_once 'Chris/Service/GitHub/Exception.php';
-            throw new Chris_Service_GitHub_Exception('the response we recieved is emtpy');
+            require_once 'Chris/Service/Youtube/Exception.php';
+            throw new Chris_Service_Youtube_Exception('the response we recieved is emtpy');
         }
 
         //Zend_Debug::dump($body, 'body: ');exit;
@@ -187,16 +187,16 @@ class Chris_Service_GitHub extends Zend_Rest_Client
         try {
             $result = Zend_Json::decode($body);
         } catch (Exception $exception) {
-            require_once 'Chris/Service/GitHub/Exception.php';
-            throw new Chris_Service_GitHub_Exception('JSON decoding failed: '.$exception->getMessage());
+            require_once 'Chris/Service/Youtube/Exception.php';
+            throw new Chris_Service_Youtube_Exception('JSON decoding failed: '.$exception->getMessage());
         }
 
         //Zend_Debug::dump($responseAsArray, '$responseAsArray: ');exit;
 
         // if status code is different then 200 throw exception
         if ($status != '200') {
-            require_once 'Chris/Service/GitHub/Exception.php';
-            throw new Chris_Service_GitHub_Exception('we recieved an error ('.$status.') as response: '.$result['message']);
+            require_once 'Chris/Service/Youtube/Exception.php';
+            throw new Chris_Service_Youtube_Exception('we recieved an error ('.$status.') as response: '.serialize($result));
         }
 
         return $result;
@@ -216,8 +216,8 @@ class Chris_Service_GitHub extends Zend_Rest_Client
     {
         // check if the path was set
         if (empty($this->_path)) {
-            require_once 'Chris/Service/GitHub/Exception.php';
-            throw new Chris_Service_GitHub_Exception('Path must be set before performing call, use setPath() to set one.');
+            require_once 'Chris/Service/Youtube/Exception.php';
+            throw new Chris_Service_Youtube_Exception('Path must be set before performing call, use setPath() to set one.');
         }
         
         //Zend_Debug::dump(self::API_URL.$this->_path, 'self::API_URL.$this->_path: ');
