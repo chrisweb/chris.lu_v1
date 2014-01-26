@@ -30,7 +30,7 @@ class Application_Layouts_Helpers_MyNetworkpages extends Zend_View_Helper_Abstra
         $myNetworkpages .= '<div class="g-ytsubscribe" data-channelid="UC_Y3-cPBBSiyRfN63CmzS1g" data-layout="full" data-count="default" data-onytevent="onYtEvent"></div>';
         $myNetworkpages .= '<br><br>';
         
-        $myNetworkpages .= '<a href="https://twitter.com/chriswwweb" class="twitter-follow-button" data-show-count="false" data-lang="en" data-size="large">Follow @chriswwweb</a>';
+        $myNetworkpages .= '<a href="https://twitter.com/chriswwweb" class="twitter-follow-button" data-show-count="true" data-lang="en" data-size="large">Follow @chriswwweb</a>';
         $myNetworkpages .= '<br><br>';
         
         $myNetworkpages .= '<a href="https://stackexchange.com/users/331783">';
