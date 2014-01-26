@@ -27,12 +27,21 @@ class Playlist_IndexController extends Zend_Controller_Action {
         $filescache = $bootstrap->getResource('filescache');
         
         $cachedResults = $filescache->load('youtube_playlists');
+        
+        /**
+         * work in progress ;)
+         */
+        
+        //$cachedResults = false;
 
         if (!$cachedResults) {
 
             $youtubeService = new Chris_Service_Youtube();
             
-            $playlistsIds = array();
+            // load the list of playlist dynamically
+            //https://www.googleapis.com/youtube/v3/playlists
+            
+            /*$playlistsIds = array();
             $playlistsIds[] = 'PLMalxPH8bteV09fywVS_DM8QoByBj2o8w';
             $playlistsIds[] = 'PLMalxPH8bteWmy3bK0qO092C52iJsE62I';
             $playlistsIds[] = 'PLMalxPH8bteXt0WqVkRvs1bGFOxD_PzBb';
@@ -44,10 +53,16 @@ class Playlist_IndexController extends Zend_Controller_Action {
             $playlistsIds[] = 'PLMalxPH8bteUJHvOWddGb6qV257RlG65y';
             $playlistsIds[] = 'PLMalxPH8bteXBpFD2j3VKQiAqlyRHc2s0';
 
-            $youtubeService->setPath('/playlists?part=id,snippet,status&key=AIzaSyBzEeJ0VPrk9CkFQEfAy6rkNlcW1Z8ALog&id='.implode(',', $playlistsIds));
+            $youtubeService->setPath('/playlists?part=id,snippet,status&key=AIzaSyBzEeJ0VPrk9CkFQEfAy6rkNlcW1Z8ALog&id='.implode(',', $playlistsIds).'&maxResults=50');*/
+            
+            $playlistConfiguration = Zend_Registry::get('PlaylistConfiguration');
 
+            $youtubeService->setPath('/playlists?part=id,snippet,status&key=AIzaSyBzEeJ0VPrk9CkFQEfAy6rkNlcW1Z8ALog&channelId='.$playlistConfiguration->youtube->channel->id.'&maxResults=50');
+            
             try {
+                
                 $youtubeResponse = $youtubeService->query();
+                
             } catch (Exception $exception) {
                 
                 //Zend_Debug::dump($exception, '$youtubeService $exception: ');

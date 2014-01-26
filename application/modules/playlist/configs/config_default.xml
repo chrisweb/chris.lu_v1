@@ -2,7 +2,11 @@
 
 <configdata>
     <production>
-
+        <youtube>
+            <channel>
+                <id>UC_XXXXXXXXXXXXXXXXXXXX</id>
+            </channel>
+        </youtube>
     </production>
     <testing extends="production">
 		

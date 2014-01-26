@@ -1,1 +1,6 @@
+change the version number of the main.js script in app.build.js
+
+use your command line tool and go into the _builder folder
+
+then run this command:
 node r.js -o app.build.js

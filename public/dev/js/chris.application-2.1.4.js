@@ -280,23 +280,31 @@ define(['jquery', 'chris.library', 'blocksit', 'prettify', 'jquery.hoverdir'], f
                 appId: '424957510901747', // App ID";
                 status: true, // check login status
                 cookie: true, // enable cookies to allow the server to access the session
-                xfbml: true  // parse XFBML
+                xfbml: false  // parse XFBML
             });
             FB.XFBML.parse();
         };
 
         // Load the SDK Asynchronously
-        (function(d) {
-            var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
-            if (d.getElementById(id)) {
-                return;
-            }
-            js = d.createElement('script');
-            js.id = id;
-            js.async = true;
-            js.src = '//connect.facebook.net/en_US/all.js';
-            ref.parentNode.insertBefore(js, ref);
-        }(document));
+        (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/all.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+
+    };
+    
+    /**
+     * 
+     * @returns {undefined}
+     */
+    var loadTwitterScript = function() {
+
+        library.log('# loadTwitterScript');
+
+        !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
 
     };
 
@@ -310,7 +318,7 @@ define(['jquery', 'chris.library', 'blocksit', 'prettify', 'jquery.hoverdir'], f
      */
     var initializeGoogleAnalytics = function() {
 
-        library.log('# initializeGoogleAnalytics 1');
+        library.log('# initializeGoogleAnalytics');
 
         // using typeof instead of $.type, because $.type triggers undefined
         // error, while this is what we want to check
@@ -329,6 +337,32 @@ define(['jquery', 'chris.library', 'blocksit', 'prettify', 'jquery.hoverdir'], f
             }
 
         }
+
+    };
+    
+    /**
+     * 
+     * google plattform javascript
+     * 
+     * https://developers.google.com/+/web/api/javascript
+     * https://developers.google.com/+/web/badge/
+     * https://developers.google.com/youtube/youtube_subscribe_button
+     * 
+     * @returns {undefined}
+     */
+    var initializeGoogleSDK = function() {
+
+        library.log('# initializeGoogleSDK');
+
+        // Load the SDK Asynchronously
+        (function() {
+            var po = document.createElement('script');
+            po.type = 'text/javascript';
+            po.async = true;
+            po.src = 'https://apis.google.com/js/platform.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(po, s);
+        })();
 
     };
 
@@ -417,7 +451,9 @@ define(['jquery', 'chris.library', 'blocksit', 'prettify', 'jquery.hoverdir'], f
         loadFacebookSDK: loadFacebookSDK,
         initializeGoogleAnalytics: initializeGoogleAnalytics,
         autoPopulateReadinglistForm: autoPopulateReadinglistForm,
-        cssModifier: cssModifier
+        cssModifier: cssModifier,
+        initializeGoogleSDK: initializeGoogleSDK,
+        loadTwitterScript: loadTwitterScript
 
     };
 

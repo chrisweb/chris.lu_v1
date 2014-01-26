@@ -5,7 +5,7 @@ require.config({
     paths: {
         'jquery' : './vendor/jQuery/jquery-2.0.3',
         'jquery.mobile' : './vendor/jQuery_mobile/jquery.mobile-1.4.0-alpha.1',
-        'chris.application' : './js/chris.application-2.1.2',
+        'chris.application' : './js/chris.application-2.1.4',
         'chris.library' : './js/chris.library-1.0.7',
         'chris.configuration' : './js/chris.configuration-1.0.4',
         'blocksit': './vendor/blocksit/blocksit',
@@ -179,6 +179,32 @@ require(['jquery', 'chris.application', 'chris.library', 'collapse'], function($
             } catch(error) {
 			
                 library.log('google analytics error: ' + error);
+				
+            }
+            
+            // google api sdk for google+ circles widget and youtube subscribe
+            // button
+            // https://developers.google.com/+/web/api/javascript
+            // https://developers.google.com/+/web/badge/
+            // https://developers.google.com/youtube/youtube_subscribe_button
+            try {
+			
+                application.initializeGoogleSDK();
+				
+            } catch(error) {
+			
+                library.log('google+ API SDK error: ' + error);
+				
+            }
+            
+            // twitter script
+            try {
+			
+                application.loadTwitterScript();
+				
+            } catch(error) {
+			
+                library.log('twitter script error: ' + error);
 				
             }
 			

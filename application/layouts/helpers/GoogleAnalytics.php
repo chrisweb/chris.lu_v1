@@ -25,9 +25,12 @@ class Application_Layouts_Helpers_GoogleAnalytics extends Zend_View_Helper_Abstr
                 _gaq.push(['_setAccount', 'UA-16705563-1']);
                 _gaq.push(['_trackPageview']);
                 (function() {
-                    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                    var ga = document.createElement('script');
+                    ga.type = 'text/javascript';
+                    ga.async = true;
                     ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
-                    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+                    var s = document.getElementsByTagName('script')[0];
+                    s.parentNode.insertBefore(ga, s);
                 })();
                 </script>";
 

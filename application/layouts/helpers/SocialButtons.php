@@ -36,15 +36,6 @@ class Application_Layouts_Helpers_SocialButtons extends Zend_View_Helper_Abstrac
                     $socialButtons .= '<div class="g-plus" data-action="share" data-annotation="vertical-bubble" data-height="60" data-href="https://chris.lu/article/read/'.$id.'"></div>';
                     $socialButtons .= '</div>';
 
-                    $socialButtons .= '<!-- Place this tag after the last share tag. -->';
-                    $socialButtons .= '<script type="text/javascript">';
-                    $socialButtons .= "(function() {
-                        var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-                        po.src = 'https://apis.google.com/js/plusone.js';
-                        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-                      })();
-                    </script>";
-
                     // twitter
                     $hashTagsAttribute = '';
 
@@ -62,7 +53,9 @@ class Application_Layouts_Helpers_SocialButtons extends Zend_View_Helper_Abstrac
                     $socialButtons .= '<div id="twitter" style="width: 33%; float: left;">';
                     $socialButtons .= '<a href="https://twitter.com/share" class="twitter-share-button" data-count="vertical" data-lang="en" data-url="https://chris.lu/article/read/'.$id.'" data-text="chris.lu :: '.$this->view->escape($this->view->article['title']).'" data-via="chriswwweb" '.$hashTagsAttribute.'>Tweet</a>';
                     $socialButtons .= '</div>';
-                    $socialButtons .= '<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>';
+                    
+                    // javascript is now loaded inside of application.js
+                    //$socialButtons .= '<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>';
 
                     $socialButtons .= '<div class="clearfix"></div>';
 

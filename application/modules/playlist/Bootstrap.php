@@ -12,6 +12,17 @@ class Playlist_Bootstrap extends Zend_Application_Module_Bootstrap {
 		$this->modulePath = APPLICATION_PATH.'/modules/'.strtolower($this->moduleName).'/';
 
 	}
+    
+	protected function _initModuleConfiguration()
+	{
+	
+		$configurationPath = $this->modulePath.'configs/config.xml';
+		
+		$moduleConfigObject = new Zend_Config_Xml($configurationPath, APPLICATION_ENV);
+		
+		Zend_Registry::set($this->moduleName.'Configuration', $moduleConfigObject);
+	
+	}
 
 	protected function _initModuleRoutes()
 	{

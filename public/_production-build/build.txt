@@ -1,11 +1,11 @@
 
-css/chris-2.0.7.css
+css/chris-2.0.8.css
 ----------------
 css/../vendor/jQuery_mobile/jquery.mobile-1.4.0-alpha.1.css
 css/../vendor/jQuery_mobile/jquery.mobile.structure-1.4.0-alpha.1.css
 css/../vendor/bootstrap/dist/css/bootstrap.css
 css/../vendor/google-code-prettify/prettify.css
-css/chris-2.0.7.css
+css/chris-2.0.8.css
 
 vendor/bootstrap/assets/css/docs.css
 ----------------
@@ -111,7 +111,7 @@ vendor/jQuery_mobile/jquery.mobile.theme-1.4.0-alpha.1.min.css
 ----------------
 vendor/jQuery_mobile/jquery.mobile.theme-1.4.0-alpha.1.min.css
 
-./js/main-2.0.7.js
+./js/main-2.0.9.js
 ----------------
 vendor/jQuery/jquery-2.0.3.js
 js/chris.configuration-1.0.4.js
@@ -120,7 +120,7 @@ vendor/blocksit/blocksit.js
 vendor/google-code-prettify/prettify.js
 vendor/DirectionAwareHoverEffect/js/modernizr.custom.97074.js
 vendor/DirectionAwareHoverEffect/js/jquery.hoverdir.js
-js/chris.application-2.1.2.js
+js/chris.application-2.1.4.js
 vendor/bootstrap/js/collapse.js
 vendor/jQuery_mobile/jquery.mobile-1.4.0-alpha.1.js
-js/main-2.0.7.js
+js/main-2.0.9.js

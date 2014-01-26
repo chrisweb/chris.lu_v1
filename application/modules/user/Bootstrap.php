@@ -16,9 +16,9 @@ class User_Bootstrap extends Zend_Application_Module_Bootstrap {
 	protected function _initModuleConfiguration()
 	{
 	
-		$routesPath = $this->modulePath.'configs/config.xml';
+		$configurationPath = $this->modulePath.'configs/config.xml';
 		
-		$moduleConfigObject = new Zend_Config_Xml($routesPath, APPLICATION_ENV);
+		$moduleConfigObject = new Zend_Config_Xml($configurationPath, APPLICATION_ENV);
 		
 		Zend_Registry::set($this->moduleName.'Configuration', $moduleConfigObject);
 	

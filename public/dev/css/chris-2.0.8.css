@@ -4,13 +4,26 @@
 @import url('../vendor/bootstrap/dist/css/bootstrap.css');
 @import url('../vendor/google-code-prettify/prettify.css');
 
+html, a, h1, p {
+    -webkit-font-smoothing:antialiased !important;
+    -webkit-text-size-adjust: none !important;
+    transform: translate3d(0, 0, 0) !important;
+    color: #333333;
+    font-weight: normal !important;
+    font-style: normal !important;
+}
+
 body, article, p, section {
-	-webkit-font-smoothing: antialiased;
 	font-family: 'Ubuntu', Verdana, Arial, sans-serif !important;
 	font-size: 16px !important;
 	line-height: 22px !important;
-	color: #000000 !important;
 	text-shadow: none !important;
+}
+
+/* deactivated bold, because most fonts that get loaded by font-face
+have no bold version and if made bold they look ugly in webkit */
+b {
+    font-weight: 400 !important;
 }
 
 .ui-content {
@@ -18,7 +31,6 @@ body, article, p, section {
 }
 
 h1, h2, h3, h4, h5, h6 {
-	-webkit-font-smoothing: antialiased;
     font-family: 'Electrolize', Tahoma, Arial, sans-serif;
 	color: #1b88c9;
 	cursor: text;
@@ -331,7 +343,6 @@ span.inner_li {
 }
 
 .widget a, #related_articles a {
-	font-weight: normal !important;
 	color: #000000 !important;
 }
 
@@ -362,7 +373,6 @@ span.inner_li {
 a.btn {
 	color: #ffffff !important;
 	border: 0px !important;
-	font-weight: normal !important;
 	padding: 10px 20px 10px 20px !important;
 	margin: 5px 10px 5px 0px !important;
 }
@@ -408,7 +418,6 @@ a.btn {
 
 /* projects page */
 .ui-collapsible-heading-toggle {
-	-webkit-font-smoothing: antialiased;
     font-family: 'Electrolize', Tahoma, Arial, sans-serif;
 	color: #1b88c9 !important;
     background-color: #ffffff !important;
@@ -428,12 +437,22 @@ a.btn {
 }
 
 a.ui-link:active, a.ui-link:link, a.ui-link:visited, a.ui-link:active {
-    -webkit-font-smoothing: antialiased;
     color: #1b88c9;
 }
 
 .project_header {
     text-align: right;
+}
+
+/* playlists page */
+.youtube-playlist .preview-box {
+    float: left;
+    margin: 15px;
+    min-width: 25%;
+}
+
+.youtube-playlist .preview-box h3 {
+    cursor: pointer !important;
 }
 
 /* bookmarks listview */

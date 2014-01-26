@@ -32,13 +32,13 @@
 	// or jquery mobile won't be included into the optimized file
 	findNestedDependencies: true,
 
-    mainConfigFile: '../dev/js/main-2.0.7.js',
+    mainConfigFile: '../dev/js/main-2.0.9.js',
     appDir: "../dev",
     baseUrl: ".",
     dir: "../_production-build",
     modules: [
             {
-                name: "./js/main-2.0.7"
+                name: "./js/main-2.0.9"
             }
         ]
 
