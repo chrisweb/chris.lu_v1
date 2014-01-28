@@ -27,8 +27,11 @@ class Chris_Controller_Plugin_Headers extends Zend_Controller_Plugin_Abstract {
 		// http://www.zfsnippets.com/snippets/view/id/67/notmodified-cache-controller-plugin
 		// http://redbot.org/?uri=http%3A%2F%2Fgoogle.com
         if (APPLICATION_ENV === 'production') {
-            $response->setHeader('X-FRAME-OPTIONS', 'DENY');
+            $response->setHeader('X-Frame-Options', 'DENY');
 			$response->setHeader('X-XSS-Protection', '1; mode=block');
+            $response->setHeader('Strict-Transport-Security', 'DENY');
+            $response->setHeader('X-Content-Type-Options', 'nosniff');
+            $response->setHeader('X-Chrisweb', 'Hello World ;)');
         }
 		
 		// robots header tag
