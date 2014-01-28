@@ -10,7 +10,7 @@ class Application_Layouts_Helpers_Css extends Zend_View_Helper_Abstract {
 
 		$cssTag = '';
 
-		$cssTag .= '<link rel="stylesheet"  href="'.$staticSource.'/css/chris-2.0.8.css" />';
+		$cssTag .= '<link rel="stylesheet"  href="'.$staticSource.'/css/chris-2.0.9.css" />';
 
 		return $cssTag;
 
