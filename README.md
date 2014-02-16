@@ -29,6 +29,11 @@ Check out the dev-vhost.txt file to setup an apache development vhost
 
 To update the javascript packages check out the updating.txt file
 
+MongoDB Backup
+--------------
+
+mongodump --out=/mongodb_backups/$(date +%Y-%m-%d)
+
 TODO
 ----
 
@@ -37,11 +42,13 @@ TODO
 * DONE: responsive layout improvements, for example the main area is too small on tablets
 * DONE: use Zend_Feed to read GitHub activity feed
 * DONE: use GitHub API to retrieve repositories list from GitHub (with zend file cache)
-* use Stackoverflow API to retrieve some public data (with zend file cache)
 * DONE: add zend file cache for GitHub feed in projects module
 * DONE: rewrite of the bookmarks module that is useless as it is right now
-* comments system for articles (remove disqus)
+* DONE: comments system for articles (remove disqus)
 * form to allow visitors to suggest bookmarks, article topics and readinglist entries
+* use Stackoverflow API to retrieve some public data (with zend file cache)
+* gravatar for comments
+* reduce header size for small resolutions especially if height is small
 
 TODO (maybe):
 -------------
@@ -50,4 +57,4 @@ TODO (maybe):
 * improve tags system
 * create about page
 * add the option to switch to MariaDB
-* upgrade to zf2 if I have time to do it some free time left in the future ;)
+* upgrade to zf2 if I have some free time left in the future ;)

@@ -1,11 +1,11 @@
 
-css/chris-2.0.9.css
+css/chris-2.1.0.css
 ----------------
-css/../vendor/jQuery_mobile/jquery.mobile-1.4.0-alpha.1.css
-css/../vendor/jQuery_mobile/jquery.mobile.structure-1.4.0-alpha.1.css
+css/../vendor/jQuery_mobile/jquery.mobile-1.4.1.css
+css/../vendor/jQuery_mobile/jquery.mobile.structure-1.4.1.css
 css/../vendor/bootstrap/dist/css/bootstrap.css
 css/../vendor/google-code-prettify/prettify.css
-css/chris-2.0.9.css
+css/chris-2.1.0.css
 
 vendor/bootstrap/assets/css/docs.css
 ----------------
@@ -43,84 +43,121 @@ vendor/google-code-prettify/prettify.css
 ----------------
 vendor/google-code-prettify/prettify.css
 
-vendor/jQuery_mobile/demos/css/themes/default/jquery.mobile-1.4.0-alpha.1.css
+vendor/jQuery_mobile/demos/css/themes/default/jquery.mobile-1.4.1.min.css
 ----------------
-vendor/jQuery_mobile/demos/css/themes/default/jquery.mobile-1.4.0-alpha.1.css
+vendor/jQuery_mobile/demos/css/themes/default/jquery.mobile-1.4.1.min.css
 
-vendor/jQuery_mobile/demos/css/themes/default/jquery.mobile-1.4.0-alpha.1.min.css
+vendor/jQuery_mobile/demos/css/themes/default/jquery.mobile.external-png-1.4.1.min.css
 ----------------
-vendor/jQuery_mobile/demos/css/themes/default/jquery.mobile-1.4.0-alpha.1.min.css
+vendor/jQuery_mobile/demos/css/themes/default/jquery.mobile.external-png-1.4.1.min.css
 
-vendor/jQuery_mobile/demos/css/themes/default/jquery.mobile.structure-1.4.0-alpha.1.css
+vendor/jQuery_mobile/demos/css/themes/default/jquery.mobile.icons-1.4.1.min.css
 ----------------
-vendor/jQuery_mobile/demos/css/themes/default/jquery.mobile.structure-1.4.0-alpha.1.css
+vendor/jQuery_mobile/demos/css/themes/default/jquery.mobile.icons-1.4.1.min.css
 
-vendor/jQuery_mobile/demos/css/themes/default/jquery.mobile.structure-1.4.0-alpha.1.min.css
+vendor/jQuery_mobile/demos/css/themes/default/jquery.mobile.inline-png-1.4.1.min.css
 ----------------
-vendor/jQuery_mobile/demos/css/themes/default/jquery.mobile.structure-1.4.0-alpha.1.min.css
+vendor/jQuery_mobile/demos/css/themes/default/jquery.mobile.inline-png-1.4.1.min.css
 
-vendor/jQuery_mobile/demos/css/themes/default/jquery.mobile.theme-1.4.0-alpha.1.css
+vendor/jQuery_mobile/demos/css/themes/default/jquery.mobile.inline-svg-1.4.1.min.css
 ----------------
-vendor/jQuery_mobile/demos/css/themes/default/jquery.mobile.theme-1.4.0-alpha.1.css
+vendor/jQuery_mobile/demos/css/themes/default/jquery.mobile.inline-svg-1.4.1.min.css
 
-vendor/jQuery_mobile/demos/css/themes/default/jquery.mobile.theme-1.4.0-alpha.1.min.css
+vendor/jQuery_mobile/demos/css/themes/default/jquery.mobile.structure-1.4.1.min.css
 ----------------
-vendor/jQuery_mobile/demos/css/themes/default/jquery.mobile.theme-1.4.0-alpha.1.min.css
+vendor/jQuery_mobile/demos/css/themes/default/jquery.mobile.structure-1.4.1.min.css
 
-vendor/jQuery_mobile/demos/examples/listviews/autodividers-linkbar.css
+vendor/jQuery_mobile/demos/css/themes/default/jquery.mobile.theme-1.4.1.min.css
 ----------------
-vendor/jQuery_mobile/demos/examples/listviews/autodividers-linkbar.css
+vendor/jQuery_mobile/demos/css/themes/default/jquery.mobile.theme-1.4.1.min.css
 
-vendor/jQuery_mobile/demos/examples/listviews/grid-listview.css
+vendor/jQuery_mobile/demos/listview-autodividers-linkbar/autodividers-linkbar.css
 ----------------
-vendor/jQuery_mobile/demos/examples/listviews/grid-listview.css
+vendor/jQuery_mobile/demos/listview-autodividers-linkbar/autodividers-linkbar.css
 
-vendor/jQuery_mobile/demos/examples/swipe/swipe-page.css
+vendor/jQuery_mobile/demos/listview-grid/listview-grid.css
 ----------------
-vendor/jQuery_mobile/demos/examples/swipe/swipe-page.css
+vendor/jQuery_mobile/demos/listview-grid/listview-grid.css
 
-vendor/jQuery_mobile/demos/widgets/popup/popup-examples.css
+vendor/jQuery_mobile/demos/swipe-page/swipe-page.css
 ----------------
-vendor/jQuery_mobile/demos/widgets/popup/popup-examples.css
+vendor/jQuery_mobile/demos/swipe-page/swipe-page.css
+
+vendor/jQuery_mobile/demos/theme-classic/theme-classic.css
+----------------
+vendor/jQuery_mobile/demos/theme-classic/theme-classic.css
 
 vendor/jQuery_mobile/demos/_assets/css/jqm-demos.css
 ----------------
 vendor/jQuery_mobile/demos/_assets/css/jqm-demos.css
 
-vendor/jQuery_mobile/jquery.mobile-1.4.0-alpha.1.css
+vendor/jQuery_mobile/jquery.mobile-1.4.1.css
 ----------------
-vendor/jQuery_mobile/jquery.mobile-1.4.0-alpha.1.css
+vendor/jQuery_mobile/jquery.mobile-1.4.1.css
 
-vendor/jQuery_mobile/jquery.mobile-1.4.0-alpha.1.min.css
+vendor/jQuery_mobile/jquery.mobile-1.4.1.min.css
 ----------------
-vendor/jQuery_mobile/jquery.mobile-1.4.0-alpha.1.min.css
+vendor/jQuery_mobile/jquery.mobile-1.4.1.min.css
 
-vendor/jQuery_mobile/jquery.mobile.structure-1.4.0-alpha.1.css
+vendor/jQuery_mobile/jquery.mobile.external-png-1.4.1.css
 ----------------
-vendor/jQuery_mobile/jquery.mobile.structure-1.4.0-alpha.1.css
+vendor/jQuery_mobile/jquery.mobile.external-png-1.4.1.css
 
-vendor/jQuery_mobile/jquery.mobile.structure-1.4.0-alpha.1.min.css
+vendor/jQuery_mobile/jquery.mobile.external-png-1.4.1.min.css
 ----------------
-vendor/jQuery_mobile/jquery.mobile.structure-1.4.0-alpha.1.min.css
+vendor/jQuery_mobile/jquery.mobile.external-png-1.4.1.min.css
 
-vendor/jQuery_mobile/jquery.mobile.theme-1.4.0-alpha.1.css
+vendor/jQuery_mobile/jquery.mobile.icons-1.4.1.css
 ----------------
-vendor/jQuery_mobile/jquery.mobile.theme-1.4.0-alpha.1.css
+vendor/jQuery_mobile/jquery.mobile.icons-1.4.1.css
 
-vendor/jQuery_mobile/jquery.mobile.theme-1.4.0-alpha.1.min.css
+vendor/jQuery_mobile/jquery.mobile.icons-1.4.1.min.css
 ----------------
-vendor/jQuery_mobile/jquery.mobile.theme-1.4.0-alpha.1.min.css
+vendor/jQuery_mobile/jquery.mobile.icons-1.4.1.min.css
 
-./js/main-2.0.9.js
+vendor/jQuery_mobile/jquery.mobile.inline-png-1.4.1.css
+----------------
+vendor/jQuery_mobile/jquery.mobile.inline-png-1.4.1.css
+
+vendor/jQuery_mobile/jquery.mobile.inline-png-1.4.1.min.css
+----------------
+vendor/jQuery_mobile/jquery.mobile.inline-png-1.4.1.min.css
+
+vendor/jQuery_mobile/jquery.mobile.inline-svg-1.4.1.css
+----------------
+vendor/jQuery_mobile/jquery.mobile.inline-svg-1.4.1.css
+
+vendor/jQuery_mobile/jquery.mobile.inline-svg-1.4.1.min.css
+----------------
+vendor/jQuery_mobile/jquery.mobile.inline-svg-1.4.1.min.css
+
+vendor/jQuery_mobile/jquery.mobile.structure-1.4.1.css
+----------------
+vendor/jQuery_mobile/jquery.mobile.structure-1.4.1.css
+
+vendor/jQuery_mobile/jquery.mobile.structure-1.4.1.min.css
+----------------
+vendor/jQuery_mobile/jquery.mobile.structure-1.4.1.min.css
+
+vendor/jQuery_mobile/jquery.mobile.theme-1.4.1.css
+----------------
+vendor/jQuery_mobile/jquery.mobile.theme-1.4.1.css
+
+vendor/jQuery_mobile/jquery.mobile.theme-1.4.1.min.css
+----------------
+vendor/jQuery_mobile/jquery.mobile.theme-1.4.1.min.css
+
+./js/main-2.1.0.js
 ----------------
 vendor/jQuery/jquery-2.0.3.js
 js/chris.configuration-1.0.4.js
 js/chris.library-1.0.7.js
+vendor/headroom/headroom.js
 vendor/blocksit/blocksit.js
 vendor/google-code-prettify/prettify.js
 vendor/DirectionAwareHoverEffect/js/modernizr.custom.97074.js
 vendor/DirectionAwareHoverEffect/js/jquery.hoverdir.js
-js/chris.application-2.1.4.js
+js/chris.application-2.1.5.js
 vendor/bootstrap/js/collapse.js
-vendor/jQuery_mobile/jquery.mobile-1.4.0-alpha.1.js
-js/main-2.0.9.js
+vendor/jQuery_mobile/jquery.mobile-1.4.1.js
+js/main-2.1.0.js

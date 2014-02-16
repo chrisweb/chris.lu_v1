@@ -12,7 +12,7 @@ class Application_Layouts_Helpers_Javascript extends Zend_View_Helper_Abstract
 		
 		$javascriptTag = '';
 		
-		$javascriptTag .= '<script data-main="'.$staticSource.'/js/main-2.0.9" src="'.$staticSource.'/vendor/requirejs/require.js"></script>';
+		$javascriptTag .= '<script data-main="'.$staticSource.'/js/main-2.1.0" src="'.$staticSource.'/vendor/requirejs/require.js"></script>';
 		
 		return $javascriptTag;
 	
