@@ -27,9 +27,9 @@ class Application_Layouts_Helpers_DomManipulation extends Zend_View_Helper_Abstr
 				
 				//Zend_Debug::dump($dom, '$dom');
 				
-				//$documentString = $dom->getDocument();
+				$documentString = $dom->getDocument();
 				
-				//Zend_Debug::dump($documentString, '$documentString');
+				//Zend_Debug::dump($documentString, '$documentString');exit;
 				
 				$headerTag = 'h3';
 				

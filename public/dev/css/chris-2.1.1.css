@@ -61,7 +61,7 @@ pre {
 	border: 1px solid #d7d7d7 !important;
 	background-color: #ffffff !important;
 	font-family: 'Droid Sans Mono', Verdana, Arial, sans-serif !important;
-	padding: 0 0 15px 15px !important;
+	padding: 0 0 18px 18px !important;
 }
 	
 code {
@@ -569,6 +569,10 @@ a.ui-link:active, a.ui-link:link, a.ui-link:visited, a.ui-link:active {
 	article ul, .widget ul, #related_articles ul	{
 		margin: 0px 0px 18px 0px !important;
 	}
+    
+    article h3, article h4, article h5, article h6 {
+        margin: 36px 0px 18px 0px !important;
+    }
 	
 }
 
@@ -641,6 +645,10 @@ a.ui-link:active, a.ui-link:link, a.ui-link:visited, a.ui-link:active {
 	article ul, .widget ul, #related_articles ul	{
 		margin: 0px 0px 12px 0px !important;
 	}
+    
+    article h3, article h4, article h5, article h6 {
+        margin: 24px 0px 12px 0px !important;
+    }
 		
 }
 
@@ -713,6 +721,10 @@ a.ui-link:active, a.ui-link:link, a.ui-link:visited, a.ui-link:active {
 	article ul, .widget ul, #related_articles ul	{
 		margin: 0px 0px 12px 0px !important;
 	}
+    
+    article h3, article h4, article h5, article h6 {
+        margin: 24px 0px 12px 0px !important;
+    }
 		
 }
  
@@ -785,6 +797,10 @@ a.ui-link:active, a.ui-link:link, a.ui-link:visited, a.ui-link:active {
 	article ul, .widget ul, #related_articles ul	{
 		margin: 0px 0px 9px 0px !important;
 	}
+    
+    article h3, article h4, article h5, article h6 {
+        margin: 18px 0px 9px 0px !important;
+    }
 	
 }
 
@@ -862,6 +878,10 @@ a.ui-link:active, a.ui-link:link, a.ui-link:visited, a.ui-link:active {
 	article ul, .widget ul, #related_articles ul {
 		margin: 0px 0px 3px 0px !important;
 	}
+    
+    article h3, article h4, article h5, article h6 {
+        margin: 12px 0px 6px 0px !important;
+    }
 
     .navbar-toggle {
         display: inline-block !important;

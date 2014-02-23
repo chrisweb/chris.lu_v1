@@ -146,6 +146,21 @@
                 <seg>To highlight code use this html: </seg>
             </tuv>
         </tu>
+        <tu tuid="ENCAPSULATE_PARAGRAPHS_WITH">
+            <tuv xml:lang="en">
+                <seg>To encapsulate paragraphs (sections) use: </seg>
+            </tuv>
+        </tu>
+        <tu tuid="FOR_SECTION_TITLES_USE">
+            <tuv xml:lang="en">
+                <seg>To create paragraph (section) titles use: </seg>
+            </tuv>
+        </tu>
+        <tu tuid="OR">
+            <tuv xml:lang="en">
+                <seg>or</seg>
+            </tuv>
+        </tu>
 		<tu tuid="SOCIAL_BUTTONS">
             <tuv xml:lang="en">
                 <seg>Share me</seg>

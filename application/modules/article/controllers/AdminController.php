@@ -107,10 +107,18 @@ class Article_AdminController extends Zend_Controller_Action
 					$formData['tags'] = $tags;
 				
 				}
+                
+                // if there is no image don't overwrite the value that is
+                //  already in the database
+                if (array_key_exists('image', $formData) && is_null($formData['image'])) {
+                    
+                    unset($formData['image']);
+                    
+                }
 				
 				//Zend_Debug::dump($formData);
                 //exit;
-
+                
                 $response = $articleModel->saveData($formData);
 
                 if ($response) {

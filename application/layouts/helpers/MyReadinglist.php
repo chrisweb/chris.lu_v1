@@ -33,18 +33,34 @@ class Application_Layouts_Helpers_MyReadinglist extends Zend_View_Helper_Abstrac
 					//Zend_Debug::dump(APPLICATION_PATH);
 					
 					//Zend_Debug::dump($readinglist['publish_date']);
+                    
+                    if (array_key_exists('url', $readinglist) &&
+                            array_key_exists('title', $readinglist)) {
 					
-					if (array_key_exists('favicon', $readinglist) && !empty($readinglist['favicon']) && is_readable(APPLICATION_PATH.'/../public'.$readinglist['favicon'])) {
-					
-						$fileContent = file_get_contents(APPLICATION_PATH.'/../public'.$readinglist['favicon']);
-				
-						$myReadinglist .= '<li style="list-style-type: none !important;"><img src="data:image/ico;base64,'.base64_encode($fileContent).'" class="readinglist_icon"><a href="'.$this->view->escape($readinglist['url']).'" rel="external">'.$this->view->escape($readinglist['title']).'</a></li>';
+                        if (array_key_exists('favicon', $readinglist) &&
+                                !empty($readinglist['favicon']) &&
+                                is_readable(APPLICATION_PATH.'/../public'.$readinglist['favicon'])) {
 
-					} else {
-					
-						$myReadinglist .= '<li><a href="'.$this->view->escape($readinglist['url']).'" rel="external">'.$this->view->escape($readinglist['title']).'</a></li>';
-					
-					}
+                            $fileContent = file_get_contents(APPLICATION_PATH.'/../public'.$readinglist['favicon']);
+
+                            $myReadinglist .= '<li style="list-style-type: none !important;">';
+                            $myReadinglist .= '<img src="data:image/ico;base64,'.base64_encode($fileContent).'" class="readinglist_icon">';
+                            $myReadinglist .= '<a href="'.$this->view->escape($readinglist['url']).'" rel="external">';
+                            $myReadinglist .= $this->view->escape($readinglist['title']);
+                            $myReadinglist .= '</a>';
+                            $myReadinglist .= '</li>';
+
+                        } else {
+
+                            $myReadinglist .= '<li>';
+                            $myReadinglist .= '<a href="'.$this->view->escape($readinglist['url']).'" rel="external">';
+                            $myReadinglist .= $this->view->escape($readinglist['title']);
+                            $myReadinglist .= '</a>';
+                            $myReadinglist .= '</li>';
+
+                        }
+                        
+                    }
 					
 				}
 				

@@ -1,11 +1,11 @@
 
-css/chris-2.1.0.css
+css/chris-2.1.1.css
 ----------------
 css/../vendor/jQuery_mobile/jquery.mobile-1.4.1.css
 css/../vendor/jQuery_mobile/jquery.mobile.structure-1.4.1.css
 css/../vendor/bootstrap/dist/css/bootstrap.css
 css/../vendor/google-code-prettify/prettify.css
-css/chris-2.1.0.css
+css/chris-2.1.1.css
 
 vendor/bootstrap/assets/css/docs.css
 ----------------
