@@ -18,3 +18,6 @@ application.ini
 application.log
 build.txt
 config.xml
+
+Thumbs.db
+desktop.ini
