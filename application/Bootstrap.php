@@ -12,6 +12,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 	protected $filesCache;
 	protected $masterFilesCache;
 	protected $apcCache;
+    protected $cache;
 	
 	// error: "Circular resource dependency detected"
 	// i often use the word "Application" in init method names to
@@ -303,16 +304,55 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
      */
     protected function _initAPCCache()
 	{
-	
-        // TODO: implement apc cache
-		$this->apcCache = '';
-		
-		return $this->apcCache;
+        
+        if (APC_SUPPORT) {
+        
+            $cacheFrontendAdapter = $this->applicationConfiguration->apc->cache->frontend->adapter;
+            $cacheBackendAdapter = $this->applicationConfiguration->apc->cache->backend->adapter;
+
+            $apcCacheLifetime = $this->applicationConfiguration->apc->cache->lifetime;
+
+            $apcCacheOptions = array(
+                'frontend' => array(
+                    'automatic_serialization' => true,
+                    'lifetime' => $apcCacheLifetime
+                ),
+                'backend' => array()
+            );
+
+            $this->apcCache = Zend_Cache::factory($cacheFrontendAdapter, $cacheBackendAdapter, $apcCacheOptions['frontend'], $apcCacheOptions['backend']);
+
+            return $this->apcCache;
+            
+        }
         
 	}
     
     /**
      * 
+     * use apc cache or if not available switch to file cache
+     * 
+     * @return type
+     */
+    protected function _initCacheSwitch()
+    {
+        
+        if (APC_SUPPORT) {
+        
+            $this->cache = $this->getResource('APCCache');
+            
+        } else {
+            
+            $this->cache = $this->getResource('FilesCache');
+            
+        }
+        
+        return $this->cache;
+        
+    }
+    
+    /**
+     * load user (client) language detection plugin
      */
     protected function _initApplicationLanguageDetection()
 	{
@@ -327,10 +367,8 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
      */
 	protected function _initApplicationTranslations()
 	{
-	
-		$filesCache = $this->getResource('FilesCache');
         
-        Zend_Translate::setCache($filesCache);
+        Zend_Translate::setCache($this->cache);
         
         $translationsPath = APPLICATION_PATH.'/configs/translations.tmx';
 		
@@ -356,7 +394,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 		$this->bootstrap('Locale');
 		$locale = $this->getResource('Locale');
 	
-        Zend_Locale::setCache($this->filesCache);
+        Zend_Locale::setCache($this->cache);
         
         $locale->setDefault('en');
 

@@ -24,9 +24,10 @@ class Playlist_IndexController extends Zend_Controller_Action {
     public function indexAction() {
         
         $bootstrap = $this->getInvokeArg('bootstrap');
-        $filescache = $bootstrap->getResource('filescache');
         
-        $cachedResults = $filescache->load('youtube_playlists');
+        $cache = $bootstrap->getResource('CacheSwitch');
+        
+        $cachedResults = $cache->load('youtube_playlists');
         
         /**
          * work in progress ;)
@@ -97,7 +98,7 @@ class Playlist_IndexController extends Zend_Controller_Action {
 
                 }
 
-                $filescache->save($results, 'youtube_playlists');
+                $cache->save($results, 'youtube_playlists');
                 
                 $this->view->youtubeResults = $results;
 

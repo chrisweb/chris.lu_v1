@@ -24,9 +24,9 @@ class Projects_IndexController extends Zend_Controller_Action {
     public function indexAction() {
         
         $bootstrap = $this->getInvokeArg('bootstrap');
-        $filescache = $bootstrap->getResource('filescache');
+        $cache = $bootstrap->getResource('CacheSwitch');
         
-        $cachedResults = $filescache->load('github_my_projects');
+        $cachedResults = $cache->load('github_my_projects');
 
         if (!$cachedResults) {
 
@@ -85,7 +85,7 @@ class Projects_IndexController extends Zend_Controller_Action {
 
                 }
 
-                $filescache->save($results, 'github_my_projects');
+                $cache->save($results, 'github_my_projects');
                 
                 $this->view->githubResults = $results;
 
@@ -102,7 +102,7 @@ class Projects_IndexController extends Zend_Controller_Action {
         }
         
         
-        $cachedEventsResults = $filescache->load('github_my_events');
+        $cachedEventsResults = $cache->load('github_my_events');
 
         if (!$cachedEventsResults) {
 
@@ -139,7 +139,7 @@ class Projects_IndexController extends Zend_Controller_Action {
                         
             }
             
-            $filescache->save($events, 'github_my_events');
+            $cache->save($events, 'github_my_events');
 
             $this->view->githubActivityFeed = $events;
             

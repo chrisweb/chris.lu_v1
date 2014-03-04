@@ -10,7 +10,10 @@ defined('APPLICATION_ENV')
     || define('APPLICATION_ENV',
               (getenv('APPLICATION_ENV') ? getenv('APPLICATION_ENV')
                                          : 'production'));
- 
+
+// check for apc support
+define('APC_SUPPORT', extension_loaded('apc') && ini_get('apc.enabled'));
+
 // Typically, you will also want to add your library/ directory
 // to the include_path, particularly if it contains your ZF installed
 set_include_path(implode(PATH_SEPARATOR, array(
@@ -37,16 +40,32 @@ $cacheLifetime = 2678400;
 // check if cache directory exists if not create it
 if (!is_dir($cacheDirectory)) mkdir($cacheDirectory, 0755);
 
-// if no lifetime is defined default will be 3600
-$frontendOptions = array(
-	'master_files' => array($configurationPath),
-	'automatic_serialization' => true,
-	'lifetime' => $cacheLifetime
-);
-
-$backendOptions = array('cache_dir' => $cacheDirectory);
-
-$configurationCache = Zend_Cache::factory('File', 'File', $frontendOptions, $backendOptions);
+if (APC_SUPPORT) {
+    
+    // if no lifetime is defined default will be 3600
+    $frontendOptions = array(
+        'automatic_serialization' => true,
+        'lifetime' => $cacheLifetime
+    );
+    
+    $backendOptions = array();
+    
+    $configurationCache = Zend_Cache::factory('Core', 'Apc', $frontendOptions, $backendOptions);
+    
+} else {
+    
+    // if no lifetime is defined default will be 3600
+    $frontendOptions = array(
+        'master_files' => array($configurationPath),
+        'automatic_serialization' => true,
+        'lifetime' => $cacheLifetime
+    );
+    
+    $backendOptions = array('cache_dir' => $cacheDirectory);
+    
+    $configurationCache = Zend_Cache::factory('File', 'File', $frontendOptions, $backendOptions);
+    
+}
 
 // if configuration not in cache load it and put it into cache
 if (!$configuration = $configurationCache->load($configurationName)) {
