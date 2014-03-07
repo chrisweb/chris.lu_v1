@@ -3,13 +3,23 @@
 <?php echo $this->htmlTag(); ?>
 
 <head>
-    <meta charset="utf-8">
+    
     <?php echo $this->headTitle(); ?>
-    <meta name="description" content="chrisweb's development blog, about Nginx, Zend Framework, PHP, Javascript, jQuery, Backbone, Nodejs, Git and more ...">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="alternate" type="application/rss+xml" title="Chris.lu RSS Feed" href="https://chris.lu/article/rss" />
-    <link rel="author" href="https://plus.google.com/115936397667079055215/posts"/>
-    <link rel="Shortcut Icon" href="/favicon.ico" type="image/x-icon" />
+    
+    <?php 
+        $this->headMeta()->setCharset('UTF-8');
+        $this->headMeta()->setName('description', 'chrisweb\'s development blog, about HTML5, Nginx, Zend Framework, PHP, Javascript, jQuery, Backbone, Nodejs, Git and more ...');
+        $this->headMeta()->setName('keywords', 'HTML5, Nginx, Zend Framework, PHP, Javascript, jQuery, Backbone, Nodejs, Git, Bower, Grunt, Yeoman, Mobile, Developer, Code, Programming');
+        $this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1.0');
+    ?>
+    
+    <?php 
+        $this->headLink(array('rel' => 'alternate', 'type' => 'application/rss+xml', 'title' => 'Chris.lu RSS Feed', 'href' => 'https://chris.lu/article/rss', 'APPEND'));
+        $this->headLink(array('rel' => 'author', 'href' => 'https://plus.google.com/115936397667079055215/posts', 'APPEND'));
+        $this->headLink(array('rel' => 'Shortcut Icon', 'type' => 'image/x-icon', 'href' => '/favicon.ico', 'APPEND'));
+    ?>
+    
+    <?php echo $this->headMeta(); ?>
 
     <?php echo $this->canonicalTag(); ?>
 

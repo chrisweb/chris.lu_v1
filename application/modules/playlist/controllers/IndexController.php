@@ -25,7 +25,11 @@ class Playlist_IndexController extends Zend_Controller_Action {
         
         $bootstrap = $this->getInvokeArg('bootstrap');
         
+        $applicationConfiguration = $bootstrap->getResource('ApplicationConfiguration');
+        
         $cache = $bootstrap->getResource('CacheSwitch');
+        
+        $cache->setOption('lifetime', $applicationConfiguration->cache->content->lifetime);
         
         $cachedResults = $cache->load('youtube_playlists');
         

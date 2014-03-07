@@ -24,7 +24,12 @@ class Projects_IndexController extends Zend_Controller_Action {
     public function indexAction() {
         
         $bootstrap = $this->getInvokeArg('bootstrap');
+        
+        $applicationConfiguration = $bootstrap->getResource('ApplicationConfiguration');
+        
         $cache = $bootstrap->getResource('CacheSwitch');
+        
+        $cache->setOption('lifetime', $applicationConfiguration->cache->content->lifetime);
         
         $cachedResults = $cache->load('github_my_projects');
 
