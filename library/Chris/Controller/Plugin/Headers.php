@@ -29,7 +29,8 @@ class Chris_Controller_Plugin_Headers extends Zend_Controller_Plugin_Abstract {
         if (APPLICATION_ENV === 'production') {
             $response->setHeader('X-Frame-Options', 'DENY');
 			$response->setHeader('X-XSS-Protection', '1; mode=block');
-            $response->setHeader('Strict-Transport-Security', 'DENY');
+            //$response->setHeader('Strict-Transport-Security', 'max-age=31536000'); // already set by server
+            //$response->setHeader('Strict-Transport-Security', 'max-age=31536000; includeSubdomains'); // to include also subdomains
             $response->setHeader('X-Content-Type-Options', 'nosniff');
             $response->setHeader('X-Chrisweb', 'Hello World ;)');
         }
