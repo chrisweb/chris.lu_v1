@@ -1,6 +1,6 @@
 <?php
 
-class Article_Form_DeleteArticle extends Zend_Form
+class Readinglist_Form_DeleteReadinglist extends Zend_Form
 {
 
     public function __construct($options = null)
