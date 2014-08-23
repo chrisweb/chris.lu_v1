@@ -36,7 +36,7 @@
     baseUrl: "../public/dev",
     mainConfigFile: "../public/dev/js/main-2.1.6.js",
     include: "js/main-2.1.6",
-    out: "../build/js/main-2.1.6.js",
+    out: "../static/js/main-2.1.6.js",
     // almond js
     name: '../../_builder/almond',
     wrap: true
