@@ -1,3 +1,5 @@
+To build the client javascript code check out "_builder/command.txt"
+
 ***** UPDATING *****
 
 Twitter Bootstrap

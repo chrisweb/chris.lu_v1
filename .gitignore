@@ -8,7 +8,10 @@ library/Zend/
 public/dev/vendor/jQuery_mobile/demos/
 public/upload/
 
-public/_production-build/vendor/
+build/css
+build/js
+build/img
+
 public/sitemap.xml.gz
 public/google1c89971729f0b058.html
 
