@@ -36,8 +36,13 @@ class Application_Layouts_Helpers_MyNetworkpages extends Zend_View_Helper_Abstra
         $myNetworkpages .= '<div class="g-ytsubscribe" data-channelid="UC_Y3-cPBBSiyRfN63CmzS1g" data-layout="full" data-count="default" data-onytevent="onYtEvent"></div>';
         $myNetworkpages .= '<br><br>';
 
+<<<<<<< HEAD
         $myNetworkpages .= '<a href="https://stackoverflow.com/users/656689/chrisweb">';
         $myNetworkpages .= '<img src="https://stackoverflow.com/users/flair/656689.png" width="208" height="58" alt="profile for chrisweb at Stack Overflow, Q&amp;A for professional and enthusiast programmers" title="profile for chrisweb at Stack Overflow, Q&amp;A for professional and enthusiast programmers">';
+=======
+        $myNetworkpages .= '<a href="http://stackoverflow.com/users/656689/chrisweb">';
+        $myNetworkpages .= '<img src="http://stackoverflow.com/users/flair/656689.png" width="208" height="58" alt="profile for chrisweb at Stack Overflow, Q&amp;A for professional and enthusiast programmers" title="profile for chrisweb at Stack Overflow, Q&amp;A for professional and enthusiast programmers">';
+>>>>>>> origin/master
         $myNetworkpages .= '</a>';
         $myNetworkpages .= '<br><br>';
 
